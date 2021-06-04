@@ -1,0 +1,59 @@
+{
+  "homepage": "http://matt765.github.io/react-daily-dashboard",
+  "name": "Daily Dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "aos": "^2.3.4",
+    "autoprefixer": "^9.8.6",
+    "colorette": "^1.2.2",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^4.14.1",
+    "react": "^17.0.2",
+    "react-bootstrap-sweetalert": "^5.2.0",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^3.4.4",
+    "sweetalert2": "^11.0.16",
+    "sweetalert2-react-content": "^4.0.1",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.0",
+    "sass": "^1.34.0",
+    "sass-loader": "^7.3.1",
+    "webpack": "^4.40.2"
+  }
+}
