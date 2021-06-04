@@ -1,6 +1,6 @@
 {
-  "homepage": "http://matt765.github.io/react-daily-dashboard",
-  "name": "Daily Dashboard",
+  "homepage": "https://matt765.github.io/react-daily-dashboard",
+  "name": "react-daily-dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,12 +25,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
