@@ -20,7 +20,7 @@ function App(props) {
           }
         }}
       />
-      <a href="https://github.com/matt765/react-daily-dashboard-app" target="_blank" rel="noopener noreferrer" >
+      <a href="https://github.com/matt765/react-daily-dashboard" target="_blank" rel="noopener noreferrer" >
         <img
           src={github}
           id="github"
