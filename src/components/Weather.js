@@ -22,16 +22,12 @@ function Weather(props) {
     const [region, setRegion] = useState("")
 
     useEffect(() => {
-
-
-        //var key = '7485738ba74b5d861b91ad0f7b6ae2dc';
         let key = 'd855f5399de1b23778680d3da3553446';
         fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityValue + '&appid=' + key)
             .then(function (resp) {
                 return resp.json()
             })
             .then(function (data) {
-
                 setCountry(data.sys.country)
                 getWeather(data.coord.lat, data.coord.lon);
             })
@@ -41,7 +37,6 @@ function Weather(props) {
     }, []);
 
     function getWeather(lat, lon) {
-        //var key = '7485738ba74b5d861b91ad0f7b6ae2dc';
         let key = 'd855f5399de1b23778680d3da3553446';
         fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude={daily}&appid=' + key)
             .then(function (resp) {
@@ -51,7 +46,6 @@ function Weather(props) {
                 setTemp(toCelsius(data.current.temp))
                 setDesc(data.current.weather[0].description)
                 setHumidity(data.current.humidity)
-                //   setRain(data.daily[0].rain) 
                 setRain(data.current.feels_like)
                 setPressure(data.current.pressure)
                 setWind((data.hourly[0].wind_speed * 3.6).toFixed(1))

@@ -23,7 +23,6 @@ body
   min-height: 100vh
   margin: 0
 .container
-  /*background-color: #111422
   background: linear-gradient(146deg, #1a1e35 0%, #1a1e35 95%)
   background-image: url("../images/bg.jpg")
   background-size: cover
@@ -36,7 +35,6 @@ body
   justify-content: center
 
 .starting-container
-  /*background-color: #111422
   background: linear-gradient(146deg, #1a1e35 0%, #1a1e35 95%)
   background-image: url("../images/bg.jpg")
   background-size: cover
@@ -72,6 +70,15 @@ body
   width: 35px
   position: fixed
   right: 1em
+  top: 1em
+  cursor: pointer
+  opacity: 0.8
+  &:hover
+    opacity: 1
+
+#github
+  position: fixed
+  right: 1em
   bottom: 1em
   cursor: pointer
   opacity: 0.8
@@ -81,7 +88,7 @@ body
 /* Initial Input */
   
 .input-box
-  width: 35em;
+  width: 35em
   background-color: rgba(45, 53, 80, 0.795)
   margin: auto
   display: flex
@@ -147,9 +154,7 @@ body
   text-align: center
   margin-top: 0.5em
   font-family: Heebo
-  
-  
-  /*Roboto, Montserrat, Oswald, Raleway, Open Sans Condensed, Barlow Condensed, Heebo
+   
 .box-subtitle
   color: white
   font-size: 1.2em
@@ -445,6 +450,8 @@ body
   opacity: 0.4 !important
   transition: 0.5s
 
+/* Errors */
+
 .error-message
   color: red
   margin-left: 2em
@@ -456,7 +463,8 @@ body
   font-family: Quicksand
   font-weight: 900
 
-  
+/* RWD */
+
 @media (max-width: $first-breakpoint)
   .dashboard
     width: 90%
@@ -532,14 +540,11 @@ body
     padding: 1.2em
   button
     width: 8em
-  
   .inputs
     flex-direction: column
-
   .box-title
     font-size: 1.5em
     margin-top: 0.5em
-        
   .box-subtitle
     font-size: 1.0em
     
