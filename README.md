@@ -1,6 +1,6 @@
 # Daily Dashboard
 
-First React project I've made, the idea is that it can be alternative to default starting page in browser
+First React project I've made, the idea is that it can be an alternative to default starting page in browser
 
 Tech stack: HTML, SASS/Flexbox/Grid, React/Webpack
 
