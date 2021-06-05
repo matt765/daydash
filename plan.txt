@@ -1,4 +1,0 @@
-komponenty:
-
-app js
-
