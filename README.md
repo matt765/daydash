@@ -4,6 +4,8 @@ First React project I've made, the idea is that it can be an alternative to defa
 
 Tech stack: HTML, SASS/Flexbox/Grid, React/Webpack
 
+Live: https://matt765.github.io/react-daily-dashboard/
+
 Changes to be done:
 - refactoring code to use async/await and make it shorter, especially Weather.js
 - adding new panel with common links
