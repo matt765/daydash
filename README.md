@@ -1,8 +1,10 @@
 # Daily Dashboard
 
-First React project I've made, the idea is that it can be alternative to default starting page in browser
+First React project I've made, the idea is that it can be an alternative to default starting page in browser
 
 Tech stack: HTML, SASS/Flexbox/Grid, React/Webpack
+
+Live: https://matt765.github.io/react-daily-dashboard/
 
 Changes to be done:
 - refactoring code to use async/await and make it shorter, especially Weather.js
