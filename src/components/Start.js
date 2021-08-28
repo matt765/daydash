@@ -9,7 +9,7 @@ class Start extends React.Component {
             name: "",
             cityValue: "",
             errorMessage: "",
-            key: '7485738ba74b5d861b91ad0f7b6ae2dc',
+            key: process.env.REACT_APP_API_KEY_SECOND,
             validation: false,
             loading: false
         }

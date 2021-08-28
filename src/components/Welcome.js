@@ -2,8 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 function Welcome(props) {
-    const [cityValue, setCityValue] = useState(props.city)
-    const [countryCode, setCountryCode] = useState()
     const [fact, setFact] = useState()
     const [today, setToday] = useState("")
     const [monthDay, setMonthday] = useState("")
@@ -26,11 +24,7 @@ function Welcome(props) {
         setYear(year)
     }, [])
 
-
-
-
     useEffect(() => {
-
         const fetchFacts = () => {
             fetch(`https://uselessfacts.jsph.pl/random.json?language=en`)
                 .then(function (resp) {
@@ -45,10 +39,7 @@ function Welcome(props) {
                         setFact(resp.text)
                     }
                 })
-               
         }
-
-
         fetchFacts()
     }, [])
 

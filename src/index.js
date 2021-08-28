@@ -12,13 +12,12 @@ if (!localStorage.tasks) {
       { index: 2, message: "Fix a printer", crossed: false },
       { index: 3, message: "Finish front-end project", crossed: true }
     ]
-    localStorage.setItem("tasks", JSON.stringify(taskList))
+  localStorage.setItem("tasks", JSON.stringify(taskList))
 }
 AOS.init()
 
 if (!localStorage.city) {
   ReactDOM.render(
-
     <React.StrictMode>
       <Start />
     </React.StrictMode>,
@@ -26,7 +25,6 @@ if (!localStorage.city) {
   )
 } else {
   ReactDOM.render(
-
     <React.StrictMode>
       <App city={localStorage.getItem("city")} name={localStorage.getItem("name")} />
     </React.StrictMode>,

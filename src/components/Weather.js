@@ -20,9 +20,9 @@ function Weather(props) {
     const [hourTemp, setHourTemp] = useState([])
     const [icon, setIcon] = useState("")
     const [region, setRegion] = useState("")
+    const key = process.env.REACT_APP_API_KEY_FIRST
 
     useEffect(() => {
-        let key = 'd855f5399de1b23778680d3da3553446';
         fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityValue + '&appid=' + key)
             .then(function (resp) {
                 return resp.json()
@@ -31,13 +31,10 @@ function Weather(props) {
                 setCountry(data.sys.country)
                 getWeather(data.coord.lat, data.coord.lon);
             })
-            .catch(function () {
-                // document.getElementById("noCity").classList.toggle("invisible");
-            });
+            .catch((error) => console.log("error", error));
     }, []);
 
     function getWeather(lat, lon) {
-        let key = 'd855f5399de1b23778680d3da3553446';
         fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude={daily}&appid=' + key)
             .then(function (resp) {
                 return resp.json()
@@ -75,20 +72,17 @@ function Weather(props) {
                 }
                 setIcon(data.current.weather[0].icon)
             })
-            .catch(function () {
-                // document.getElementById("noCity").classList.toggle("invisible");
-            })
     }
 
     function toCelsius(value) {
         return Math.round(parseFloat(value) - 273.15);
     }
     function getHour(value) {
-        var date = new Date(value * 1000);
+        let date = new Date(value * 1000);
         return date.getHours() + 1;
     }
     function getCurrentDate(value) {
-        var date = new Date(value * 1000);
+        let date = new Date(value * 1000);
         if (date.getMonth() >= 10) {
             return `${date.getDate()}.${date.getMonth() + 1}`
         } else {
