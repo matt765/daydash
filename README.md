@@ -3,7 +3,6 @@
 React single-page application designed to be an alternative to default starting page in browser
 
 Tech stack: HTML, SASS/Flexbox/Grid, React/Webpack
-External API used for live weather forecast
 
 Live: https://matt765.github.io/react-daily-dashboard/
 
