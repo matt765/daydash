@@ -18,11 +18,13 @@ class Start extends React.Component {
     }
     handleChange(event) {
         const value = event.target.value;
+        // nie musisz używać dodawać ...this.state, samo [event.target.name]: value wystarczy
         this.setState({ ...this.state, [event.target.name]: value })
     }
     handleChangeName(event) {
         this.setState({ name: event.target.value })
     }
+    // event jest niewykorzystywany
     handleSubmit(event) {
         this.setState({ loading: true })
         if (this.state.name.length < 3) {
@@ -36,6 +38,7 @@ class Start extends React.Component {
                 })
                 .then((data) => {
                     if (data.cod === "404" || data.cod === "400") {
+                        // dlaczego setTimeout?
                         setTimeout(() => {
                             this.setState({ errorMessage: "Sorry, there is no such city" })
                             this.setState({ loading: false })

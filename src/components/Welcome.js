@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 
 function Welcome(props) {
     const [fact, setFact] = useState()
+    // używanie poniższego statu nie ma sensu, parsujesz date tylko raz w hooku useEffect (12 linijka) i zmieniasz stan
+    // możesz to zrobić w body komponentu po prostu skoro jest to synchorniczna akcja i ustwaiana tylko raz 
     const [today, setToday] = useState("")
     const [monthDay, setMonthday] = useState("")
     const [monthName, setMonthname] = useState("")
@@ -25,6 +27,7 @@ function Welcome(props) {
     }, [])
 
     useEffect(() => {
+        // zrobił bym dla faktów osobny komponent ze swoim statem i jego obsługą: loading, error, success
         const fetchFacts = () => {
             fetch(`https://uselessfacts.jsph.pl/random.json?language=en`)
                 .then(function (resp) {
