@@ -1,3 +1,5 @@
+Disclaimer: This was my first React application, code is far being good quality. Currently I'm rewriting whole application from scratch using NextJS with TypeScript. Release time is planned for either May or June 2023
+
 # Daily Dashboard
 
 React single-page application designed to be an alternative to default starting page in browser
