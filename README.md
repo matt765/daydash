@@ -1,4 +1,4 @@
-Disclaimer: This was my first React application, code is far being good quality. Currently I'm rewriting whole application from scratch using NextJS with TypeScript. Release time is planned for either May or June 2023
+Disclaimer: This was my first React application, code is far from being good quality. Currently I'm rewriting whole application from scratch using NextJS with TypeScript. Release time is planned for either May or June 2023
 
 # Daily Dashboard
 
