@@ -29,11 +29,11 @@ export const useWeatherUtils = () => {
     }
     return undefined;
   };
-  const toFahrenheit = (value?: string): string | undefined => {
+  const toFahrenheit = (value?: string, from: 'celsius' | 'kelvin' = 'kelvin'): string | undefined => {
     if (value) {
-      const fahrenheitValue = Math.round(
-        ((parseFloat(value) - 273.15) * 9) / 5 + 32
-      );
+      const floatValue = parseFloat(value);
+      const celsiusValue = from === 'kelvin' ? floatValue - 273.15 : floatValue;
+      const fahrenheitValue = Math.round((celsiusValue * 9) / 5 + 32);
       return fahrenheitValue.toString();
     }
     return undefined;

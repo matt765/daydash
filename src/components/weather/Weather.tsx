@@ -53,7 +53,13 @@ export const Weather = () => {
               />
             </Flex>
             <Flex direction="column">
-              <Text variant="weatherTemperature">{weatherData?.temp}°</Text>
+              <Text variant="weatherTemperature">
+                {useFahrenheit
+                  ? toFahrenheit(weatherData?.temp, "celsius")
+                  : weatherData?.temp}
+                °
+              </Text>
+         
               <Text variant="weatherDesc">{weatherData?.desc}</Text>
             </Flex>
           </Flex>

@@ -7,7 +7,7 @@ import { useSettingsStore } from '@/store/settingsStore';
 export const SnakeGame = () => {
   const [board, setBoard] = useState<any[][]>([]);
   const [snake, setSnake] = useState([{ row: 10, col: 10 }]);
-  const [direction, setDirection] = useState({ row: 0, col: 0 });
+  const [direction, setDirection] = useState({ row: 0, col: 1 });
   const [food, setFood] = useState({ row: 5, col: 5 });
   const [score, setScore] = useState(0); //
   const [isGameRunning, setIsGameRunning] = useState(false);
@@ -16,6 +16,7 @@ export const SnakeGame = () => {
   const { record, setRecord } = useSnakeStore();
   const [canChangeDirection, setCanChangeDirection] = useState(true);
   const { sliderValue } = useSettingsStore();
+  const [newRecord, setNewRecord] = useState(false);
 
   const startGame = () => {
     if (!isGameRunning) {
@@ -80,7 +81,7 @@ export const SnakeGame = () => {
       }
       if (
         e.key === 'ArrowLeft' &&
-        JSON.stringify(direction) !== JSON.stringify({ row: 0, col: 1 })
+        JSON.stringify(direction) !== JSON.stringify({ row: 0, col: -1 })
       ) {
         setDirection({ row: 0, col: -1 });
         setCanChangeDirection(false);
@@ -102,9 +103,20 @@ export const SnakeGame = () => {
   }, [isGameRunning, gameOver, direction, canChangeDirection]);
   useEffect(() => {
     if (gameOver) {
-      setRecord(Math.max(record, score));
+      if (score > record) {
+        setNewRecord(true);
+        setRecord(score);
+        useSnakeStore.getState().setRecord(score);
+      } else {
+        setNewRecord(false);
+      }
     }
   }, [gameOver, score, setRecord, record]);
+
+  const setNewRecordState = (value: boolean) => {
+    setNewRecord(value);
+  };
+
   useEffect(() => {
     const moveSnake = () => {
       if (!isGameRunning || gameOver) return;
@@ -134,11 +146,11 @@ export const SnakeGame = () => {
         setGameOver(true);
         return;
       }
-
-      // Check if the snake has eaten the food
       if (newHead.row === food.row && newHead.col === food.col) {
         // Generate new food
         generateFood();
+        // Increment score by 10
+        setScore(score + 10);
       } else {
         // Remove the tail if the snake hasn't eaten food
         snake.pop();
@@ -190,7 +202,6 @@ export const SnakeGame = () => {
     } while (isSnake(newFoodPosition.row, newFoodPosition.col));
 
     setFood(newFoodPosition);
-    setScore(score + 10); // Increment score by 10
   };
 
   const isFood = (row: number, col: number) => {
@@ -214,7 +225,15 @@ export const SnakeGame = () => {
           Score: {score}
         </Flex>
         <Text fontSize="1.5rem" ml="">
-          {gameOver ? 'Game is over!' : isGameRunning ? '' : "Let's play!"}
+          <Text fontSize="1.5rem" ml="">
+            {gameOver
+              ? newRecord
+                ? 'New Record!'
+                : 'Game is over!'
+              : isGameRunning
+              ? ''
+              : "Let's play!"}
+          </Text>
         </Text>
         <Flex
           mt={6}
