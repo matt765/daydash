@@ -18,6 +18,8 @@ interface UsePlanner {
   removeTask: (index: number) => void;
   onDragEnd: (result: DropResult) => void;
   loading: boolean;
+  showTooltip: boolean;
+  setShowTooltip: (value: boolean) => void;
 }
 
 export const usePlanner = (): UsePlanner => {
@@ -30,7 +32,7 @@ export const usePlanner = (): UsePlanner => {
   useEffect(() => {
     setLoading(false);
   }, []);
-
+  const [showTooltip, setShowTooltip] = useState(false);
   const reorder = (
     list: PlannerItem[],
     startIndex: number,
@@ -54,8 +56,12 @@ export const usePlanner = (): UsePlanner => {
       ];
       setPlannerItems(newPlannerItems);
       setInputValue('');
+      setShowTooltip(false);
+    } else {
+      setShowTooltip(true);
     }
   };
+  
 
   const updateTask = (index: number, newText: string) => {
     const newPlannerItems = plannerItems.map((item, i) => {
@@ -110,5 +116,7 @@ export const usePlanner = (): UsePlanner => {
     toggleCrossed,
     removeTask,
     onDragEnd,
+    showTooltip,
+    setShowTooltip
   };
 };

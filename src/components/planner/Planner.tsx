@@ -17,6 +17,8 @@ export const Planner = () => {
     removeTask,
     onDragEnd,
     loading,
+    showTooltip,
+    setShowTooltip
   } = usePlanner();
 
   if (loading) {
@@ -34,6 +36,8 @@ export const Planner = () => {
           inputValue={inputValue}
           setInputValue={setInputValue}
           addTask={addTask}
+          showTooltip={showTooltip}
+          setShowTooltip={setShowTooltip}
         />
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
