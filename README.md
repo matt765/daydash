@@ -5,7 +5,7 @@ Dashboard application designed to be an alternative to default starting page in 
 React, NextJS, TypeScript, Chakra UI, Zustand, React Query, Framer Motion
 
 ## Live link
-[https://matt765.github.io/react-daily-dashboard/](https://matt765.github.io/react-daily-dashboard/)
+[https://daydash.app/](https://daydash.app/)
 
 ##  Project Structure
 ```

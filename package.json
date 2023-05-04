@@ -9,18 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.5.5",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
     "@fontsource/heebo": "^4.5.15",
     "@fontsource/quicksand": "^4.5.12",
     "@fontsource/roboto": "^4.5.8",
-    "@types/node": "^18.15.13",
-    "@types/react": "^18.0.38",
-    "@types/react-dom": "^18.0.11",
+    "@types/node": "^18.16.3",
+    "@types/react": "^18.2.4",
+    "@types/react-dom": "^18.2.3",
     "axios": "^1.4.0",
-    "framer-motion": "^10.12.4",
-    "next": "13.3.0",
+    "framer-motion": "^10.12.7",
+    "next": "13.3.4",
     "query-string": "^8.1.0",
     "react": "18.2.0",
     "react-beautiful-dnd": "^13.1.1",
@@ -31,10 +31,10 @@
   "devDependencies": {
     "@types/react-beautiful-dnd": "^13.1.4",
     "eslint": "^8.39.0",
-    "eslint-config-next": "13.3.0",
+    "eslint-config-next": "13.3.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.8",
-    "zustand": "^4.3.7"
+    "zustand": "^4.3.8"
   }
 }

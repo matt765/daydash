@@ -13,6 +13,7 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
+      {/* @ts-ignore */}
       <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
