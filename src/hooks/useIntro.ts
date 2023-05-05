@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
 import { useUserStore } from '@/store/userStore';
+import { fetchWeatherData, WeatherData } from '@/hooks/useWeatherData';
+import { useWeatherStore } from '@/store/weatherStore';
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from '@/utils/localStorageUtils';
 
 interface UseIntro {
   name: string;
@@ -8,7 +14,10 @@ interface UseIntro {
   setName: (name: string) => void;
   setCity: (city: string) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  isSubmitting: boolean;
 }
+
+const LOCAL_STORAGE_KEY = 'weatherStoreData';
 
 export const useIntro = (
   setView: (
@@ -17,14 +26,27 @@ export const useIntro = (
 ): UseIntro => {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { setName: setNameInStore, setCity: setCityInStore } = useUserStore();
+  const { setWeatherData } = useWeatherStore();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setNameInStore(name);
-    setCityInStore(city);
-    setView('dashboard');
+    setIsSubmitting(true);
+    setWeatherData(loadFromLocalStorage(LOCAL_STORAGE_KEY, null), false);
+    try {
+      const weatherData = await fetchWeatherData(city);
+      saveToLocalStorage(LOCAL_STORAGE_KEY, weatherData);
+      setWeatherData(weatherData, false);
+      setNameInStore(name);
+      setCityInStore(city);
+      setView('dashboard');
+    } catch (error) {
+      setWeatherData(null, true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return {
@@ -33,5 +55,6 @@ export const useIntro = (
     setName,
     setCity,
     handleSubmit,
+    isSubmitting,
   };
 };

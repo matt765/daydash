@@ -6,7 +6,7 @@ import { WindIcon } from '@/assets/icons/WindIcon';
 import useSettingsStore from '@/store/settingsStore';
 import { useWeatherUtils } from './useWeatherUtils';
 
-interface WeatherData {
+export interface WeatherData {
   temp: string;
   desc: string;
   humidity: string;
@@ -19,9 +19,13 @@ interface WeatherData {
   region: string;
 }
 
-const fetchWeatherData = async (cityValue: string): Promise<WeatherData> => {
+export const fetchWeatherData = async (cityValue: string): Promise<WeatherData> => {
   const response = await fetch(`/api/weather?cityValue=${cityValue}`);
   const data = await response.json();
+
+  if (!data.coord) {
+    throw new Error('City not found');
+  }
 
   const { lat, lon } = data.coord;
   const responseOneCall = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
@@ -42,6 +46,7 @@ const fetchWeatherData = async (cityValue: string): Promise<WeatherData> => {
 
   return weatherData;
 };
+
 
 function toCelsius(value: number): string {
   return Math.round(value - 273.15).toString();
@@ -86,5 +91,10 @@ export const useWeatherData = (cityValue: string) => {
     },
   ];
 
-  return { ...queryResult, weatherParameters };
+  return {
+    data: queryResult.data,
+    isLoading: queryResult.isLoading,
+    isError: queryResult.isError,
+    weatherParameters,
+  };
 };

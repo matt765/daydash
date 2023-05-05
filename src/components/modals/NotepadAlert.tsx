@@ -39,7 +39,7 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
             justifyContent="center"
             alignItems="center"
             textAlign="center"
-            p="2rem"
+            p="2.5rem"
             bgColor="modalBg"
             borderWidth="1px"
             borderStyle="solid"
@@ -53,7 +53,7 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
                 fontFamily: 'Heebo',
               },
             }}>
-            <Flex w="100%" justify="center" mb="0.5rem" direction="column">
+            <Flex w="100%" justify="center" mb="0rem" direction="column">
               <Text
                 variant="dataModalSubtitle"
                 fontSize="1.3rem"
@@ -75,7 +75,7 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
                 if the local storage is cleared.
               </Text>
             </Flex>
-            <Flex w="100%" justify="flex-end" mt="0rem" gap="1rem">
+            <Flex w="100%" justify="flex-end" mt="-0.5rem" gap="1rem">
               <Button
                 variant="solid"
                 bg="mainColor"

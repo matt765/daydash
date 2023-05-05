@@ -15,10 +15,10 @@ interface LoaderProps {
 }
 
 export const Loader: React.FC<LoaderProps> = ({ isSmall = false }) => {
-  const size = isSmall ? 40 : 80;
+  const size = isSmall ? 35 : 80;
   const origin = size / 2;
-  const barWidth = isSmall ? 3 : 6;
-  const barHeight = isSmall ? 9 : 18;
+  const barWidth = isSmall ? 2.65 : 6;
+  const barHeight = isSmall ? 7.25 : 18;
   const barLeft = origin - barWidth / 2;
 
   return (

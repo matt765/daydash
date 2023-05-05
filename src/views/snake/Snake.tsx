@@ -17,10 +17,14 @@ export const SnakeGame = () => {
   const [canChangeDirection, setCanChangeDirection] = useState(true);
   const { sliderValue } = useSettingsStore();
   const [newRecord, setNewRecord] = useState(false);
+  const [shouldResultTitleAppear, setShouldResultTitleAppear] = useState(true);
+  const [shouldIntroTitleAppear, setShouldIntroTitleAppear] = useState(true);
 
   const startGame = () => {
     if (!isGameRunning) {
       setIsGameRunning(true);
+      setShouldResultTitleAppear(false);
+      setShouldIntroTitleAppear(false);
       setGameOver(false);
       setRestart(false);
       if (gameOver) {
@@ -41,6 +45,7 @@ export const SnakeGame = () => {
     setFood({ row: 5, col: 5 });
     initializeBoard();
     setRestart(true);
+    setShouldIntroTitleAppear(true);
   };
 
   useEffect(() => {
@@ -67,20 +72,23 @@ export const SnakeGame = () => {
 
       if (
         e.key === 'ArrowUp' &&
-        JSON.stringify(direction) !== JSON.stringify({ row: 1, col: 0 })
+        JSON.stringify(direction) !== JSON.stringify({ row: 1, col: 0 }) &&
+        JSON.stringify(direction) !== JSON.stringify({ row: -1, col: 0 })
       ) {
         setDirection({ row: -1, col: 0 });
         setCanChangeDirection(false);
       }
       if (
         e.key === 'ArrowDown' &&
-        JSON.stringify(direction) !== JSON.stringify({ row: -1, col: 0 })
+        JSON.stringify(direction) !== JSON.stringify({ row: -1, col: 0 }) &&
+        JSON.stringify(direction) !== JSON.stringify({ row: 1, col: 0 })
       ) {
         setDirection({ row: 1, col: 0 });
         setCanChangeDirection(false);
       }
       if (
         e.key === 'ArrowLeft' &&
+        JSON.stringify(direction) !== JSON.stringify({ row: 0, col: 1 }) &&
         JSON.stringify(direction) !== JSON.stringify({ row: 0, col: -1 })
       ) {
         setDirection({ row: 0, col: -1 });
@@ -88,7 +96,8 @@ export const SnakeGame = () => {
       }
       if (
         e.key === 'ArrowRight' &&
-        JSON.stringify(direction) !== JSON.stringify({ row: 0, col: -1 })
+        JSON.stringify(direction) !== JSON.stringify({ row: 0, col: -1 }) &&
+        JSON.stringify(direction) !== JSON.stringify({ row: 0, col: 1 })
       ) {
         setDirection({ row: 0, col: 1 });
         setCanChangeDirection(false);
@@ -101,6 +110,7 @@ export const SnakeGame = () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, [isGameRunning, gameOver, direction, canChangeDirection]);
+
   useEffect(() => {
     if (gameOver) {
       if (score > record) {
@@ -109,14 +119,14 @@ export const SnakeGame = () => {
         useSnakeStore.getState().setRecord(score);
       } else {
         setNewRecord(false);
+        setShouldResultTitleAppear(true);
       }
     }
-  }, [gameOver, score, setRecord, record]);
+  }, [gameOver]);
 
-  const setNewRecordState = (value: boolean) => {
-    setNewRecord(value);
-  };
-
+  useEffect(() => {
+    setShouldResultTitleAppear(true);
+  }, [newRecord]);
   useEffect(() => {
     const moveSnake = () => {
       if (!isGameRunning || gameOver) return;
@@ -226,13 +236,9 @@ export const SnakeGame = () => {
         </Flex>
         <Text fontSize="1.5rem" ml="">
           <Text fontSize="1.5rem" ml="">
-            {gameOver
-              ? newRecord
-                ? 'New Record!'
-                : 'Game is over!'
-              : isGameRunning
-              ? ''
-              : "Let's play!"}
+            {gameOver && shouldResultTitleAppear && newRecord && 'New record!'}
+            {gameOver && !newRecord && shouldResultTitleAppear && 'Game over!'}
+            {shouldIntroTitleAppear && "Let's play!"}
           </Text>
         </Text>
         <Flex

@@ -8,23 +8,63 @@ import { useWeatherUtils } from '@/hooks/useWeatherUtils';
 import { useUserStore } from '../../store/userStore';
 import useSettingsStore from '@/store/settingsStore';
 import { Loader } from '../loader/Loader';
+import { useWeatherStore } from '@/store/weatherStore';
+import { useMemo } from 'react';
+import { HandIcon } from '@/assets/icons/HandIcon';
+import { HumidityIcon } from '@/assets/icons/HumidityIcon';
+import { PressureIcon } from '@/assets/icons/PressureIcon';
+import { WindIcon } from '@/assets/icons/WindIcon';
 
 export const Weather = () => {
   const storeCity = useUserStore((state) => state.city);
   const useFahrenheit = useSettingsStore((state) => state.useFahrenheit);
-  const {
-    data: weatherData,
-    isLoading,
-    isError,
-    weatherParameters,
-  } = useWeatherData(storeCity);
+  const { weatherData, isLoading, isError } = useWeatherStore((state) => ({
+    weatherData: state.weatherData,
+    isLoading: state.isLoading,
+    isError: state.isError,
+  }));
   const { getWeatherImage, getHour, getCurrentDate, toCelsius, toFahrenheit } =
     useWeatherUtils();
+  const { data: fetchedWeatherData, isLoading: isFetchLoading } =
+    useWeatherData(storeCity);
+  const currentWeatherData = weatherData || fetchedWeatherData;
 
-  if (isLoading) {
+  const weatherParameters = useMemo(
+    () => [
+      {
+        icon: HumidityIcon,
+        title: 'Humidity',
+        value: `${weatherData?.humidity}%`,
+      },
+      {
+        icon: HandIcon,
+        title: 'Feels like',
+        value: `${
+          useFahrenheit
+            ? toFahrenheit(weatherData?.rain)
+            : toCelsius(weatherData?.rain)
+        }°`,
+      },
+      {
+        icon: PressureIcon,
+        title: 'Air pressure',
+        value: `${weatherData?.pressure} hPa`,
+      },
+      {
+        icon: WindIcon,
+        title: 'Wind speed',
+        value: `${weatherData?.wind} km/h`,
+      },
+    ],
+    [weatherData, useFahrenheit, toCelsius, toFahrenheit]
+  );
+
+  if (isLoading || isFetchLoading) {
     return <Loader />;
   }
-
+  if (weatherData === null && fetchedWeatherData) {
+    useWeatherStore.getState().setWeatherData(fetchedWeatherData);
+  }
   return (
     <Flex direction="column" gap="1rem" w="100%">
       <Flex w="100%" mt="1rem" mb="1rem">
@@ -55,11 +95,11 @@ export const Weather = () => {
             <Flex direction="column">
               <Text variant="weatherTemperature">
                 {useFahrenheit
-                  ? toFahrenheit(weatherData?.temp, "celsius")
+                  ? toFahrenheit(weatherData?.temp, 'celsius')
                   : weatherData?.temp}
                 °
               </Text>
-         
+
               <Text variant="weatherDesc">{weatherData?.desc}</Text>
             </Flex>
           </Flex>

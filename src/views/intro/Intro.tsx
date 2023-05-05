@@ -2,6 +2,8 @@ import { Button, Flex, Input, Text } from '@chakra-ui/react';
 
 import { ContentBox } from '@/theme/components/contentBox';
 import { useIntro } from '@/hooks/useIntro';
+import { useWeatherStore } from '@/store/weatherStore';
+import { Loader } from '@/components/loader/Loader';
 
 interface IntroProps {
   setView: (
@@ -10,7 +12,9 @@ interface IntroProps {
 }
 
 export const Intro = ({ setView }: IntroProps) => {
-  const { name, city, setName, setCity, handleSubmit } = useIntro(setView);
+  const { name, city, setName, setCity, handleSubmit, isSubmitting } =
+    useIntro(setView);
+  const { isError, isLoading, weatherData } = useWeatherStore();
 
   return (
     <ContentBox
@@ -21,7 +25,6 @@ export const Intro = ({ setView }: IntroProps) => {
       justifyContent="flex-start"
       alignItems="center"
       textAlign="center"
-    
       p="2rem"
       borderRadius="30px"
       sx={{
@@ -66,7 +69,12 @@ export const Intro = ({ setView }: IntroProps) => {
               required
             />
           </Flex>
-          <Flex w="100%" justify="center" mt="2.5rem">
+          {isError && (
+            <Flex color="red.400" w="100%" justify="center" mt="1rem">
+              City not found. Please try again.
+            </Flex>
+          )}
+          <Flex w="100%" justify="center" mt={isError ? '1rem' : '2.5rem'}>
             <Button
               type="submit"
               variant="solid"
@@ -75,7 +83,7 @@ export const Intro = ({ setView }: IntroProps) => {
               borderRadius="10px"
               w="14rem"
               _hover={{ bg: 'mainColorHover' }}>
-              Get started
+              {isLoading || isSubmitting ? <Loader isSmall /> : 'Get started'}
             </Button>
           </Flex>
         </Flex>
