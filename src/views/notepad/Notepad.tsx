@@ -4,6 +4,7 @@ import { NotepadEditIcon } from '@/assets/icons/NotepadEditIcon';
 import { ContentBox } from '@/theme/components/contentBox';
 import { useNotepad } from '@/hooks/useNotepad';
 import { NotepadTextArea } from '@/components/notepad/NotepadTextArea';
+import { NotepadAlert } from '@/components/modals/NotepadAlert';
 
 export const Notepad = () => {
   const {
@@ -13,6 +14,8 @@ export const Notepad = () => {
     handleBoxClick,
     handleSave,
     handleTextChange,
+    isModalVisible,
+    handleModalClose,
   } = useNotepad();
 
   return (
@@ -62,12 +65,13 @@ export const Notepad = () => {
             backgroundColor: 'rgb(161, 192, 241, 0.2)',
           }}
           _active={{
-            bg: "notepadButtonActiveBg"
-          } }
+            bg: 'notepadButtonActiveBg',
+          }}
           transition="0.5s">
           Save
         </Button>
       </Flex>
+      {isModalVisible && <NotepadAlert handleModalClose={handleModalClose} />}
     </ContentBox>
   );
 };

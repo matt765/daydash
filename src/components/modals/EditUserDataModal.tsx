@@ -21,7 +21,9 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
       left="0"
       justify="center"
       pointerEvents="none"
-      alignItems="center">
+      alignItems="center"
+    
+      >
       <ContentBox
         display="flex"
         pointerEvents="auto"
@@ -36,8 +38,10 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
         borderWidth="1px"
         borderStyle="solid"
         borderColor="modalBorder"
+        backdropFilter="blur(24px)"
         borderRadius="30px"
         position="relative"
+        boxShadow="unset"
         sx={{
           '& *': {
             fontFamily: 'Heebo',

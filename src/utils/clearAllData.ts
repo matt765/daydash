@@ -1,4 +1,3 @@
-// utils/clearAllData.ts
 import { useNotepadStore } from '@/store/notepadStore';
 import { plannerItemsDefault, usePlannerStore } from '@/store/plannerStore';
 import { useSettingsStore } from '@/store/settingsStore';
@@ -13,6 +12,7 @@ export const clearAllData = () => {
   const userStore = useUserStore.getState();
 
   notepadStore.setStoreNote('');
+  notepadStore.setIsNotepadModalConfirmed(false);
   plannerStore.setPlannerItems([]);
   settingsStore.resetSettings();
   snakeStore.setRecord(0);

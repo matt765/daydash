@@ -112,7 +112,7 @@ export const colors = {
     _dark: 'rgba(45,53,80,.795)'
   },
   modalBg: {
-    default: 'rgba(59, 66, 87, 0.98)',
+    default: 'rgba(105, 114, 142, 0.15)',
     _dark: 'rgba(45,53,80,.795)'
   },
   modalBorder: {

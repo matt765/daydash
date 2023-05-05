@@ -33,7 +33,6 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
       position="fixed"
       w="100vw"
       h="100vh"
-      bgColor="rgb(0,0,0,0.6)"
       zIndex="9999"
       top="0"
       left="0"
@@ -50,10 +49,12 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
         alignItems="center"
         textAlign="center"
         p="2.5rem"
+        boxShadow="unset"
         bgColor="modalBg"
         borderWidth="1px"
         borderStyle="solid"
         borderColor="modalBorder"
+        backdropFilter="blur(24px)"
         borderRadius="30px"
         position="relative"
         sx={{
@@ -69,7 +70,8 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
             mt="0rem"
             direction="column"
             alignItems="flex-start"
-            textAlign="left">
+            textAlign="left"
+            >
             <Text color="red.400" fontSize="1.6rem" mb="0.5rem">
               Warning!
             </Text>
