@@ -12,7 +12,7 @@ const fetchFact = async () => {
       'https://uselessfacts.jsph.pl/random.json?language=en'
     );
     data = await response.json();
-  } while (data.text.length > 125 || data.text.length < 35);
+  } while (data.text.length > 130 || data.text.length < 35);
   return data.text;
 };
 

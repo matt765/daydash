@@ -48,7 +48,7 @@ export const Settings = ({
       {isDrawerContentVisible && (
         <DrawerContent
           sx={{
-            backgroundColor: 'rgb(40, 49, 62)',
+            backgroundColor: 'rgb(44, 56, 72)',
             color: 'white',
           }}
           pb="1rem"

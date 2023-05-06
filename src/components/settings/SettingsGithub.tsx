@@ -17,7 +17,7 @@ export const SettingsGithub = () => {
         width: '100%',
         position: 'fixed',
         bottom: 0,
-        backgroundColor: 'rgb(40, 49, 62)',
+        backgroundColor: 'rgb(44, 56, 72)',
         borderWidth: '1px 0 0 0',
         borderStyle: 'solid',
         borderColor: 'rgb(255,255,255,0.2)',

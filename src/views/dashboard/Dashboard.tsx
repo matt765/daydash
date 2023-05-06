@@ -23,9 +23,18 @@ export const Dashboard = () => {
           </ContentBox>
         </Flex>
       )}
-      <ContentBox height={!isFullPlannerVisible ? "55%" : "100%"} p="1.5rem" pr="0.5rem" pb="0rem" overflow="hidden" borderRadius="20px" flexDirection="column">
+      <ContentBox
+        height={!isFullPlannerVisible ? '55%' : '100%'}
+        p="1.5rem"
+        pr="0.5rem"
+        pb="0rem"
+        overflow="hidden"
+        borderRadius="20px"
+        flexDirection="column"
+        minW="100%"
+        w="100%">
         <Planner />
-        <Flex h="1rem" w="100%"></Flex>
+        <Flex h="1rem" w="100%" />
       </ContentBox>
     </Flex>
   );

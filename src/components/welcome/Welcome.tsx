@@ -70,7 +70,7 @@ export const Welcome = () => {
                   },
                 },
               }}>
-              <Text variant="welcomeSecondary" mr="0.5rem">
+              <Text variant="welcomeSecondary" mr="0.5rem" mb="0.12rem">
                 Did you know?
               </Text>
               <Flex onClick={refetchContent} cursor="pointer">

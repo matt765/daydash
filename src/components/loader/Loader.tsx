@@ -44,7 +44,7 @@ export const Loader: React.FC<LoaderProps> = ({ isSmall = false }) => {
               width={`${barWidth}px`}
               height={`${barHeight}px`}
               borderRadius="20%"
-              backgroundColor="#fff"
+              backgroundColor="rgb(171, 180, 208)"
             />
           </Box>
         ))}

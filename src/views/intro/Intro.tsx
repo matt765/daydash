@@ -41,7 +41,7 @@ export const Intro = ({ setView, onDataSaved }: IntroProps) => {
           <Text variant="dataModalTitleColored">DayDash</Text>
         </Flex>
         <Text variant="dataModalSubtitle" mb="2rem">
-          Please state your name and location
+          Please enter your name and city
         </Text>
         <Flex direction="column">
           <Flex
