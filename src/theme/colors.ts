@@ -35,6 +35,10 @@ export const colors = {
     default: 'rgb(137, 150, 192)',
     _dark: 'rgb(137, 150, 192)'
   },
+  weatherIconHover: {
+    default: 'rgb(156, 168, 208)',
+    _dark: 'rgb(137, 150, 192)'
+  },
   weatherBoxBg: {
     default: 'rgba(255, 255, 255, 0.034)',
     _dark: '#2c2f35'

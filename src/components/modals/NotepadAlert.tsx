@@ -71,7 +71,7 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
                 fontFamily="Quicksand">
                 Please remember that both your task list and notepad data are
                 stored in the browser's local storage. This means that the data
-                will not be accessible outside of the browser and will disappear
+                is not accessible outside of your browser and will disappear
                 if the local storage is cleared.
               </Text>
             </Flex>

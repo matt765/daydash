@@ -1,6 +1,6 @@
 // hooks/useWelcome.ts
 import { useState, useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 
 import useCurrentDate from '@/hooks/useCurrentDate';
 import useSettingsStore from '@/store/settingsStore';
@@ -23,25 +23,57 @@ const fetchQuote = async () => {
 
 export const useWelcome = () => {
   const userName = useUserStore((state) => state.name);
-
   const { dayOfWeek, dayOfMonth, monthName, year } = useCurrentDate();
   const [contentMode, setContentMode] = useState('did_you_know');
+
+  const [loadingContent, setLoadingContent] = useState(false);
+  const queryClient = useQueryClient();
+
   const {
     isLoading,
     error,
     data: fact,
+    refetch: refetchFact,
   } = useQuery('fact', fetchFact, {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
   });
+
   const {
     isLoading: isLoadingQuote,
     error: errorQuote,
     data: { quote, author } = {},
+    refetch: refetchQuote,
   } = useQuery('quote', fetchQuote, {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
   });
+  const [refreshCooldown, setRefreshCooldown] = useState(false);
+
+  const refetchContent = async () => {
+    if (refreshCooldown) {
+      return;
+    }
+    setLoadingContent(true);
+    setRefreshCooldown(true);
+
+    const sleep = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
+
+    try {
+      await Promise.all([
+        contentMode === 'did_you_know'
+          ? queryClient.invalidateQueries('fact')
+          : queryClient.invalidateQueries('quote'),
+        sleep(1500),
+      ]);
+    } catch (error) {
+      console.error('Error refetching content:', error);
+    } finally {
+      setLoadingContent(false);
+      setRefreshCooldown(false);
+    }
+  };
 
   const welcomeSectionContent = useSettingsStore(
     (state) => state.welcomeSectionContent
@@ -65,5 +97,7 @@ export const useWelcome = () => {
     errorQuote,
     quote,
     author,
+    loadingContent,
+    refetchContent,
   };
 };
