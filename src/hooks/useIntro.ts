@@ -22,7 +22,8 @@ const LOCAL_STORAGE_KEY = 'weatherStoreData';
 export const useIntro = (
   setView: (
     value: 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading'
-  ) => void
+  ) => void,
+  onDataSaved: () => void,
 ): UseIntro => {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
@@ -42,6 +43,7 @@ export const useIntro = (
       setNameInStore(name);
       setCityInStore(city);
       setView('dashboard');
+      onDataSaved();
     } catch (error) {
       setWeatherData(null, true);
     } finally {

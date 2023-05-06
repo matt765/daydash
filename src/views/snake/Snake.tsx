@@ -284,18 +284,20 @@ export const SnakeGame = () => {
         ))}
       </Flex>
       {/* Render score */}
-      <Flex>
-        <Button
-          onClick={isGameRunning || gameOver ? resetGame : startGame}
-          colorScheme={isGameRunning ? 'blue' : gameOver ? 'blue' : 'green'}
-          mr={4}>
-          {isGameRunning
-            ? 'Restart game'
-            : gameOver
-            ? 'Restart game'
-            : 'Start game'}
-        </Button>
-      </Flex>
+      {board.length > 0 && (
+        <Flex>
+          <Button
+            onClick={isGameRunning || gameOver ? resetGame : startGame}
+            colorScheme={isGameRunning ? 'blue' : gameOver ? 'blue' : 'green'}
+            mr={4}>
+            {isGameRunning
+              ? 'Restart game'
+              : gameOver
+              ? 'Restart game'
+              : 'Start game'}
+          </Button>
+        </Flex>
+      )}
     </ContentBox>
   );
 };

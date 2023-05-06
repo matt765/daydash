@@ -19,7 +19,7 @@ export const Welcome = () => {
     errorQuote,
     quote,
     author,
-    loadingContent,
+    isRefetchingContent,
     refetchContent,
   } = useWelcome();
 
@@ -27,39 +27,8 @@ export const Welcome = () => {
     return <Loader />;
   }
 
-  const handleRefreshClick = () => {
-    refetchContent();
-  };
-
-  const renderContent = () => {
-    if (contentMode === 'did_you_know') {
-      if (loadingContent || isLoading) {
-        return <Flex pt="1.4rem" pl="1rem"><Loader isSmall /></Flex>;
-      } else if (error) {
-        return <Text variant="welcomeSecondary">Error fetching fact</Text>;
-      } else {
-        return <Text variant="welcomeSecondary">{fact}</Text>;
-      }
-    } else {
-      if (loadingContent || isLoadingQuote) {
-        return <Loader isSmall />;
-      } else if (errorQuote) {
-        return <Text variant="welcomeSecondary">Error fetching quote</Text>;
-      } else {
-        return (
-          <>
-            <Text variant="welcomeSecondary">"{quote}"</Text>
-            <Text variant="welcomeSecondary" w="100%" textAlign="right">
-              ~ {author}
-            </Text>
-          </>
-        );
-      }
-    }
-  };
-  
   return (
-    <Flex direction="column" paddingLeft="1rem" pt="1.5rem">
+    <Flex direction="column" paddingLeft="1rem" pt="1.5rem" w="100%">
       <Text
         variant="welcomeTitle"
         borderWidth="0 0 0 1px"
@@ -84,7 +53,9 @@ export const Welcome = () => {
       </Flex>
       {contentMode === 'did_you_know' ? (
         isLoading ? (
-          <Loader isSmall />
+          <Flex w="100%" justify="center" alignItems="center" minH="6rem">
+            <Loader isSmall />
+          </Flex>
         ) : error ? (
           <Text variant="welcomeSecondary">Error fetching fact</Text>
         ) : (
@@ -94,34 +65,64 @@ export const Welcome = () => {
               sx={{
                 '& svg': {
                   fill: 'weatherIcon',
-                  cursor: 'pointer',
                   '&:hover': {
                     fill: 'weatherIconHover',
                   },
                 },
               }}>
               <Text variant="welcomeSecondary" mr="0.5rem">
-                {contentMode === 'did_you_know'
-                  ? 'Did you know?'
-                  : 'Inspiring Quote'}
+                Did you know?
               </Text>
-              <Flex onClick={handleRefreshClick}>
-                <Icon as={RefreshIcon} boxSize={7} cursor="pointer" />
+              <Flex onClick={refetchContent} cursor="pointer">
+                <Icon as={RefreshIcon} boxSize={7} />
               </Flex>
             </Flex>
-            {renderContent()}
+            {isRefetchingContent ? (
+              <Flex w="100%" justify="center" alignItems="center" minH="6rem">
+                <Loader isSmall />
+              </Flex>
+            ) : (
+              <Text variant="welcomeSecondary" w="100%">
+                {fact}
+              </Text>
+            )}
           </Flex>
         )
-      ) : isLoadingQuote ? (
-        <Loader isSmall />
+      ) : isLoadingQuote || isLoading || isRefetchingContent ? (
+        <Flex w="100%" justify="center" alignItems="center" minH="6rem">
+          <Loader isSmall />
+        </Flex>
       ) : errorQuote ? (
         <Text variant="welcomeSecondary">Error fetching quote</Text>
       ) : (
         <Flex direction="column">
-          <Text variant="welcomeSecondary">"{quote}"</Text>
-          <Text variant="welcomeSecondary" w="100%" textAlign="right">
-            ~ {author}
+          <Text variant="welcomeSecondary" w="100%">
+            "{quote}"
           </Text>
+          <Flex
+            w="100%"
+            justify="flex-end"
+            textAlign="right"
+            alignItems="center">
+            <Flex
+              onClick={refetchContent}
+              mr="0.4rem"
+              pt="0.1rem"
+              cursor="pointer"
+              sx={{
+                '& svg': {
+                  fill: 'weatherIcon',
+                  '&:hover': {
+                    fill: 'weatherIconHover',
+                  },
+                },
+              }}>
+              <Icon as={RefreshIcon} boxSize={7} />
+            </Flex>
+            <Text variant="welcomeSecondary" display="inline" mt="0.2rem">
+              {author}
+            </Text>
+          </Flex>
         </Flex>
       )}
     </Flex>

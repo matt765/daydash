@@ -9,11 +9,12 @@ interface IntroProps {
   setView: (
     value: 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading'
   ) => void;
+  onDataSaved: () => void;
 }
 
-export const Intro = ({ setView }: IntroProps) => {
+export const Intro = ({ setView, onDataSaved }: IntroProps) => {
   const { name, city, setName, setCity, handleSubmit, isSubmitting } =
-    useIntro(setView);
+    useIntro(setView, onDataSaved);
   const { isError, isLoading, weatherData } = useWeatherStore();
 
   return (

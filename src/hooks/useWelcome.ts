@@ -5,19 +5,24 @@ import { useQuery, useQueryClient } from 'react-query';
 import useCurrentDate from '@/hooks/useCurrentDate';
 import useSettingsStore from '@/store/settingsStore';
 import { useUserStore } from '@/store/userStore';
-
 const fetchFact = async () => {
-  const response = await fetch(
-    'https://uselessfacts.jsph.pl/random.json?language=en'
-  );
-  const data = await response.json();
+  let data;
+  do {
+    const response = await fetch(
+      'https://uselessfacts.jsph.pl/random.json?language=en'
+    );
+    data = await response.json();
+  } while (data.text.length > 125 || data.text.length < 35);
   return data.text;
 };
 
 const fetchQuote = async () => {
+  let data;
   const category = 'happiness';
-  const response = await fetch(`/api/quotes?category=${category}`);
-  const data = await response.json();
+  do {
+    const response = await fetch(`/api/quotes?category=${category}`);
+    data = await response.json();
+  } while (data[0].quote.length > 125 || data[0].quote.length < 35);
   return { quote: data[0].quote, author: data[0].author };
 };
 
@@ -26,14 +31,13 @@ export const useWelcome = () => {
   const { dayOfWeek, dayOfMonth, monthName, year } = useCurrentDate();
   const [contentMode, setContentMode] = useState('did_you_know');
 
-  const [loadingContent, setLoadingContent] = useState(false);
+  const [isRefetchingContent, setIsRefetchingContent] = useState(false);
   const queryClient = useQueryClient();
 
   const {
     isLoading,
     error,
     data: fact,
-    refetch: refetchFact,
   } = useQuery('fact', fetchFact, {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
@@ -43,7 +47,6 @@ export const useWelcome = () => {
     isLoading: isLoadingQuote,
     error: errorQuote,
     data: { quote, author } = {},
-    refetch: refetchQuote,
   } = useQuery('quote', fetchQuote, {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
@@ -54,7 +57,7 @@ export const useWelcome = () => {
     if (refreshCooldown) {
       return;
     }
-    setLoadingContent(true);
+    setIsRefetchingContent(true);
     setRefreshCooldown(true);
 
     const sleep = (ms: number) =>
@@ -70,7 +73,7 @@ export const useWelcome = () => {
     } catch (error) {
       console.error('Error refetching content:', error);
     } finally {
-      setLoadingContent(false);
+      setIsRefetchingContent(false);
       setRefreshCooldown(false);
     }
   };
@@ -97,7 +100,7 @@ export const useWelcome = () => {
     errorQuote,
     quote,
     author,
-    loadingContent,
+    isRefetchingContent,
     refetchContent,
   };
 };

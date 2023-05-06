@@ -14,7 +14,7 @@ export const Dashboard = () => {
   return (
     <Flex w="100%" height="100%" direction="column" gap="1rem">
       {!isFullPlannerVisible && (
-        <Flex direction="row" wrap="nowrap" height="45%" gap="1rem">
+        <Flex direction="row" wrap="nowrap" height="45%" minH="45%" gap="1rem">
           <ContentBox width="30%">
             <Welcome />
           </ContentBox>

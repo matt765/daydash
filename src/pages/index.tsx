@@ -21,11 +21,11 @@ import { Loader } from '@/components/loader/Loader';
 import { EditUserData } from '@/components/modals/EditUserDataModal';
 import { ClearAllData } from '@/components/modals/ClearAllDataModal';
 
+type ViewType = 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading';
+
 export default function Home() {
   const { name, city, isMounted } = useUserStoreWrapper();
-  const [view, setView] = useState<
-    'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading'
-  >('loading');
+  const [view, setView] = useState<ViewType>('loading');
 
   const {
     isOpen: isSettingsPanelOpen,
@@ -47,17 +47,22 @@ export default function Home() {
   const [isDrawerContentVisible, setIsDrawerContentVisible] = useState(false);
 
   const handleToggleNotepadView = () => {
-    setView(view === 'notepad' ? 'dashboard' : 'notepad');
+    setViewWithLocalStorage(view === 'notepad' ? 'dashboard' : 'notepad');
   };
   const handleToggleSnakeView = () => {
-    setView(view === 'snake' ? 'dashboard' : 'snake');
+    setViewWithLocalStorage(view === 'snake' ? 'dashboard' : 'snake');
+  };
+  const setViewWithLocalStorage = (newView: ViewType) => {
+    localStorage.setItem('currentView', newView);
+    setView(newView);
   };
   useEffect(() => {
     if (isMounted) {
+      const savedView = localStorage.getItem('currentView');
       if (name && city) {
-        setView('dashboard');
+        setViewWithLocalStorage((savedView as ViewType) || 'dashboard');
       } else {
-        setView('intro');
+        setViewWithLocalStorage('intro');
       }
     }
   }, [isMounted, name, city]);
@@ -82,10 +87,14 @@ export default function Home() {
         bgRepeat="no-repeat"
         bgAttachment="fixed"
         bgSize="cover">
-        <Flex w="68rem" h="47rem"  justify="center"
-        alignItems="center">
+        <Flex w="68rem" h="47rem" justify="center" alignItems="center">
           {view === 'loading' && <Loader />}
-          {view === 'intro' && <Intro setView={setView} />}
+          {view === 'intro' && (
+            <Intro
+              setView={setView}
+              onDataSaved={() => setViewWithLocalStorage('dashboard')}
+            />
+          )}
           {view === 'dashboard' && <Dashboard />}
           {view === 'notepad' && <Notepad />}
           {view === 'snake' && <SnakeGame />}
