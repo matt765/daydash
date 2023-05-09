@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Box, keyframes, CSSObject, Flex } from '@chakra-ui/react';
 
 const spinAnimation = keyframes`
@@ -14,7 +15,7 @@ interface LoaderProps {
   isSmall?: boolean;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ isSmall = false }) => {
+export const Loader = ({ isSmall = false }: LoaderProps) => {
   const size = isSmall ? 35 : 80;
   const origin = size / 2;
   const barWidth = isSmall ? 2.65 : 6;
@@ -22,7 +23,7 @@ export const Loader: React.FC<LoaderProps> = ({ isSmall = false }) => {
   const barLeft = origin - barWidth / 2;
 
   return (
-    <Flex w="100%" h="100%" justify="center" alignItems="center">
+    <Flex w="100%" h="100%" justify="center" alignItems="center" position="relative" zIndex="1">
       <Flex position="relative" w={`${size}px`} h={`${size}px`}>
         {Array.from({ length: 12 }).map((_, index) => (
           <Box
@@ -44,7 +45,7 @@ export const Loader: React.FC<LoaderProps> = ({ isSmall = false }) => {
               width={`${barWidth}px`}
               height={`${barHeight}px`}
               borderRadius="20%"
-              backgroundColor="rgb(171, 180, 208)"
+              backgroundColor="loaderBg"
             />
           </Box>
         ))}

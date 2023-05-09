@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Select } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Select } from '@chakra-ui/react';
 
 import { SettingsSection } from './SettingsSection';
 import { SettingsTitle } from './SettingsTitle';
@@ -6,6 +6,9 @@ import { SettingsSectionRow } from './SettingsSectionRow';
 import { SettingsGithub } from './SettingsGithub';
 import { SettingsSlider } from './SettingsSlider';
 import { useSettings } from '@/hooks/useSettings';
+import { ArrowLeftIcon } from '@/assets/icons/ArrowLeftIcon';
+import { PictureIcon } from '@/assets/icons/PictureIcon';
+import useSettingsStore from '@/store/settingsStore';
 
 interface SettingsContentProps {
   onEditUserData: () => void;
@@ -29,8 +32,23 @@ export const SettingsContent = ({
     handleShowSnakeButtonChange,
     handleRadioChange,
     handleThemeChange,
+    theme,
+    setThemeValue, 
   } = useSettings();
-
+  const { isImageVisible, setIsImageVisible } = useSettingsStore((state) => state);
+  const handleArrowClick = () => {
+    const themeOrder = [
+      'light_basicTheme',
+      'dark_basicTheme',
+      'light_extendedTheme',
+      'dark_extendedTheme',
+    ];
+    const currentIndex = themeOrder.indexOf(`${colorMode}_${theme}`);
+    const nextIndex = (currentIndex + 1) % themeOrder.length;
+    const nextTheme = themeOrder[nextIndex];
+    handleThemeChange(nextTheme);
+    setThemeValue(nextTheme); 
+  };
   return (
     <>
       <Flex
@@ -58,15 +76,73 @@ export const SettingsContent = ({
         <Box width="100%" overflow="auto" height="100%" pb="1rem">
           <SettingsSection paddingBottom="1.6rem">
             <SettingsTitle title="Theme" />
-            <Select
-              value={colorMode}
-              cursor="pointer"
-              onChange={(e) => handleThemeChange(e.target.value)}
-              borderColor="rgb(255,255,255,0.2)"
-              variant="outline">
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-            </Select>
+            <Flex>
+              <Select
+                w="90%"
+                value={`${colorMode}_${theme}`}
+                cursor="pointer"
+                onChange={(e) => handleThemeChange(e.target.value)}
+                borderColor="rgb(255,255,255,0.2)"
+                variant="outline"
+                backgroundColor="settingsBg"
+                sx={{
+                  '& option': {
+                    backgroundColor: 'settingsBg',
+                    cursor: 'pointer',
+                  },
+                }}
+                _hover={{
+                  borderColor: 'mainColor',
+                }}>
+                <option value="light_basicTheme"> Mountains</option>
+                <option value="dark_basicTheme">Cyberpunk</option>
+                <option value="light_extendedTheme">Post-apo</option>
+                <option value="dark_extendedTheme">Fairytale</option>
+              </Select>
+              <Flex
+                justify="center"
+                alignItems="center"
+                w="1.5rem"
+                h="100%"
+                mt="0.4rem"
+                ml="0.9rem"
+                mr="0.2rem"
+                onClick={() => setIsImageVisible(!isImageVisible)}
+                cursor="pointer"
+                sx={{
+                  '& svg': {
+                    fill: 'rgb(255,255,255,0.5)',
+                  },
+                }}
+                _hover={{
+                  '& svg': {
+                    fill: 'rgb(255,255,255,0.8)',
+                  },
+                }}>
+                <Icon as={PictureIcon} boxSize={5} />
+              </Flex>
+              <Flex
+                w="10%"
+                justify="center"
+                alignItems="center"
+                pl="0.7rem"
+                cursor="pointer"
+                onClick={handleArrowClick}
+                sx={{
+                  '& svg': {
+                    transform: 'rotate(-90deg)',
+                    fill: 'primaryText',
+                    minWidth: '18px',
+                    minHeight: '18px',
+                  },
+                }}>
+                <Icon
+                  as={ArrowLeftIcon}
+                  transform="rotate(90deg)"
+                  boxSize={6}
+                />
+              </Flex>
+            </Flex>
           </SettingsSection>
           <SettingsSection>
             <SettingsTitle title="Greeting" />

@@ -58,7 +58,16 @@ export const SettingsSectionRow = ({
           </Box>
 
           <Box>
-            <Switch isChecked={isChecked} onChange={onSwitchChange} />
+            <Switch
+              isChecked={isChecked}
+              onChange={onSwitchChange}
+              bg=""
+              _checked={{
+                '& .chakra-switch__track': {
+                  backgroundColor: 'settingsMainColor',
+                },
+              }}
+            />
           </Box>
         </Flex>
       )}
@@ -93,7 +102,19 @@ export const SettingsSectionRow = ({
                     onChange={(e) =>
                       onRadioChange && onRadioChange(e.target.value)
                     }
-                    colorScheme="blue">
+                    _checked={{
+                      background: 'settingsMainColor',
+                      borderColor: 'settingsMainColor',
+                      '&::before': {
+                        content: `""`,
+                        display: 'inline-block',
+                        position: 'relative',
+                        width: '50%',
+                        height: '50%',
+                        borderRadius: '50%',
+                        background: 'settingsRadioBefore',
+                      },
+                    }}>
                     {option.label}
                   </Radio>
                 ))}

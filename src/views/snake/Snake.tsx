@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useColorMode } from '@chakra-ui/react';
 import { ContentBox } from '@/theme/components/contentBox';
 import { useSnakeStore } from '@/store/snakeStore';
 import { useSettingsStore } from '@/store/settingsStore';
@@ -217,10 +217,32 @@ export const SnakeGame = () => {
   const isFood = (row: number, col: number) => {
     return food.row === row && food.col === col;
   };
-
+  const { colorMode } = useColorMode();
   return (
-    <ContentBox flexDirection="column" w="100%" h="100%" alignItems="center">
-      <Flex justify="space-between" alignItems="Center" w="100%" px="7rem">
+    <ContentBox
+      flexDirection="column"
+      w="100%"
+      h="100%"
+      alignItems="center"
+      position="relative">
+      <Flex
+        w="100%"
+        h="100%"
+        position="absolute"
+        top="0"
+        bottom="0"
+        zIndex="0"
+        ml="-1rem"
+        backdropFilter={colorMode === 'dark' ? 'blur(24px)' : ''}
+        borderRadius="15px"
+      />
+      <Flex
+        justify="space-between"
+        alignItems="Center"
+        w="100%"
+        px="7rem"
+        position="relative"
+        zIndex="1">
         <Flex
           mt={4}
           fontSize="1.7rem"
@@ -259,9 +281,11 @@ export const SnakeGame = () => {
       <Flex
         borderWidth="1px !important"
         borderStyle="solid"
-        borderColor="notepadBorder !important"
+        borderColor="snakeMainBorder"
         direction="column"
-        mb="2rem">
+        mb="2rem"
+        position="relative"
+        zIndex="1">
         {board.map((row, rowIndex) => (
           <Box key={rowIndex} style={{ display: 'flex' }}>
             {row.map((col, colIndex) => (
@@ -274,10 +298,10 @@ export const SnakeGame = () => {
                     ? 'green.500'
                     : isFood(rowIndex, colIndex)
                     ? 'red.500'
-                    : 'rgba(48, 56, 83, 0.4)'
+                    : 'snakeSquareBg'
                 }
                 border="1px solid"
-                borderColor="#CBD5E012"
+                borderColor="snakeSquareBorder"
               />
             ))}
           </Box>
@@ -288,7 +312,21 @@ export const SnakeGame = () => {
         <Flex>
           <Button
             onClick={isGameRunning || gameOver ? resetGame : startGame}
-            colorScheme={isGameRunning ? 'blue' : gameOver ? 'blue' : 'green'}
+            bgColor={
+              isGameRunning
+                ? 'snakeRestartButtonBg'
+                : gameOver
+                ? 'snakeRestartButtonBg'
+                : 'snakeStartButtonBg'
+            }
+            color="rgb(255,255,255,0.9) !important"
+            _hover={{
+              backgroundColor: isGameRunning
+                ? 'snakeRestartButtonHoverBg'
+                : gameOver
+                ? 'snakeRestartButtonHoverBg'
+                : 'snakeStartButtonHoverBg',
+            }}
             mr={4}>
             {isGameRunning
               ? 'Restart game'

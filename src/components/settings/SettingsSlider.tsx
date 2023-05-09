@@ -24,16 +24,20 @@ export const SettingsSlider = () => {
       onChange={(v) => setSliderValue(v)}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-     
       mb="1.5rem"
       mt="1.2rem"
-      position="relative">
-      <SliderTrack >
+      position="relative"
+      sx={{
+        '& .chakra-slider__filled-track': {
+          backgroundColor: 'settingsMainColor !important',
+        },
+      }}>
+      <SliderTrack>
         <SliderFilledTrack />
       </SliderTrack>
       <Tooltip
         hasArrow
-        bg="teal.500"
+        bg="settingsMainColor"
         color="white"
         placement="top"
         isOpen={showTooltip}

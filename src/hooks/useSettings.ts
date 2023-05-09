@@ -1,6 +1,9 @@
 // hooks/useSettings.ts
 import { useColorMode } from '@chakra-ui/react';
-import useSettingsStore, { WelcomeSectionContentType } from '@/store/settingsStore';
+import useSettingsStore, {
+  WelcomeSectionContentType,
+} from '@/store/settingsStore';
+import { useState } from 'react';
 
 export const useSettings = () => {
   const {
@@ -12,9 +15,12 @@ export const useSettings = () => {
     setWelcomeSectionContent,
     showSnakeButton,
     setShowSnakeButton,
+    theme,
+    setTheme,
   } = useSettingsStore((state) => state);
 
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode, setColorMode } = useColorMode();
+  const [themeValue, setThemeValue] = useState(`${colorMode}_${theme}`);
 
   const handleUseFahrenheitChange = () => {
     setUseFahrenheit(!useFahrenheit);
@@ -32,13 +38,18 @@ export const useSettings = () => {
     setWelcomeSectionContent(newValue as WelcomeSectionContentType);
   };
 
+  // This solution will likely be refactored if ChakraUI will introduce native support for more than 2 color modes.
   const handleThemeChange = (newTheme: string) => {
-    if (newTheme === 'light' || newTheme === 'dark') {
-      toggleColorMode();
-    }
+    const [newColorMode, newThemeName] = newTheme.split('_');
+    setColorMode(newColorMode);
+    setTheme(newThemeName);
+    setThemeValue(newTheme);
   };
 
   return {
+    theme,
+    themeValue,
+    setThemeValue,
     colorMode,
     isFullPlannerVisible,
     useFahrenheit,

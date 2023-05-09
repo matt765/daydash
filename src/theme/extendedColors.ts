@@ -1,10 +1,10 @@
-// Default theme: "Mountains"
-// Dark theme: "Cyberpunk"
+// Default theme: "Post-Apo"
+// Dark theme: "Fairytale"
 
-export const colors = {
+export const extendedColors = {
   homepageBg: {
-    default: 'rgb(125, 132, 170)',
-    _dark: 'rgb(31, 39, 47)',
+    default: 'rgb(28, 28, 28)',
+    _dark: 'rgba(60, 60, 60, 0.5)',
   },
   primaryText: {
     default: 'rgb(255,255,255)',
@@ -20,10 +20,10 @@ export const colors = {
   },
   coloredText: {
     default: 'rgb(161, 170, 199)',
-    _dark: 'rgb(255, 140, 40)',
+    _dark: 'rgb(99, 208, 90)',
   },
   contentBg: {
-    default: 'rgba(45, 53, 80, 0.8)',
+    default: 'rgba(57, 57, 57, 0.88)',
     _dark: 'rgba(57, 68, 81, 0.5)',
   },
   contentBorder: {
@@ -35,8 +35,8 @@ export const colors = {
     _dark: '#222222',
   },
   mainColor: {
-    default: 'rgba(44, 165, 236, 0.726)',
-    _dark: 'rgb(236, 142, 65)',
+    default: 'rgb(185, 152, 139)',
+    _dark: 'rgb(99, 208, 90)',
   },
   mainColorHover: {
     default: 'rgba(44, 165, 236, 0.926)',
@@ -45,32 +45,32 @@ export const colors = {
   // Greeting
   welcomePrimaryText: {
     default: 'rgb(255,255,255)',
-    _dark: 'rgb(236, 142, 65)',
+    _dark: 'rgb(99, 208, 90)',
   },
   welcomeSecondaryText: {
-    default: 'rgb(161, 170, 199)',
-    _dark: 'rgba(255, 255, 255, 0.67)',
+    default: 'rgba(255, 255, 255, 0.75)',
+    _dark: 'rgba(255, 255, 255, 0.75)',
   },
   welcomeIcon: {
-    default: 'rgb(137, 150, 192)',
-    _dark: 'rgb(255, 255, 255, 0.7)',
+    default: 'rgba(255, 255, 255, 0.67)',
+    _dark: 'rgb(99, 208, 90)',
   },
   welcomeIconHover: {
-    default: 'rgb(156, 168, 208)',
+    default: 'rgb(185, 152, 139)',
     _dark: 'rgb(255, 255, 255, 0.8)',
   },
   // Weather forecast
   weatherCountryText: {
-    default: 'rgb(161, 170, 199)',
+    default: 'rgba(255, 255, 255, 0.67)',
     _dark: 'rgb(255, 255, 255, 0.8)',
   },
   weatherDescText: {
-    default: 'rgb(161, 170, 199)',
+    default: 'rgba(255, 255, 255, 0.87)',
     _dark: 'rgb(255, 255, 255, 0.8)',
   },
   weatherIcon: {
-    default: 'rgb(137, 150, 192)',
-    _dark: 'rgb(236, 142, 65)',
+    default: 'rgb(185, 152, 139)',
+    _dark: 'rgb(99, 208, 90)',
   },
   weatherIconHover: {
     default: 'rgb(156, 168, 208)',
@@ -82,7 +82,7 @@ export const colors = {
   },
   weatherBoxHoverBg: {
     default: 'rgba(255, 255, 255, 0.1)',
-    _dark: 'rgba(115, 130, 147, 0.7)',
+    _dark: 'rgba(85, 85, 85, 0.8)',
   },
   // Task list
   plannerInputBg: {
@@ -110,11 +110,11 @@ export const colors = {
     _dark: 'rgba(115, 130, 147, 0.2)',
   },
   plannerItemIcon: {
-    default: 'rgb(107, 118, 153)',
-    _dark: 'rgb(255, 255, 255, 0.6)',
+    default: 'rgba(255, 255, 255, 0.5)',
+    _dark: 'rgb(255, 255, 255, 0.5)',
   },
   plannerItemIconHover: {
-    default: 'rgb(137, 150, 192)',
+    default: 'rgb(255, 255, 255, 0.8)',
     _dark: 'rgb(255, 255, 255, 0.8)',
   },
   plannerItemEditInputBorder: {
@@ -123,53 +123,53 @@ export const colors = {
   },
   // Transparent button
   transparentButtonBorder: {
-    default: 'rgb(111, 143, 196)',
-    _dark: 'rgb(236, 142, 65)',
+    default: 'rgb(185, 152, 139)',
+    _dark: 'rgb(99, 208, 90)',
   },
   transparentButtonBg: {
     default: 'rgb(161, 192, 241, 0)',
     _dark: 'rgba(255, 140, 40, 0)',
   },
   transparentButtonHoverBg: {
-    default: 'rgb(161, 192, 241, 0.1)',
-    _dark: 'rgba(115, 130, 147, 0.25)',
+    default: 'rgb(185, 152, 139, 0.1)',
+    _dark: 'rgb(161, 192, 241, 0.09)',
   },
   transparentButtonActiveBg: {
-    default: 'rgb(161, 192, 241, 0.3)',
-    _dark: 'rgba(115, 130, 147, 0.5)',
+    default: 'rgb(185, 152, 139, 0.2)',
+    _dark: 'rgb(161, 192, 241, 0.2)',
   },
   // Notepad
   notepadButtonActiveBg: {
-    default: 'rgb(161, 192, 241, 0.4)',
-    _dark: 'rgba(255, 140, 40, 0.4)',
+    default: 'rgb(185, 152, 139, 0.3)',
+    _dark: 'rgb(161, 192, 241, 0.4)',
   },
   notepadBorder: {
-    default: 'rgb(87, 111, 149)',
-    _dark: 'rgba(255, 255, 255, 0.2)',
+    default: 'rgba(255, 255, 255, 0.25)',
+    _dark: 'rgba(255, 255, 255, 0.25)',
   },
   notepadPlaceholder: {
     default: 'rgba(255, 255, 255, 0.5)',
     _dark: 'rgba(255, 255, 255, 0.5)',
   },
   notepadIcon: {
-    default: 'rgb(107, 118, 153, 0.8)',
-    _dark: 'rgb(255, 255, 255, 0.4)',
+    default: 'rgb(255, 255, 255, 0.35)',
+    _dark: 'rgb(255, 255, 255, 0.35)',
   },
   notepadIconHover: {
-    default: 'rgb(107, 118, 153)',
-    _dark: 'rgb(255, 255, 255, 0.6)',
+    default: 'rgb(255, 255, 255, 0.45)',
+    _dark: 'rgb(255, 255, 255, 0.45)',
   },
   // Side buttons
   sideButtonBg: {
-    default: 'rgba(45, 53, 80, 0.8)',
+    default: 'rgba(77, 77, 77, 0.6)',
     _dark: 'rgba(57, 68, 81, 0.5)',
   },
   sideButtonHoverBg: {
-    default: 'rgba(58, 67, 98, 0.8)',
+    default: 'rgba(77, 77, 77, 0.8)',
     _dark: 'rgba(57, 68, 81, 0.8)',
   },
   sideButtonIcon: {
-    default: 'rgba(182, 210, 227, 0.83)',
+    default: 'rgba(255, 255, 255, 0.83)',
     _dark: 'rgba(255, 255, 255, 0.83)',
   },
   // Modals
@@ -181,7 +181,7 @@ export const colors = {
     default: 'rgba(255,255,255,0.1)',
     _dark: 'rgba(68, 68, 68, 0.1)',
   },
-  // Snake game
+// Snake game
   snakeMainBorder: {
     default: 'rgba(255,255,255,0.1)',
     _dark: 'rgba(255, 255, 255, 0.1)',
@@ -191,8 +191,8 @@ export const colors = {
     _dark: 'rgba(255, 255, 255, 0.05)',
   },
   snakeSquareBg: {
-    default: 'rgba(48, 56, 83, 0.4)',
-    _dark: 'rgba(0, 0, 0, 0.1)',
+    default: 'rgba(72, 70, 66, 0.51)',
+    _dark: 'rgba(57, 68, 81, 0.5)',
   },
   snakeGameBg: {
     default: 'rgba(255,255,255,0.1)',
@@ -220,19 +220,19 @@ export const colors = {
   },
   // Settings
   settingsBg: {
-    default: 'rgb(44, 56, 72)',
+    default: 'rgba(57, 57, 57, 0.68)',
     _dark: 'rgba(57, 68, 81, 0.5)',
   },
   settingsMainColor: {
-    default: 'rgba(44, 165, 236, 0.726)',
-    _dark: 'rgb(249, 161, 90)',
+    default: 'rgb(153, 107, 89)',
+    _dark: 'rgb(99, 208, 90)',
   },
   settingsRadioBefore: {
     default: 'rgba(255, 255, 255, 0.83)',
     _dark: 'rgba(32, 32, 32, 0.97)',
   },
   loaderBg: {
-    default: 'rgb(171, 180, 208)',
+    default: 'rgb(181, 178, 178)',
     _dark: 'rgb(181, 178, 178)',
   },
 };

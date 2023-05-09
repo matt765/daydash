@@ -66,7 +66,7 @@ export const Weather = () => {
     useWeatherStore.getState().setWeatherData(fetchedWeatherData);
   }
   return (
-    <Flex direction="column" gap="1rem" w="100%">
+    <Flex direction="column" gap="1rem" w="100%" position="relative" zIndex="1">
       <Flex w="100%" mt="1rem" mb="1rem">
         <Flex
           direction="column"
@@ -99,7 +99,6 @@ export const Weather = () => {
                   : weatherData?.temp}
                 °
               </Text>
-
               <Text variant="weatherDesc">{weatherData?.desc}</Text>
             </Flex>
           </Flex>

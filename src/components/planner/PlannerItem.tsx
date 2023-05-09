@@ -77,12 +77,12 @@ export const PlannerItem = ({
             autoFocus
             maxLength={60}
             w="100%"
-            borderColor="transparentButtonBorder"
+            borderColor="plannerItemEditInputBorder"
             _focus={{
-              borderColor: 'transparentButtonBorder',
+              borderColor: 'plannerItemEditInputBorder',
             }}
             _active={{
-              borderColor: 'transparentButtonBorder',
+              borderColor: 'plannerItemEditInputBorder',
             }}
           />
         ) : (

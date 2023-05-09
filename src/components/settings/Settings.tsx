@@ -48,10 +48,11 @@ export const Settings = ({
       {isDrawerContentVisible && (
         <DrawerContent
           sx={{
-            backgroundColor: 'rgb(44, 56, 72)',
+            backgroundColor: 'settingsBg',
             color: 'white',
           }}
           pb="1rem"
+          backdropFilter="blur(24px)"
           >
           <DrawerCloseButton
             mt="0.8rem"

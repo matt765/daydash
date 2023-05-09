@@ -32,7 +32,7 @@ export const NotepadTextArea = ({
       transition="0.5s"
       placeholder="Write here anything you want..."
       _placeholder={{
-        color: 'coloredText',
+        color: 'notepadPlaceholder',
       }}
       fontFamily="Roboto"
       maxLength={5000}

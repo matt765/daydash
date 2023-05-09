@@ -31,7 +31,10 @@ export const Planner = () => {
         direction="column"
         w="100%"
         overflow={plannerItems.length < 6 ? 'visible' : 'auto'}
-        pr="1rem">
+        pr="1rem"
+        position="relative"
+        zIndex="1"
+        >
         <PlannerHeader
           inputValue={inputValue}
           setInputValue={setInputValue}

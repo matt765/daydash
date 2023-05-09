@@ -1,4 +1,5 @@
-import { Flex, BoxProps } from '@chakra-ui/react';
+import useSettingsStore from '@/store/settingsStore';
+import { Flex, BoxProps, useColorMode } from '@chakra-ui/react';
 import { Ref } from 'react';
 
 interface ContentBoxProps extends BoxProps {
@@ -7,16 +8,25 @@ interface ContentBoxProps extends BoxProps {
 }
 
 export const ContentBox = ({ children, ref, ...props }: ContentBoxProps) => {
+  const { colorMode } = useColorMode();
+  const theme = useSettingsStore((state) => state.theme);
+
+  const boxShadowStyle =
+    colorMode === 'light' && theme === 'basicTheme'
+      ? { boxShadow: '0 3px 8px rgba(0,0,0,.74)' }
+      : {};
+
   return (
     <Flex
       bg="contentBg"
       padding="1rem"
       borderRadius="15px"
-      boxShadow="0 3px 8px rgba(0,0,0,.74)"
+      {...boxShadowStyle}
       ref={ref}
-      // backdropFilter="blur(24px)"
-      {...props}
-    >
+      borderWidth={colorMode === 'light' ? '0px' : '0px'}
+      borderColor="contentBorder"
+      borderStyle="solid"
+      {...props}>
       {children}
     </Flex>
   );

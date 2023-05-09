@@ -11,12 +11,12 @@ export const Text: ComponentStyleConfig = {
     welcomePrimary: {
       fontSize: '1rem',
       fontWeight: 400,
-      color: 'primaryText',
+      color: 'welcomePrimaryText',
     },
     welcomeSecondary: {
       fontSize: '1rem',
       fontWeight: 400,
-      color: 'coloredText',
+      color: 'welcomeSecondaryText',
     },
     // First row, upper right
     weatherCity: {
@@ -27,7 +27,7 @@ export const Text: ComponentStyleConfig = {
     weatherCountry: {
       fontSize: '2rem',
       fontWeight: 400,
-      color: 'coloredText',
+      color: 'weatherCountryText',
     },
     weatherTemperature: {
       fontSize: '3rem',
@@ -37,7 +37,7 @@ export const Text: ComponentStyleConfig = {
     weatherDesc: {
       fontSize: '1rem',
       fontWeight: 400,
-      color: 'coloredText',
+      color: 'weatherDescText',
     },
     weatherParameterTitle: {
       fontSize: '1rem',

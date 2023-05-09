@@ -28,7 +28,13 @@ export const Welcome = () => {
   }
 
   return (
-    <Flex direction="column" paddingLeft="1rem" pt="1.5rem" w="100%">
+    <Flex
+      direction="column"
+      paddingLeft="1rem"
+      pt="1.5rem"
+      w="100%"
+      position="relative"
+      zIndex="1">
       <Text
         variant="welcomeTitle"
         borderWidth="0 0 0 1px"
@@ -64,9 +70,9 @@ export const Welcome = () => {
               alignItems="center"
               sx={{
                 '& svg': {
-                  fill: 'weatherIcon',
+                  fill: 'welcomeIcon',
                   '&:hover': {
-                    fill: 'weatherIconHover',
+                    fill: 'welcomeIconHover',
                   },
                 },
               }}>
@@ -111,15 +117,20 @@ export const Welcome = () => {
               cursor="pointer"
               sx={{
                 '& svg': {
-                  fill: 'weatherIcon',
+                  fill: 'welcomeIcon',
                   '&:hover': {
-                    fill: 'weatherIconHover',
+                    fill: 'welcomeIconHover',
                   },
                 },
               }}>
               <Icon as={RefreshIcon} boxSize={7} />
             </Flex>
-            <Text variant="welcomeSecondary" display="inline" mt="0.2rem">
+            <Text
+              variant="welcomeSecondary"
+              display="inline"
+              mt="0.2rem"
+              mr="0.3rem"
+              ml="0.1rem">
               {author}
             </Text>
           </Flex>

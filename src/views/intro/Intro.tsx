@@ -13,9 +13,11 @@ interface IntroProps {
 }
 
 export const Intro = ({ setView, onDataSaved }: IntroProps) => {
-  const { name, city, setName, setCity, handleSubmit, isSubmitting } =
-    useIntro(setView, onDataSaved);
-  const { isError, isLoading, weatherData } = useWeatherStore();
+  const { name, city, setName, setCity, handleSubmit, isSubmitting } = useIntro(
+    setView,
+    onDataSaved
+  );
+  const { isError, isLoading } = useWeatherStore();
 
   return (
     <ContentBox
@@ -26,6 +28,7 @@ export const Intro = ({ setView, onDataSaved }: IntroProps) => {
       justifyContent="flex-start"
       alignItems="center"
       textAlign="center"
+      backdropFilter="blur(24px)"
       p="2rem"
       borderRadius="30px"
       sx={{

@@ -21,6 +21,10 @@ type SettingsState = {
   useFahrenheit: boolean;
   setUseFahrenheit: (useFahrenheit: boolean) => void;
   resetSettings: () => void;
+  theme: string;
+  setTheme: (theme: string) => void;
+  isImageVisible: boolean;
+  setIsImageVisible: (isImageVisible: boolean) => void;
 };
 
 export const useSettingsStore = create<SettingsState>((set) => {
@@ -49,12 +53,18 @@ export const useSettingsStore = create<SettingsState>((set) => {
       setAndStore('showSnakeButton', value),
     useFahrenheit: loadFromLocalStorage('useFahrenheit', false),
     setUseFahrenheit: (value: boolean) => setAndStore('useFahrenheit', value),
+    theme: loadFromLocalStorage('theme', 'basicTheme'),
+    setTheme: (value: string) => setAndStore('theme', value),
+    isImageVisible: loadFromLocalStorage('isImageVisible', true),
+    setIsImageVisible: (value: boolean) => setAndStore('isImageVisible', value),
     resetSettings: () => {
       setAndStore('isFullPlannerVisible', false);
       setAndStore('welcomeSectionContent', 'did_you_know');
       setAndStore('sliderValue', 40);
       setAndStore('showSnakeButton', true);
       setAndStore('useFahrenheit', false);
+      setAndStore('theme', 'basicTheme');
+      setAndStore('isImageVisible', true);
     },
   };
 });
