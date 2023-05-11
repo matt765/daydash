@@ -1,4 +1,4 @@
-import { Flex, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
 import { WeatherHourBox, WeatherHourBoxProps } from './WeatherHourBox';
@@ -65,6 +65,13 @@ export const Weather = () => {
   if (weatherData === null && fetchedWeatherData) {
     useWeatherStore.getState().setWeatherData(fetchedWeatherData);
   }
+  if (!weatherData)
+    return (
+      <Flex w="100%" h="100%" justify="center" alignItems="center">
+        <Text fontSize="1.3rem" color="primaryText">City not found</Text>
+      </Flex>
+    );
+
   return (
     <Flex direction="column" gap="1rem" w="100%" position="relative" zIndex="1">
       <Flex w="100%" mt="1rem" mb="1rem">

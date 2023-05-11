@@ -42,6 +42,14 @@ export const extendedColors = {
     default: 'rgba(44, 165, 236, 0.926)',
     _dark: 'rgb(255, 120, 10)',
   },
+  coloredButtonBg: {
+    default: 'rgb(125, 97, 85)',
+    _dark: 'rgb(99, 157, 95)',
+  },
+  coloredButtonHoverBg: {
+    default: 'rgb(146, 117, 104)',
+    _dark: 'rgb(123, 183, 119)',
+  },
   // Greeting
   welcomePrimaryText: {
     default: 'rgb(255,255,255)',
@@ -174,12 +182,20 @@ export const extendedColors = {
   },
   // Modals
   modalBg: {
-    default: 'rgba(105, 114, 142, 0.15)',
-    _dark: 'rgba(34, 34, 34, 0.8)',
+    default: 'rgba(57, 57, 57, 0.88)',
+    _dark: 'rgba(57, 68, 81, 0.4)',
   },
   modalBorder: {
     default: 'rgba(255,255,255,0.1)',
     _dark: 'rgba(68, 68, 68, 0.1)',
+  },
+  modalInputBg: {
+    default: 'rgba(255, 255, 255, 0.068)',
+    _dark: 'rgba(115, 130, 147, 0.2)',
+  },
+  modalInputHoverBg: {
+    default: 'rgba(255, 255, 255, 0.1)',
+    _dark: 'rgba(115, 130, 147, 0.65)',
   },
   // Snake game
   snakeMainBorder: {
@@ -233,15 +249,6 @@ export const extendedColors = {
   },
   loaderBg: {
     default: 'rgb(181, 178, 178)',
-    _dark: 'rgb(181, 178, 178)',
-  },
-  // Intro
-  introInputBg: {
-    default: 'rgba(255, 255, 255, 0.068)',
-    _dark: 'rgba(115, 130, 147, 0.2)',
-  },
-  introInputHoverBg: {
-    default: 'rgba(255, 255, 255, 0.1)',
-    _dark: 'rgba(115, 130, 147, 0.65)',
+    _dark: 'rgba(255, 255, 255, 0.83)',
   },
 };

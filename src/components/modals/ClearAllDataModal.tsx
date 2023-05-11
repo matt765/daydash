@@ -71,11 +71,16 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
             direction="column"
             alignItems="flex-start"
             textAlign="left"
-            >
+            sx={{
+              '& *': {
+                fontFamily: 'Heebo',
+                fontWeight: '500',
+              },
+            }}>
             <Text color="red.400" fontSize="1.6rem" mb="0.5rem">
               Warning!
             </Text>
-            <Text variant="dataModalSubtitle" fontSize="1.3rem" mb="0.6rem">
+            <Text variant="dataModalSubtitle" mb="0.6rem">
               All dashboard data in your browser will be cleared. That includes:
             </Text>
             <UnorderedList mb="0.5rem">
@@ -90,7 +95,14 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
             </Text>
           </Flex>
 
-          <Flex direction="column">
+          <Flex
+            direction="column"
+            sx={{
+              '& *': {
+                fontFamily: 'Heebo',
+                fontWeight: '500',
+              },
+            }}>
             <Flex
               gap="1rem"
               sx={{
@@ -116,13 +128,23 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
               />
             </Flex>
             <Text
-              color="red.500"
+              color="red.400"
               fontSize="sm"
               mt="1rem"
               opacity={showError ? '1' : '0'}>
               Please write 'yes' to confirm
             </Text>
-            <Flex w="100%" justify="center" mt="1rem" gap="1rem">
+            <Flex
+              w="100%"
+              justify="center"
+              mt="1rem"
+              gap="1rem"
+              sx={{
+                '& *': {
+                  fontFamily: 'Heebo',
+                  fontWeight: '500',
+                },
+              }}>
               <Button
                 variant="transparent"
                 height="3rem"
@@ -135,12 +157,12 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
               <Button
                 type="submit"
                 variant="solid"
-                bg="mainColor"
                 height="3rem"
                 borderRadius="10px"
                 w="10rem"
-                _hover={{ bg: 'mainColorHover' }}
-                isDisabled={showError}>
+                isDisabled={showError}
+                bg="coloredButtonBg"
+                _hover={{ bg: 'coloredButtonHoverBg' }}>
                 Accept
               </Button>
             </Flex>

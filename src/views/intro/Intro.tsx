@@ -13,11 +13,11 @@ interface IntroProps {
 }
 
 export const Intro = ({ setView, onDataSaved }: IntroProps) => {
-  const { name, city, setName, setCity, handleSubmit, isSubmitting } = useIntro(
+  const { name, city, setName, setCity, handleSubmit, isSubmitting, isError } = useIntro(
     setView,
     onDataSaved
   );
-  const { isError, isLoading } = useWeatherStore();
+  const { isLoading } = useWeatherStore();
 
   return (
     <ContentBox
@@ -51,18 +51,18 @@ export const Intro = ({ setView, onDataSaved }: IntroProps) => {
             gap="1rem"
             sx={{
               '& input': {
-                borderWidth: 0,
-                backgroundColor: 'introInputBg',
+                borderWidth: '1px',
+                backgroundColor: 'modalInputBg',
                 outline: 'none !important',
-                borderColor: 'mainColor !important',
+                borderColor: 'rgb(255,255,255,0)',
                 outlineWidth: '0px !important',
                 boxShadow: 'none !important',
                 '&:hover': {
-                  borderWidth: '1px',
+                  borderColor: 'mainColor !important',
                 },
                 '&:active, &:focus, &:focus-visible': {
-                  backgroundColor: 'introInputHoverBg',
-                  borderWidth: '1px',
+                  backgroundColor: 'modalInputHoverBg',
+                  borderColor: 'mainColor !important',
                 },
               },
             }}>

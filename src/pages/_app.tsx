@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import '@fontsource/roboto/100.css';
 import '@fontsource/quicksand';
 import '@fontsource/heebo/600.css';
+import '@fontsource/heebo/500.css';
+import '@fontsource/heebo/400.css';
 import { generateTheme } from '@/theme/generateTheme';
 import { extendedColors } from '@/theme/extendedColors';
 import { colors } from '@/theme/colors';

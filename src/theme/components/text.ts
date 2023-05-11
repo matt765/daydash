@@ -98,10 +98,9 @@ export const Text: ComponentStyleConfig = {
       letterSpacing: '0.5px',
     },
     dataModalSubtitle: {
-      fontSize: '1.3rem',
-      fontWeight: 700,
-      color: 'secondaryText',
-  
+      fontSize: '1.1rem',
+      fontWeight: 500,
+      color: 'secondaryText',      
     },
   },
 };

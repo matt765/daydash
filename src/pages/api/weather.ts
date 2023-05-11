@@ -1,4 +1,3 @@
-// pages/api/weather.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const apiKey = process.env.OPEN_WEATHER_API_KEY;

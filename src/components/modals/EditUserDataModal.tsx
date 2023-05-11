@@ -2,14 +2,23 @@ import { Button, Flex, Input, Text } from '@chakra-ui/react';
 
 import { useEditUserData } from '@/hooks/useEditUserData';
 import { ContentBox } from '@/theme/components/contentBox';
+import { useWeatherStore } from '@/store/weatherStore';
+import { Loader } from '../loader/Loader';
 
 interface EditUserDataProps {
   onClose: () => void;
 }
 
 export const EditUserData = ({ onClose }: EditUserDataProps) => {
-  const { name, city, setNameInput, setCityInput, handleSubmit } =
-    useEditUserData(onClose);
+  const {
+    name,
+    city,
+    setNameInput,
+    setCityInput,
+    handleSubmit,
+    isSubmitting,
+    isError,
+  } = useEditUserData(onClose);
 
   return (
     <Flex
@@ -21,19 +30,18 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
       left="0"
       justify="center"
       pointerEvents="none"
-      alignItems="center"
-    
-      >
+      alignItems="center">
       <ContentBox
         display="flex"
         pointerEvents="auto"
         flexDirection="column"
         w="36rem"
         h="18rem"
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems="center"
         textAlign="center"
         p="2rem"
+        pt="3rem"
         bgColor="modalBg"
         borderWidth="1px"
         borderStyle="solid"
@@ -49,7 +57,7 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
         }}>
         <form onSubmit={handleSubmit}>
           <Flex w="100%" justify="center" mb="0.5rem">
-            <Text variant="dataModalSubtitle" fontSize="1.6rem" mb="2rem">
+            <Text variant="dataModalSubtitle" fontSize="1.6rem" mb="1.5rem">
               Enter your name and location
             </Text>
           </Flex>
@@ -81,6 +89,16 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
                 required
               />
             </Flex>
+            {isError && (
+              <Flex
+                color="red.400"
+                w="100%"
+                justify="center"
+                mt="0.7rem"
+                mb="-1.5rem">
+                City not found. Please try again.
+              </Flex>
+            )}
             <Flex w="100%" justify="center" mt="2.5rem" gap="1rem">
               <Button
                 variant="transparent"
@@ -93,13 +111,13 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
               </Button>
               <Button
                 variant="solid"
-                bg="mainColor"
+                bg="coloredButtonBg"
                 height="3rem"
                 borderRadius="10px"
                 type="submit"
                 w="10rem"
-                _hover={{ bg: 'mainColorHover' }}>
-                Accept
+                _hover={{ bg: 'coloredButtonHoverBg' }}>
+                {isSubmitting ? <Loader isSmall /> : 'Accept'}
               </Button>
             </Flex>
           </Flex>
