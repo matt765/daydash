@@ -44,7 +44,7 @@ React, NextJS, TypeScript, ChakraUI, Zustand, React Query, Framer Motion
 - Task list
 - Notepad
 - Snake game (desktop only)
-- Four themes
+- Themes
 - Customization through settings panel
 
 ##  How to run

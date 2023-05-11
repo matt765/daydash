@@ -25,6 +25,7 @@ export const Dashboard = () => {
     (state) => state.isFullPlannerVisible
   );
   const { colorMode } = useColorMode();
+
   return (
     <Flex w="100%" height="100%" direction="column" gap="1rem">
       {!isFullPlannerVisible && (

@@ -45,9 +45,9 @@ export const generateTheme = (colors: any) => {
             width: '10px',
           },
           '&::-webkit-scrollbar-thumb': {
-            background: 'rgba(120, 168, 231, 0.25)',
+            background: 'rgb(255,255,255,0.1)',
             _hover: {
-              background: 'rgba(120, 168, 231, 0.5)',
+              background: 'rgb(255,255,255,0.1)',
             },
             borderRadius: '30px',
             border: 'none',
@@ -57,7 +57,7 @@ export const generateTheme = (colors: any) => {
           },
         },
         ':root': {
-          scrollbarColor: 'rgba(120, 168, 231, 0.25) rgba(255, 255, 255, 0)',
+          scrollbarColor: 'rgb(255,255,255,0.1) rgba(255, 255, 255, 0)',
           scrollbarWidth: 'thin',
         },
       },

@@ -90,7 +90,7 @@ export const extendedColors = {
   },
   weatherBoxHoverBg: {
     default: 'rgba(255, 255, 255, 0.1)',
-    _dark: 'rgba(85, 85, 85, 0.8)',
+    _dark: 'rgba(115, 130, 147, 0.4)',
   },
   // Task list
   plannerInputBg: {
@@ -124,10 +124,6 @@ export const extendedColors = {
   plannerItemIconHover: {
     default: 'rgb(255, 255, 255, 0.8)',
     _dark: 'rgb(255, 255, 255, 0.8)',
-  },
-  plannerItemEditInputBorder: {
-    default: 'rgb(137, 150, 192)',
-    _dark: 'rgb(255, 255, 255, 0.5)',
   },
   // Transparent button
   transparentButtonBorder: {

@@ -45,7 +45,7 @@ export default function Home() {
           content="Dashboard application designed to be an alternative to default starting page in browser"
         />
         <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <Flex
         w="100%"

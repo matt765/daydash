@@ -4,12 +4,16 @@ interface NotepadTextAreaProps {
   textAreaRef: React.RefObject<HTMLTextAreaElement>;
   handleBoxClick: () => void;
   handleTextChange: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 export const NotepadTextArea = ({
   textAreaRef,
   handleBoxClick,
   handleTextChange,
+  onMouseEnter,
+  onMouseLeave,
 }: NotepadTextAreaProps) => {
   return (
     <Textarea
@@ -36,6 +40,8 @@ export const NotepadTextArea = ({
       }}
       fontFamily="Roboto"
       maxLength={5000}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     />
   );
 };

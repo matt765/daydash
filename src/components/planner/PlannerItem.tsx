@@ -60,7 +60,15 @@ export const PlannerItem = ({
       onClick={!isEditing ? toggleCrossed : undefined}
       mb="0.75rem"
       transition="0.2s">
-      <Flex w="100%" pr="2rem">
+      <Flex
+        w="100%"
+        pr="2rem"
+        sx={{
+          '& input': {
+            boxShadow: 'none !important',
+            borderWidth: '0px !important',           
+          },
+        }}>
         <Flex
           as="span"
           mr="0.7rem"
@@ -77,18 +85,15 @@ export const PlannerItem = ({
             autoFocus
             maxLength={60}
             w="100%"
-            borderColor="plannerItemEditInputBorder"
-            _focus={{
-              borderColor: 'plannerItemEditInputBorder',
-            }}
-            _active={{
-              borderColor: 'plannerItemEditInputBorder',
-            }}
+            fontSize='1.25rem'
+            fontWeight='400'
+            color='primaryText'
+            ml="-1rem"
           />
         ) : (
           <Text
             variant="plannerItem"
-            color={item.isCrossed ? "disabledText" : "primaryText"}
+            color={item.isCrossed ? 'disabledText' : 'primaryText'}
             textDecoration={item.isCrossed ? 'line-through' : 'none'}>
             {item.text}
           </Text>

@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Icon, Select } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Select, Tooltip } from '@chakra-ui/react';
 
 import { SettingsSection } from './SettingsSection';
 import { SettingsTitle } from './SettingsTitle';
@@ -33,9 +33,11 @@ export const SettingsContent = ({
     handleRadioChange,
     handleThemeChange,
     theme,
-    setThemeValue, 
+    setThemeValue,
   } = useSettings();
-  const { isImageVisible, setIsImageVisible } = useSettingsStore((state) => state);
+  const { isImageVisible, setIsImageVisible } = useSettingsStore(
+    (state) => state
+  );
   const handleArrowClick = () => {
     const themeOrder = [
       'light_basicTheme',
@@ -47,7 +49,7 @@ export const SettingsContent = ({
     const nextIndex = (currentIndex + 1) % themeOrder.length;
     const nextTheme = themeOrder[nextIndex];
     handleThemeChange(nextTheme);
-    setThemeValue(nextTheme); 
+    setThemeValue(nextTheme);
   };
   return (
     <>
@@ -99,28 +101,40 @@ export const SettingsContent = ({
                 <option value="light_extendedTheme">Post-apo</option>
                 <option value="dark_extendedTheme">Fairytale</option>
               </Select>
-              <Flex
-                justify="center"
-                alignItems="center"
-                w="1.5rem"
-                h="100%"
-                mt="0.4rem"
-                ml="0.9rem"
-                mr="0.2rem"
-                onClick={() => setIsImageVisible(!isImageVisible)}
-                cursor="pointer"
-                sx={{
-                  '& svg': {
-                    fill: 'rgb(255,255,255,0.5)',
-                  },
-                }}
-                _hover={{
-                  '& svg': {
-                    fill: 'rgb(255,255,255,0.8)',
-                  },
-                }}>
-                <Icon as={PictureIcon} boxSize={5} />
-              </Flex>
+              <Tooltip
+                label="Remove background"
+                fontSize="md"
+                placement="top-start"
+                px="0.7rem"
+                py="0.4rem"
+                borderRadius="5px"
+                color="primaryText"
+                mb="0.3rem"               
+                bg="rgba(87, 96, 123, 0.3)"
+                >
+                <Flex
+                  justify="center"
+                  alignItems="center"
+                  w="1.5rem"
+                  h="100%"
+                  mt="0.4rem"
+                  ml="0.9rem"
+                  mr="0.2rem"
+                  onClick={() => setIsImageVisible(!isImageVisible)}
+                  cursor="pointer"
+                  sx={{
+                    '& svg': {
+                      fill: 'rgb(255,255,255,0.5)',
+                    },
+                  }}
+                  _hover={{
+                    '& svg': {
+                      fill: 'rgb(255,255,255,0.8)',
+                    },
+                  }}>
+                  <Icon as={PictureIcon} boxSize={5} />
+                </Flex>
+              </Tooltip>
               <Flex
                 w="10%"
                 justify="center"

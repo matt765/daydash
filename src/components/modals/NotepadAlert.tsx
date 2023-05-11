@@ -57,6 +57,7 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
               variant="dataModalSubtitle"
               fontSize="1.3rem"
               fontFamily="Quicksand"
+              fontWeight="600"
               mb="1rem"
               textAlign="left">
               Important:

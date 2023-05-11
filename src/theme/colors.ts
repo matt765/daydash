@@ -125,10 +125,6 @@ export const colors = {
     default: 'rgb(137, 150, 192)',
     _dark: 'rgb(255, 255, 255, 0.8)',
   },
-  plannerItemEditInputBorder: {
-    default: 'rgb(137, 150, 192)',
-    _dark: 'rgb(255, 255, 255, 0.5)',
-  },
   // Transparent button
   transparentButtonBorder: {
     default: 'rgb(111, 143, 196)',
@@ -251,5 +247,4 @@ export const colors = {
     default: 'rgb(179, 187, 213)',
     _dark: 'rgba(255, 255, 255, 0.83)',
   },
-
 };

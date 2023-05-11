@@ -251,9 +251,10 @@ export const SnakeGame = () => {
           mb="1rem"
           borderRadius="10px"
           px="1rem"
-          w="10rem"
+          w="11rem"
           textAlign="center"
-          justify="Center">
+          justify="Center"
+          whiteSpace="nowrap">
           Score: {score}
         </Flex>
         <Text fontSize="1.5rem" ml="">
