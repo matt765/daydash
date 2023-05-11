@@ -34,7 +34,16 @@ export default function Home() {
     setIsDrawerContentVisible,
     getBackgroundImage,
     setViewWithLocalStorage,
+    isBgImageLoaded,
   } = useHomepage();
+
+  if (!isBgImageLoaded) {
+    return (
+      <Flex w="100vw" h="100vh" justify="center" alignItems="center">
+        <Loader />
+      </Flex>
+    );
+  }
 
   return (
     <>

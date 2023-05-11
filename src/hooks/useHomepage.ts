@@ -30,6 +30,7 @@ export const useHomepage = () => {
   const { colorMode } = useColorMode();
   const theme = useSettingsStore((state) => state.theme);
   const [themeAndColorModeReady, setThemeAndColorModeReady] = useState(false);
+  const [isBgImageLoaded, setIsBgImageLoaded] = useState(false);
 
   const handleToggleNotepadView = () => {
     setViewWithLocalStorage(view === 'notepad' ? 'dashboard' : 'notepad');
@@ -50,17 +51,21 @@ export const useHomepage = () => {
       img.src = url;
     });
   };
+  const preloadImage = (imageURL: string) => {
+    const img = new Image();
+    img.src = imageURL.slice(4, -1); // remove 'url(' at the start and ')' at the end
+    img.onload = () => {
+      setIsBgImageLoaded(true);
+    };
+    img.onerror = () => {
+      setIsBgImageLoaded(true);
+    };
+  };
 
   const isImageVisible = useSettingsStore((state) => state.isImageVisible);
 
   useEffect(() => {
     if (isMounted) {
-      preloadImages([
-        'postap.png',
-        'mountains.jpg',
-        'cyberpunk.png',
-        'fairytale.png',
-      ]);
       const savedView = localStorage.getItem('currentView');
       if (name && city) {
         setViewWithLocalStorage((savedView as ViewType) || 'dashboard');
@@ -68,6 +73,7 @@ export const useHomepage = () => {
         setViewWithLocalStorage('intro');
       }
 
+      preloadImage(getBackgroundImage());
       setThemeAndColorModeReady(true);
     }
   }, [isMounted, name, city, theme, colorMode]);
@@ -84,6 +90,7 @@ export const useHomepage = () => {
         return 'url(postap.png)';
       }
     }
+    return 'url(default.png)';
   };
 
   return {
@@ -108,5 +115,6 @@ export const useHomepage = () => {
     setIsDrawerContentVisible,
     getBackgroundImage,
     setViewWithLocalStorage,
+    isBgImageLoaded,
   };
 };
