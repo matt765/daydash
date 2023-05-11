@@ -100,7 +100,7 @@ export const Text: ComponentStyleConfig = {
     dataModalSubtitle: {
       fontSize: '1.3rem',
       fontWeight: 700,
-      color: 'primaryText',
+      color: 'secondaryText',
   
     },
   },

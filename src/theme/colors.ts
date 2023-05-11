@@ -235,4 +235,13 @@ export const colors = {
     default: 'rgb(171, 180, 208)',
     _dark: 'rgb(181, 178, 178)',
   },
+  // Intro
+  introInputBg: {
+    default: 'rgba(255, 255, 255, 0.068)',
+    _dark: 'rgba(115, 130, 147, 0.2)',
+  },
+  introInputHoverBg: {
+    default: 'rgba(255, 255, 255, 0.1)',
+    _dark: 'rgba(115, 130, 147, 0.65)',
+  },
 };

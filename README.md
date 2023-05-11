@@ -2,7 +2,7 @@
 Dashboard application designed to be an alternative to default starting page in browser
  
 ## Tech stack
-React, NextJS, TypeScript, Chakra UI, Zustand, React Query, Framer Motion
+React, NextJS, TypeScript, ChakraUI, Zustand, React Query, Framer Motion
 
 ## Live link
 [https://daydash.app/](https://daydash.app/)
@@ -15,6 +15,7 @@ React, NextJS, TypeScript, Chakra UI, Zustand, React Query, Framer Motion
 │   │   └── images
 │   ├── components
 │   │   ├── notepad
+│   │   ├── loader
 │   │   ├── planner
 │   │   ├── settings
 │   │   ├── sideButtons
@@ -22,6 +23,7 @@ React, NextJS, TypeScript, Chakra UI, Zustand, React Query, Framer Motion
 │   │   └── welcome
 │   ├── hooks
 │   ├── pages
+│   │   └── api
 │   ├── store
 │   ├── theme
 │   │   └── components
@@ -42,6 +44,7 @@ React, NextJS, TypeScript, Chakra UI, Zustand, React Query, Framer Motion
 - Task list
 - Notepad
 - Snake game (desktop only)
+- Four themes
 - Customization through settings panel
 
 ##  How to run
@@ -53,3 +56,5 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`          | Starts local dev server at `localhost:3000`        |
 | `npm run build`        | Build your production site           |
 
+## Disclaimer
+The Firefox browser may occasionally exhibit a visual bug causing a flickering effect with the blur filter.  Issue seems to be browser-specific as it does not occur in Google Chrome. I am aware of this issue and am working towards a resolution. Blurred section background is visible in two out of the four themes.

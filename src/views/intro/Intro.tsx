@@ -52,9 +52,17 @@ export const Intro = ({ setView, onDataSaved }: IntroProps) => {
             sx={{
               '& input': {
                 borderWidth: 0,
-                backgroundColor: 'plannerInputBg',
+                backgroundColor: 'introInputBg',
+                outline: 'none !important',
+                borderColor: 'mainColor !important',
+                outlineWidth: '0px !important',
+                boxShadow: 'none !important',
                 '&:hover': {
-                  backgroundColor: 'plannerInputHoverBg',
+                  borderWidth: '1px',
+                },
+                '&:active, &:focus, &:focus-visible': {
+                  backgroundColor: 'introInputHoverBg',
+                  borderWidth: '1px',
                 },
               },
             }}>
