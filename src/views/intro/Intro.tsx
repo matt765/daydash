@@ -72,6 +72,7 @@ export const Intro = ({ setView, onDataSaved }: IntroProps) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              maxLength={10}
             />
             <Input
               placeholder="City"

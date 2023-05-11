@@ -34,7 +34,9 @@ export const Welcome = () => {
       pt="1.5rem"
       w="100%"
       position="relative"
-      zIndex="1">
+      zIndex="1"
+      overflow="hidden"
+      >
       <Text
         variant="welcomeTitle"
         borderWidth="0 0 0 1px"
@@ -45,7 +47,9 @@ export const Welcome = () => {
         mb="1rem"
         pl="0.7rem"
         ml="-0.7rem"
-        lineHeight="3.5rem">
+        lineHeight="3.5rem"
+        whiteSpace="nowrap"
+        >
         Hello <br />
         {userName}
       </Text>

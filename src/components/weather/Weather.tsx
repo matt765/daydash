@@ -68,7 +68,9 @@ export const Weather = () => {
   if (!weatherData)
     return (
       <Flex w="100%" h="100%" justify="center" alignItems="center">
-        <Text fontSize="1.3rem" color="primaryText">City not found</Text>
+        <Text fontSize="1.3rem" color="primaryText">
+          City not found
+        </Text>
       </Flex>
     );
 
@@ -81,7 +83,7 @@ export const Weather = () => {
           maxW="50%"
           justify="center"
           alignItems="center">
-          <Flex>
+          <Flex maxW="13rem" overflow="hidden" whiteSpace="nowrap">
             <Flex
               sx={{
                 '& img': {
@@ -99,31 +101,50 @@ export const Weather = () => {
                 height={80}
               />
             </Flex>
-            <Flex direction="column">
-              <Text variant="weatherTemperature">
+            <Flex direction="column" h="6rem" maxH="7rem">
+              <Text variant="weatherTemperature" mb="-0.3rem">
                 {useFahrenheit
                   ? toFahrenheit(weatherData?.temp, 'celsius')
                   : weatherData?.temp}
                 °
               </Text>
-              <Text variant="weatherDesc">{weatherData?.desc}</Text>
+              <Text variant="weatherDesc" mb="1rem">
+                {weatherData?.desc.split(' ').slice(0, 2).join(' ')}
+              </Text>
             </Flex>
           </Flex>
-          <Flex>
-            <Text variant="weatherCity" mr="0.5rem">
+          <Flex
+            as="div"
+            display="grid"
+            gridTemplateColumns="min-content auto"
+            gap="0.5rem"
+            alignItems="center"
+            mt={storeCity.length > 16 ? '0.5rem' : '0rem'}>
+            <Text
+              variant="weatherCity"
+              mr="0.1rem"
+              whiteSpace="pre"
+              fontSize={storeCity.length > 16 ? '1.7rem' : '2rem'}
+              display="inline">
               {storeCity.charAt(0).toUpperCase() + storeCity.slice(1)},
             </Text>
-            <Text variant="weatherCountry">{weatherData?.country}</Text>
+            <Text
+              variant="weatherCountry"
+              fontSize={storeCity.length > 16 ? '1.7rem' : '2rem'}>
+              {weatherData?.country}
+            </Text>
           </Flex>
         </Flex>
         <Grid
           templateColumns="repeat(2, 1fr)"
           templateRows="repeat(2, 1fr)"
-          gap={1}
-          w="50%"
+          gap="0.5rem"
+          w="46%"
+          ml="0.3rem"
           maxW="50%"
           h="100%"
-          alignItems="center">
+          alignItems="center"
+          mt="0.5rem">
           {weatherParameters.map((item, index) => (
             <GridItem key={`${item.title}-${index}`}>
               <WeatherParameter
@@ -135,7 +156,7 @@ export const Weather = () => {
           ))}
         </Grid>
       </Flex>
-      <Flex gap="0.5rem">
+      <Flex gap="0.5rem" mt="0.3rem">
         {weatherData?.hourTemp
           ?.slice(0, 10)
           .map((item: WeatherHourBoxProps, index) => (
