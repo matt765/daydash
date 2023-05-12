@@ -31,11 +31,14 @@ export const Welcome = () => {
     <Flex
       direction="column"
       paddingLeft="1rem"
-      pt="1.5rem"
+      pt={{ base: "3rem", md: "7rem", lg: "1.2rem"}}
       w="100%"
       position="relative"
       zIndex="1"
-      overflow="hidden"
+      overflow={{ base: "unset", lg: "hidden" }}
+      gap={{ base: "1.5rem", md: "0.5rem"}}
+      maxW="38rem"
+
       >
       <Text
         variant="welcomeTitle"
@@ -46,14 +49,13 @@ export const Welcome = () => {
         fontFamily="Roboto"
         mb="1rem"
         pl="0.7rem"
-        ml="-0.7rem"
-        lineHeight="3.5rem"
-        whiteSpace="nowrap"
+        ml="-0.7rem"       
+        whiteSpace="nowrap"       
         >
         Hello <br />
         {userName}
       </Text>
-      <Flex mb="0.8rem">
+      <Flex mt="-0.5rem" mb="0.3rem" direction={{ base: 'column', md: 'row'}}>
         <Text variant="welcomeSecondary" mr="0.3rem">
           Today is
         </Text>
@@ -69,7 +71,7 @@ export const Welcome = () => {
         ) : error ? (
           <Text variant="welcomeSecondary">Error fetching fact</Text>
         ) : (
-          <Flex direction="column">
+          <Flex direction="column"  mb="2rem">
             <Flex
               alignItems="center"
               sx={{
@@ -80,7 +82,7 @@ export const Welcome = () => {
                   },
                 },
               }}>
-              <Text variant="welcomeSecondary" mr="0.5rem" mb="0.12rem">
+              <Text variant="welcomeSecondary" mr="0.5rem" mb={{ base: "0.5rem", lg: "0.12rem"}}>
                 Did you know?
               </Text>
               <Flex onClick={refetchContent} cursor="pointer">
@@ -113,7 +115,9 @@ export const Welcome = () => {
             w="100%"
             justify="flex-end"
             textAlign="right"
-            alignItems="center">
+            alignItems="center"
+            mb="2rem"
+            >
             <Flex
               onClick={refetchContent}
               mr="0.4rem"
@@ -132,7 +136,7 @@ export const Welcome = () => {
             <Text
               variant="welcomeSecondary"
               display="inline"
-              mt="0.2rem"
+              mt={{ base: "0.5rem", lg: "0.2rem"}}
               mr="0.3rem"
               ml="0.1rem">
               {author}

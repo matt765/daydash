@@ -4,11 +4,23 @@ import { useColorMode, useDisclosure } from '@chakra-ui/react';
 import { useUserStoreWrapper } from '@/store/userStore';
 import useSettingsStore from '@/store/settingsStore';
 
-type ViewType = 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading';
+export type ViewType = 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading' | 'mobileHome' | 'mobileWeather' | 'mobilePlanner' | 'notepad' | 'settings';
 
 export const useHomepage = () => {
   const { name, city, isMounted } = useUserStoreWrapper();
-  const [view, setView] = useState<ViewType>('loading');
+  const [view, _setView] = useState<ViewType>('loading');
+  const [mobileView, setMobileView] = useState<ViewType>('loading');
+  const [desktopView, setDesktopView] = useState<ViewType>('dashboard');
+  const setView = (view: string) => {
+    _setView(view as ViewType);
+  };
+  const handleViewChange = (view: ViewType, deviceType: 'mobile' | 'desktop') => {
+    if (deviceType === 'desktop') {
+      setDesktopView(view);
+    } else {
+      setMobileView(view);
+    }
+  };
   const {
     isOpen: isSettingsPanelOpen,
     onOpen: onSettingsPanelOpen,
@@ -53,7 +65,7 @@ export const useHomepage = () => {
   };
   const preloadImage = (imageURL: string) => {
     const img = new Image();
-    img.src = imageURL.slice(4, -1); // remove 'url(' at the start and ')' at the end
+    img.src = imageURL.slice(4, -1); // removes 'url(' at the start and ')' at the end
     img.onload = () => {
       setIsBgImageLoaded(true);
     };
@@ -116,5 +128,8 @@ export const useHomepage = () => {
     getBackgroundImage,
     setViewWithLocalStorage,
     isBgImageLoaded,
+    handleViewChange,
+    mobileView,
+    desktopView
   };
 };

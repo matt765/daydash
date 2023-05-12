@@ -247,4 +247,13 @@ export const colors = {
     default: 'rgb(179, 187, 213)',
     _dark: 'rgba(255, 255, 255, 0.83)',
   },
+  // Mobile navigation
+  mobileNavigationBg: {
+    default: 'rgb(44, 56, 72)',
+    _dark: 'rgb(48, 58, 69)',
+  },
+  mobileNavigationHoverBg: {
+    default: 'rgb(56, 69, 86)',
+    _dark: 'rgb(60, 72, 84)',
+  },
 };

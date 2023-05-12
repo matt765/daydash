@@ -127,7 +127,7 @@ export const extendedColors = {
   },
   // Transparent button
   transparentButtonBorder: {
-    default: 'rgb(185, 152, 139)',
+    default: 'rgb(153, 107, 89)',
     _dark: 'rgb(99, 208, 90)',
   },
   transparentButtonBg: {
@@ -246,5 +246,14 @@ export const extendedColors = {
   loaderBg: {
     default: 'rgb(181, 178, 178)',
     _dark: 'rgba(255, 255, 255, 0.83)',
+  },
+  // Mobile navigation
+  mobileNavigationBg: {
+    default: 'rgb(65, 65, 65)',
+    _dark: 'rgb(48, 58, 69)',
+  },
+  mobileNavigationHoverBg: {
+    default: 'rgba(94, 93, 93, 0.65)',
+    _dark: 'rgb(73, 85, 99)',
   },
 };

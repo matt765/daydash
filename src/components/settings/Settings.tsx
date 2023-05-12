@@ -60,7 +60,10 @@ export const Settings = ({
               color: 'white',
             }}
             pb="1rem"
-            backdropFilter="blur(24px)">
+            backdropFilter="blur(24px)"
+            h={{ base: "calc(100% - 5rem)", lg: "100%"}}
+            maxW={{ base: "100vw", md: "20rem"}}
+            >
             <DrawerCloseButton
               mt="0.8rem"
               sx={{

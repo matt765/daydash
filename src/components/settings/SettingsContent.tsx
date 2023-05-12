@@ -55,7 +55,7 @@ export const SettingsContent = ({
     <>
       <Flex
         height="100%"
-        paddingBottom="7.5rem"
+        paddingBottom="7rem"
         sx={{
           direction: 'column',
           flexWrap: 'wrap',
@@ -188,7 +188,7 @@ export const SettingsContent = ({
               onSwitchChange={handleFullPlannerVisibleChange}
             />
           </SettingsSection>
-          <SettingsSection>
+          <SettingsSection display={{ base: "none", lg: "flex"}}>
             <SettingsTitle title="Snake game" />
             <SettingsSectionRow
               name="Show snake button"
@@ -203,9 +203,9 @@ export const SettingsContent = ({
               <SettingsSlider />
             </Flex>
           </SettingsSection>
-          <SettingsSection>
+          <SettingsSection >
             <SettingsTitle title="Application data" />
-            <Flex gap="1rem">
+            <Flex gap="1rem" mb="1rem">
               <Button
                 variant="settingsUserData"
                 w="100%"

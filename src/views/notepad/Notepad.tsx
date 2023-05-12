@@ -29,9 +29,12 @@ export const Notepad = () => {
         h="100%"
         display="flex"
         flexDirection="column"
+        bg={{ base: 'rgb(255,255,255,0)', lg: 'contentBg' }}
         transition="0.5s"
-        p="2rem"
-        backdropFilter={colorMode === 'dark' ? 'blur(24px)' : ''}>
+        p={{ base: '0', lg: '2rem' }}
+        backdropFilter={
+          colorMode === 'dark' ? { base: '', lg: 'blur(24px)' } : ''
+        }>
         {!editing && (
           <Box
             position="absolute"
@@ -39,6 +42,7 @@ export const Notepad = () => {
             left="50%"
             transform="translate(-50%, -50%)"
             cursor="pointer"
+            display={{ base: 'none', lg: 'unset' }}
             sx={{
               '& svg': {
                 width: '80px',
@@ -70,7 +74,6 @@ export const Notepad = () => {
             bg={isModified ? 'transparentButtonBg' : 'transparent'}
             _hover={{
               backgroundColor: 'transparentButtonHoverBg',
-             
             }}
             _active={{
               bg: 'notepadButtonActiveBg',

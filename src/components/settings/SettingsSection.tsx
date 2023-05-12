@@ -1,11 +1,15 @@
-import { Flex } from '@chakra-ui/react';
+import { BoxProps, Flex } from '@chakra-ui/react';
 
-interface Props {
+interface Props  extends BoxProps {
   paddingBottom?: string;
   children: React.ReactNode;
 }
 
-export const SettingsSection = ({ paddingBottom, children }: Props) => {
+export const SettingsSection = ({
+  paddingBottom,
+  children,
+  ...props
+}: Props) => {
   return (
     <Flex
       sx={{
@@ -21,7 +25,8 @@ export const SettingsSection = ({ paddingBottom, children }: Props) => {
           borderWidth: 0,
         },
       }}
-      paddingBottom={paddingBottom ? paddingBottom : '0em'}>
+      paddingBottom={paddingBottom ? paddingBottom : '0em'}
+      {...props}>
       {children}
     </Flex>
   );

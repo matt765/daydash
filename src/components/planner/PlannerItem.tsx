@@ -54,8 +54,10 @@ export const PlannerItem = ({
       _hover={{
         bg: item.isCrossed ? 'plannerItemCrossedHoverBg' : 'plannerItemHoverBg',
       }}
-      h="3rem"
-      px="2rem"
+      h={{ base: 'auto', xl: '3rem' }}
+      minH="3rem"
+      py="0.5rem"
+      pr={{ base: '1rem', xl: '2rem' }}
       pl="1.3rem"
       onClick={!isEditing ? toggleCrossed : undefined}
       mb="0.75rem"
@@ -66,7 +68,7 @@ export const PlannerItem = ({
         sx={{
           '& input': {
             boxShadow: 'none !important',
-            borderWidth: '0px !important',           
+            borderWidth: '0px !important',
           },
         }}>
         <Flex
@@ -85,9 +87,9 @@ export const PlannerItem = ({
             autoFocus
             maxLength={60}
             w="100%"
-            fontSize='1.25rem'
-            fontWeight='400'
-            color='primaryText'
+            fontSize="1.25rem"
+            fontWeight="400"
+            color="primaryText"
             ml="-1rem"
           />
         ) : (
@@ -104,8 +106,8 @@ export const PlannerItem = ({
         justify="center"
         sx={{
           '& svg': {
-            width: '25px',
-            height: '25px',
+            width: { base: '20px', lg: '25px' },
+            height: { base: '20px', lg: '25px' },
             color: 'plannerItemIcon',
             fill: 'plannerItemIcon',
           },
@@ -116,8 +118,8 @@ export const PlannerItem = ({
               <Flex
                 sx={{
                   '& svg': {
-                    width: '30px',
-                    height: '30px',
+                    width: { base: '25px', lg: '30px' },
+                    height: { base: '25px', lg: '30px' },
                     color: 'red.400',
                     fill: 'red.400',
                   },
@@ -138,8 +140,8 @@ export const PlannerItem = ({
               <Flex
                 sx={{
                   '& svg': {
-                    width: '30px',
-                    height: '30px',
+                    width: { base: '25px', lg: '30px' },
+                    height: { base: '25px', lg: '30px' },
                     color: 'lightgreen',
                     fill: 'lightgreen',
                   },

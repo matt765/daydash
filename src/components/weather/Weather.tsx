@@ -76,7 +76,11 @@ export const Weather = () => {
 
   return (
     <Flex direction="column" gap="1rem" w="100%" position="relative" zIndex="1">
-      <Flex w="100%" mt="1rem" mb="1rem">
+      <Flex
+        w="100%"
+        mt="1rem"
+        mb="1rem"
+        justify={{ base: 'center', lg: 'unset' }}>
         <Flex
           direction="column"
           w="50%"
@@ -144,7 +148,8 @@ export const Weather = () => {
           maxW="50%"
           h="100%"
           alignItems="center"
-          mt="0.5rem">
+          mt="0.5rem"
+          display={{ base: 'none', lg: 'grid' }}>
           {weatherParameters.map((item, index) => (
             <GridItem key={`${item.title}-${index}`}>
               <WeatherParameter
@@ -156,7 +161,12 @@ export const Weather = () => {
           ))}
         </Grid>
       </Flex>
-      <Flex gap="0.5rem" mt="0.3rem">
+      <Grid
+        mx={{ base: 'auto', md: 'lg' }}
+        gap="0.5rem"
+        mt="0.3rem"
+        templateColumns={{ base: 'repeat(5, 1fr)', lg: 'repeat(10, 1fr)' }}
+        maxW={{ base: '22rem', md: 'unset' }}>
         {weatherData?.hourTemp
           ?.slice(0, 10)
           .map((item: WeatherHourBoxProps, index) => (
@@ -170,7 +180,28 @@ export const Weather = () => {
               key={`${item.hour}-${index}`}
             />
           ))}
-      </Flex>
+      </Grid>
+      <Grid
+        mx={{ base: 'auto', md: 'lg' }}
+        templateColumns="repeat(2, 1fr)"
+        templateRows="repeat(2, 1fr)"
+        gap="1.5rem"
+        maxW={{ base: '28rem', md: 'unset' }}
+        h="100%"
+        alignItems="center"
+        justifyContent="center"
+        mt="1.5rem"
+        display={{ base: 'grid', lg: 'none' }}>
+        {weatherParameters.map((item, index) => (
+          <GridItem key={`${item.title}-${index}`}>
+            <WeatherParameter
+              icon={item.icon}
+              title={item.title}
+              value={item.value}
+            />
+          </GridItem>
+        ))}
+      </Grid>
     </Flex>
   );
 };

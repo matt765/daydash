@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, useMediaQuery } from '@chakra-ui/react';
 import Head from 'next/head';
 
 import { Dashboard } from '@/views/dashboard/Dashboard';
@@ -10,6 +10,8 @@ import { SnakeGame } from '@/views/snake/Snake';
 import { SnakeButton } from '@/components/buttons/SnakeButton';
 import { Loader } from '@/components/loader/Loader';
 import { useHomepage } from '@/hooks/useHomepage';
+import { MobileNavigation } from '@/components/mobileNavigation/MobileNavigation';
+import { MobileView } from '@/components/mobileNavigation/MobileView';
 
 export default function Home() {
   const {
@@ -35,8 +37,11 @@ export default function Home() {
     getBackgroundImage,
     setViewWithLocalStorage,
     isBgImageLoaded,
+    handleViewChange,
+    desktopView,
+    mobileView,
   } = useHomepage();
-
+  const [isMobile] = useMediaQuery('(min-width: 992px)');
   if (!isBgImageLoaded) {
     return (
       <Flex w="100vw" h="100vh" justify="center" alignItems="center">
@@ -56,6 +61,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
+
       <Flex
         w="100%"
         h="100vh"
@@ -68,24 +74,39 @@ export default function Home() {
         position="relative"
         bgSize="cover">
         <Flex w="100%" h="100%" justify="center" alignItems="center">
-          <Flex w="68rem" h="47rem" justify="center" alignItems="center">
-            {view === 'loading' && <Loader />}
-            {view === 'intro' && (
-              <Intro
-                setView={setView}
-                onDataSaved={() => setViewWithLocalStorage('dashboard')}
-              />
-            )}
-            {view === 'dashboard' && <Dashboard />}
-            {view === 'notepad' && <Notepad />}
-            {view === 'snake' && <SnakeGame />}
-          </Flex>
+          {isMobile ? (
+            <Flex w="68rem" h="47rem" justify="center" alignItems="center">
+              {desktopView === 'loading' && <Loader />}
+              {desktopView === 'intro' && (
+                <Intro
+                  setView={setView}
+                  onDataSaved={() => setViewWithLocalStorage('dashboard')}
+                />
+              )}
+              {desktopView === 'dashboard' && <Dashboard />}
+              {desktopView === 'notepad' && <Notepad />}
+              {desktopView === 'snake' && <SnakeGame />}
+            </Flex>
+          ) : (
+            <Flex pb="5rem" w="100%" h="100%">
+              {mobileView === 'loading' && <MobileView viewName="loading" />}
+              {mobileView === 'mobileHome' && <MobileView viewName="home" />}
+              {mobileView === 'mobileWeather' && (
+                <MobileView viewName="weather" />
+              )}
+              {mobileView === 'mobilePlanner' && (
+                <MobileView viewName="planner" />
+              )}
+              {mobileView === 'notepad' && <MobileView viewName="notepad" />}
+            </Flex>
+          )}
         </Flex>
       </Flex>
-      {name && city && (
+
+      {name && city && isMobile && (
         <SideButtons
-          view={view}
-          handleToggleView={handleToggleNotepadView}
+          desktopView={desktopView}
+          handleToggleView={handleViewChange}
           openDrawer={() => {
             onSettingsPanelOpen();
             setIsDrawerContentVisible(true);
@@ -93,7 +114,10 @@ export default function Home() {
         />
       )}
       {showSnakeButton && name && city && (
-        <SnakeButton onClick={handleToggleSnakeView} />
+        <SnakeButton
+          desktopView={desktopView}
+          handleToggleView={handleViewChange}
+        />
       )}
       <Settings
         isOpen={isSettingsPanelOpen}
@@ -107,6 +131,19 @@ export default function Home() {
         setIsDrawerContentVisible={setIsDrawerContentVisible}
         isEditUserDataOpen={isEditUserDataOpen}
         isClearAllDataOpen={isClearAllDataOpen}
+      />
+
+      <MobileNavigation
+        handleViewChange={handleViewChange}
+        openDrawer={() => {
+          if (isSettingsPanelOpen) {
+            onSettingsPanelClose();
+            setIsDrawerContentVisible(false);
+          } else {
+            onSettingsPanelOpen();
+            setIsDrawerContentVisible(true);
+          }
+        }}
       />
     </>
   );

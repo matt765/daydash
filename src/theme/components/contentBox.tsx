@@ -13,7 +13,7 @@ export const ContentBox = ({ children, ref, ...props }: ContentBoxProps) => {
 
   const boxShadowStyle =
     colorMode === 'light' && theme === 'basicTheme'
-      ? { boxShadow: '0 3px 8px rgba(0,0,0,.74)' }
+      ? { boxShadow: { base: "", lg: '0 3px 8px rgba(0,0,0,.74)' } }
       : {};
 
   return (
