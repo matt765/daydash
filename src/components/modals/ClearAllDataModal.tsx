@@ -20,7 +20,7 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (value === 'yes') {
+    if (value === 'yes' || value === 'Yes') {
       clearAllData();
       onClose();
     } else {

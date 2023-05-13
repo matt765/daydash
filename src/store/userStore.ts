@@ -12,6 +12,8 @@ type UserState = {
   setName: (name: string) => void;
   setCity: (city: string) => void;
   isMounted: boolean;
+  firstMount: boolean;
+  setFirstMount: (value: boolean) => void;
 };
 
 export const useUserStore = create<UserState>((set) => ({
@@ -26,6 +28,8 @@ export const useUserStore = create<UserState>((set) => ({
     set({ city });
   },
   isMounted: false,
+  firstMount: true,
+  setFirstMount: (value) => set({ firstMount: value }),
 }));
 
 export const useUserStoreWrapper = () => {

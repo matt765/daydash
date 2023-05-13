@@ -26,7 +26,7 @@ export const PlannerHeader = ({
     <form onSubmit={addTask}>
       <Flex
         w="100%"
-        gap={{ base: '1rem', lg: '2rem' }}
+        gap={{ base: "1rem", lg: "2rem" }}
         mb="1.2rem"
         h={{ base: 'auto', lg: '3rem' }}
         alignItems="center">
@@ -58,11 +58,10 @@ export const PlannerHeader = ({
           variant="transparent"
           flexBasis={{ base: '4rem', lg: '15rem' }}
           type="submit"
-          h="3rem">
+          h={{ base: "3.5rem", md: "3rem" }}
+        >
           <Box display={{ base: 'none', lg: 'unset' }}>Add task</Box>
-          <Box display={{ base: 'unset', lg: 'none' }} fontSize="2rem">
-            +
-          </Box>
+          <Box display={{ base: 'unset', lg: 'none' }} fontSize="2rem">+</Box>
         </Button>
       </Flex>
     </form>
