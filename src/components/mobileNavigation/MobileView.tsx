@@ -1,7 +1,7 @@
-import { Notepad } from '@/views/notepad/Notepad';
 import { Flex } from '@chakra-ui/react';
+
+import { Notepad } from '@/views/notepad/Notepad';
 import { Planner } from '../planner/Planner';
-import { Settings } from '../settings/Settings';
 import { Weather } from '../weather/Weather';
 import { Welcome } from '../welcome/Welcome';
 
@@ -18,8 +18,10 @@ const WelcomeMobileView = () => (
     px={{ base: '5vw', sm: '10vw' }}
     bg="contentBg"
     overflow="auto"
-    display={{ base: 'flex', lg: 'none' }}>
+    display={{ base: 'flex', lg: 'none' }}
+    direction="column">
     <Welcome />
+    <Flex w="100%" h="3rem" />
   </Flex>
 );
 
@@ -31,7 +33,7 @@ const WeatherMobileView = () => (
     bg="contentBg"
     justify="flex-start"
     alignItems={{ base: 'flex-start', md: 'center' }}
-    mb={{ base: '0', md: '10rem' }}
+    mb={{ base: '0', md: '0rem' }}
     overflow="auto"
     pb="3rem"
     direction="column">
@@ -53,7 +55,7 @@ const PlannerMobileView = () => (
 );
 
 const NotepadMobileView = () => (
-  <Flex w="100%" h="100%" p="1.5rem"  bg="contentBg" pb="5.5rem">
+  <Flex w="100%" h="100%" p="1.5rem" bg="contentBg" pb="5.5rem">
     <Notepad />
   </Flex>
 );

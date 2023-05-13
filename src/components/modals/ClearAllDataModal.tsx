@@ -40,22 +40,24 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
       pointerEvents="none"
       alignItems="center">
       <ContentBox
+        overflow={{ base: "auto", md: "hidden" }}
         display="flex"
         flexDirection="column"
         pointerEvents="auto"
-        w="36rem"
-        h="32rem"
-        justifyContent="center"
+        w={{ base: '100%', md: '36rem' }}
+        h={{ base: '100%', md: '32rem' }}
+        justifyContent={{ base: 'flex-start', md: 'center' }}
         alignItems="center"
         textAlign="center"
         p="2.5rem"
+        pb={{ base: '7rem', md: '2.5rem' }}
         boxShadow="unset"
         bgColor="modalBg"
         borderWidth="1px"
         borderStyle="solid"
         borderColor="modalBorder"
         backdropFilter="blur(24px)"
-        borderRadius="30px"
+        borderRadius={{ base: '', md: '30px' }}
         position="relative"
         sx={{
           '& *': {
@@ -76,7 +78,8 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
                 fontFamily: 'Heebo',
                 fontWeight: '500',
               },
-            }}>
+            }}
+            px={{ base: '2rem', md: 'unset' }}>
             <Text color="red.400" fontSize="1.6rem" mb="0.5rem">
               Warning!
             </Text>
@@ -97,6 +100,7 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
 
           <Flex
             direction="column"
+            px={{ base: '2rem', md: 'unset' }}
             sx={{
               '& *': {
                 fontFamily: 'Heebo',

@@ -11,13 +11,22 @@ interface NavigationItemProps {
   title: String;
   viewName: ViewType;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  onNavItemClick: (viewName: string) => void; // use lowercase string here
+  onNavItemClick: (viewName: string) => void;
+  isSettingsPanelOpen: boolean;
+  onSettingsPanelClose: () => void;
+  onEditUserDataClose: () => void; 
+  onClearAllDataClose: () => void; 
 }
+
 const NavigationItem = ({
   title,
   viewName,
   icon,
   onNavItemClick,
+  isSettingsPanelOpen,
+  onSettingsPanelClose,
+  onEditUserDataClose, 
+  onClearAllDataClose, 
 }: NavigationItemProps) => (
   <Flex
     w="20%"
@@ -26,7 +35,15 @@ const NavigationItem = ({
     alignItems="center"
     direction="column"
     h="100%"
-    onClick={() => onNavItemClick(viewName)}
+    fontWeight="700"
+    onClick={() => {
+      if (isSettingsPanelOpen && title !== 'Settings') {
+        onSettingsPanelClose();
+      }
+      onEditUserDataClose(); 
+      onClearAllDataClose(); 
+      onNavItemClick(viewName);
+    }}
     cursor="pointer"
     sx={{
       '& svg': {
@@ -43,7 +60,7 @@ const NavigationItem = ({
     <Text
       color="secondaryText"
       mt={title === 'Task list' ? '0.55rem' : '0.35rem'}
-      fontSize="0.7rem"
+      fontSize="0.65rem"
       letterSpacing="1px"
       fontFamily="Quicksand"
       textTransform="uppercase">
@@ -71,11 +88,21 @@ const navigationItems = [
 interface MobileNavigationProps {
   handleViewChange: (view: ViewType, deviceType: 'mobile' | 'desktop') => void;
   openDrawer: () => void;
+  isSettingsPanelOpen: boolean;
+  onSettingsPanelClose: () => void;
+  mobileView: string;
+  onEditUserDataClose: () => void; 
+  onClearAllDataClose: () => void; 
 }
 
 export const MobileNavigation = ({
   handleViewChange,
   openDrawer,
+  isSettingsPanelOpen,
+  onSettingsPanelClose,
+  mobileView,
+  onEditUserDataClose, // Add these two props
+  onClearAllDataClose, // Add these two props
 }: MobileNavigationProps) => {
   return (
     <Flex
@@ -106,8 +133,14 @@ export const MobileNavigation = ({
           onNavItemClick={(viewName) =>
             viewName === 'settings'
               ? openDrawer()
-              : handleViewChange(viewName as ViewType, 'mobile')
+              : 
+              mobileView !== 'intro' &&
+              handleViewChange(viewName as ViewType, 'mobile') 
           }
+          isSettingsPanelOpen={isSettingsPanelOpen}
+          onSettingsPanelClose={onSettingsPanelClose}
+          onEditUserDataClose={onEditUserDataClose} // Pass these two props
+          onClearAllDataClose={onClearAllDataClose}
         />
       ))}
     </Flex>

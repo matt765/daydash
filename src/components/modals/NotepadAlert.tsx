@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Button, Flex, Text, useOutsideClick } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useOutsideClick } from '@chakra-ui/react';
 
 import { ContentBox } from '@/theme/components/contentBox';
 
@@ -29,22 +29,23 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
       justify="center"
       alignItems="center"
       bg="rgb(0,0,0,0.4)">
-      <div ref={wrapperRef}>
+      <Box h={{ base: '100%', md: 'unset' }} ref={wrapperRef} >
         <ContentBox
           display="flex"
           flexDirection="column"
-          w="36rem"
-          h="20rem"
-          justifyContent="center"
+          w={{ base: '100%', md: '36rem' }}
+          h={{ base: '100%', md: '20rem' }}          
           alignItems="center"
           textAlign="center"
           p="2.5rem"
           bgColor="modalBg"
           borderWidth="1px"
+          justifyContent={{ base: "flex-start", md: "center" }}
+          pt={{ base: "4.5rem", md: "2.5rem" }}
           borderStyle="solid"
           borderColor="modalBorder"
           backdropFilter="blur(24px)"
-          borderRadius="30px"
+          borderRadius={{ base: '', md: '30px' }}
           position="relative"
           boxShadow="unset"
           sx={{
@@ -88,7 +89,7 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
             </Button>
           </Flex>
         </ContentBox>
-      </div>
+      </Box>
     </Flex>
   );
 };

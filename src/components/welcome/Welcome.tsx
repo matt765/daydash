@@ -38,7 +38,6 @@ export const Welcome = () => {
       overflow={{ base: "unset", lg: "hidden" }}
       gap={{ base: "1.5rem", md: "0.5rem"}}
       maxW="38rem"
-
       >
       <Text
         variant="welcomeTitle"

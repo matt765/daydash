@@ -4,6 +4,7 @@ import { ContentBox } from '@/theme/components/contentBox';
 import { useIntro } from '@/hooks/useIntro';
 import { useWeatherStore } from '@/store/weatherStore';
 import { Loader } from '@/components/loader/Loader';
+import { useHomepage } from '@/hooks/useHomepage';
 
 interface IntroProps {
   setView: (
@@ -13,31 +14,31 @@ interface IntroProps {
 }
 
 export const Intro = ({ setView, onDataSaved }: IntroProps) => {
-  const { name, city, setName, setCity, handleSubmit, isSubmitting, isError } = useIntro(
-    setView,
-    onDataSaved
-  );
+  const { handleViewChange } = useHomepage();
+  const { name, city, setName, setCity, handleSubmit, isSubmitting, isError } =
+    useIntro(handleViewChange, onDataSaved);
   const { isLoading } = useWeatherStore();
 
   return (
     <ContentBox
       display="flex"
       flexDirection="column"
-      w="38rem"
-      h="22rem"
+      w={{ base: '100%', md: '38rem' }}
+      h={{ base: '100%', md: '22rem' }}
       justifyContent="flex-start"
       alignItems="center"
       textAlign="center"
       backdropFilter="blur(24px)"
       p="2rem"
-      borderRadius="30px"
+      pt={{ base: '5rem', md: '2rem' }}
+      borderRadius={{ base: '0', md: '30px' }}
       sx={{
         '& *': {
           fontFamily: 'Heebo',
         },
       }}>
       <form onSubmit={handleSubmit}>
-        <Flex mb="1rem" mt="0.5rem" justify="center" w="100%">
+        <Flex mb="1rem" mt="0.5rem" justify="center" w="100%" direction={{ base: "column", sm: "row"}}>
           <Text mr="0.5rem" variant="dataModalTitle">
             Welcome to
           </Text>
@@ -49,6 +50,9 @@ export const Intro = ({ setView, onDataSaved }: IntroProps) => {
         <Flex direction="column">
           <Flex
             gap="1rem"
+            w={{ base: '18rem', sm: '100%' }}
+            direction={{ base: 'column', sm: 'row' }}
+            mx={{ base: 'auto', sm: 'unset' }}
             sx={{
               '& input': {
                 borderWidth: '1px',

@@ -10,7 +10,8 @@ export const useHomepage = () => {
   const { name, city, isMounted } = useUserStoreWrapper();
   const [view, _setView] = useState<ViewType>('loading');
   const [mobileView, setMobileView] = useState<ViewType>('loading');
-  const [desktopView, setDesktopView] = useState<ViewType>('dashboard');
+  const [desktopView, setDesktopView] = useState<ViewType>('loading');
+
   const setView = (view: string) => {
     _setView(view as ViewType);
   };
@@ -53,10 +54,11 @@ export const useHomepage = () => {
   };
 
   const setViewWithLocalStorage = (newView: ViewType) => {
-    localStorage.setItem('currentView', newView);
+    if (newView !== 'intro') { // only save to localStorage if view isn't 'intro'
+      localStorage.setItem('currentView', newView);
+    }
     setView(newView);
   };
-
   const preloadImages = (imageURLs: string[]) => {
     imageURLs.forEach((url) => {
       const img = new Image();
@@ -79,10 +81,12 @@ export const useHomepage = () => {
   useEffect(() => {
     if (isMounted) {
       const savedView = localStorage.getItem('currentView');
-      if (name && city) {
-        setViewWithLocalStorage((savedView as ViewType) || 'dashboard');
+      if (name && city && name !== "" && city !== "") {     
+        setDesktopView('dashboard')
+        setMobileView('mobileHome')
       } else {
-        setViewWithLocalStorage('intro');
+        setDesktopView('intro')
+        setMobileView('intro')
       }
 
       preloadImage(getBackgroundImage());

@@ -13,7 +13,7 @@ export const SnakeButton = ({
 }: SnakeButtonProps) => {
   const toggleView = () => {
     handleToggleView(
-      desktopView === 'notepad' ? 'dashboard' : 'notepad',
+      desktopView === 'snake' ? 'dashboard' : 'snake',
       'desktop'
     );
   };

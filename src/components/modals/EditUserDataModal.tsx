@@ -35,19 +35,19 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
         display="flex"
         pointerEvents="auto"
         flexDirection="column"
-        w="36rem"
-        h="18rem"
+        w={{ base: '100%', md: '36rem' }}
+        h={{ base: '100%', md: '18rem' }}
         justifyContent="flex-start"
         alignItems="center"
         textAlign="center"
         p="2rem"
-        pt="3rem"
+        pt={{ base: '3rem', md: '3rem' }}
         bgColor="modalBg"
         borderWidth="1px"
         borderStyle="solid"
         borderColor="modalBorder"
         backdropFilter="blur(24px)"
-        borderRadius="30px"
+        borderRadius={{ base: "", md: "30px" }}
         position="relative"
         boxShadow="unset"
         sx={{
@@ -57,14 +57,15 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
         }}>
         <form onSubmit={handleSubmit}>
           <Flex w="100%" justify="center" mb="0.5rem">
-            <Text variant="dataModalSubtitle" fontSize="1.6rem" mb="1.5rem">
-              Enter your name and location
+            <Text variant="dataModalSubtitle" fontSize="1.6rem" mb="1.5rem" px={{ base: "1rem", md: "unset"}}>
+              Please enter your name and location
             </Text>
           </Flex>
-
           <Flex direction="column">
             <Flex
               gap="1rem"
+              direction={{ base: 'column', md: 'row' }}
+              px={{ base: '2rem', md: '0' }}
               sx={{
                 '& input': {
                   borderWidth: 0,
@@ -100,7 +101,13 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
                 City not found. Please try again.
               </Flex>
             )}
-            <Flex w="100%" justify="center" mt="2.5rem" gap="1rem">
+            <Flex
+              w="100%"
+              justify="center"
+              mt="2.5rem"
+              gap={{ base: '0.5rem', sm: '1rem' }}
+              direction={{ base: 'row', sm: 'row' }}
+              alignItems={{ base: 'center', sm: 'unset' }}>
               <Button
                 variant="transparent"
                 height="3rem"

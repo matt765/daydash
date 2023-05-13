@@ -232,7 +232,7 @@ export const colors = {
   },
   // Settings
   settingsBg: {
-    default: 'rgb(44, 56, 72)',
+    default: 'rgb(56, 70, 88)',
     _dark: 'rgba(57, 68, 81, 0.5)',
   },
   settingsMainColor: {
@@ -249,11 +249,11 @@ export const colors = {
   },
   // Mobile navigation
   mobileNavigationBg: {
-    default: 'rgb(44, 56, 72)',
+    default: 'rgb(63, 77, 95)',
     _dark: 'rgb(48, 58, 69)',
   },
   mobileNavigationHoverBg: {
-    default: 'rgb(56, 69, 86)',
+    default: 'rgb(77, 92, 112)',
     _dark: 'rgb(60, 72, 84)',
   },
 };

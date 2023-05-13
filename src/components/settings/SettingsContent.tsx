@@ -179,7 +179,7 @@ export const SettingsContent = ({
               onSwitchChange={handleUseFahrenheitChange}
             />
           </SettingsSection>
-          <SettingsSection>
+          <SettingsSection  display={{ base: "none", lg: "flex"}}>
             <SettingsTitle title="Planner" />
             <SettingsSectionRow
               name="Show full height"

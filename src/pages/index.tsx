@@ -15,12 +15,9 @@ import { MobileView } from '@/components/mobileNavigation/MobileView';
 
 export default function Home() {
   const {
-    view,
     setView,
     name,
     city,
-    handleToggleNotepadView,
-    handleToggleSnakeView,
     onSettingsPanelOpen,
     onSettingsPanelClose,
     onEditUserDataOpen,
@@ -41,7 +38,9 @@ export default function Home() {
     desktopView,
     mobileView,
   } = useHomepage();
+
   const [isMobile] = useMediaQuery('(min-width: 992px)');
+
   if (!isBgImageLoaded) {
     return (
       <Flex w="100vw" h="100vh" justify="center" alignItems="center">
@@ -88,7 +87,12 @@ export default function Home() {
               {desktopView === 'snake' && <SnakeGame />}
             </Flex>
           ) : (
-            <Flex pb="5rem" w="100%" h="100%">
+            <Flex
+              pb="5rem"
+              w="100%"
+              h="100%"
+              justify="center"
+              alignItems="center">
               {mobileView === 'loading' && <MobileView viewName="loading" />}
               {mobileView === 'mobileHome' && <MobileView viewName="home" />}
               {mobileView === 'mobileWeather' && (
@@ -98,6 +102,12 @@ export default function Home() {
                 <MobileView viewName="planner" />
               )}
               {mobileView === 'notepad' && <MobileView viewName="notepad" />}
+              {mobileView === 'intro' && (
+                <Intro
+                  setView={setView}
+                  onDataSaved={() => setViewWithLocalStorage('dashboard')}
+                />
+              )}
             </Flex>
           )}
         </Flex>
@@ -132,7 +142,6 @@ export default function Home() {
         isEditUserDataOpen={isEditUserDataOpen}
         isClearAllDataOpen={isClearAllDataOpen}
       />
-
       <MobileNavigation
         handleViewChange={handleViewChange}
         openDrawer={() => {
@@ -144,6 +153,11 @@ export default function Home() {
             setIsDrawerContentVisible(true);
           }
         }}
+        isSettingsPanelOpen={isSettingsPanelOpen}
+        onSettingsPanelClose={onSettingsPanelClose}
+        mobileView={mobileView}
+        onEditUserDataClose={onEditUserDataClose}
+        onClearAllDataClose={onClearAllDataClose}
       />
     </>
   );

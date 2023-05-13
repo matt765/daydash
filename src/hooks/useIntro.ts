@@ -21,8 +21,9 @@ interface UseIntro {
 const LOCAL_STORAGE_KEY = 'weatherStoreData';
 
 export const useIntro = (
-  setView: (
-    value: 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading'
+  handleViewChange: (
+    view: 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading',
+    deviceType: 'mobile' | 'desktop'
   ) => void,
   onDataSaved: () => void
 ): UseIntro => {
@@ -48,7 +49,7 @@ export const useIntro = (
       setWeatherData(weatherData, false);
       setNameInStore(name);
       setCityInStore(city);
-      setView('dashboard');
+      handleViewChange('dashboard', 'desktop');
       onDataSaved();
     } catch (error: unknown) {
       setIsError(true);
