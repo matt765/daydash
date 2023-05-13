@@ -1,4 +1,3 @@
-// usePlanner.ts
 import { useEffect, useState } from 'react';
 import { DropResult } from 'react-beautiful-dnd';
 import { usePlannerStore } from '../store/plannerStore';

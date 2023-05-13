@@ -101,8 +101,8 @@ export const MobileNavigation = ({
   isSettingsPanelOpen,
   onSettingsPanelClose,
   mobileView,
-  onEditUserDataClose, // Add these two props
-  onClearAllDataClose, // Add these two props
+  onEditUserDataClose, 
+  onClearAllDataClose, 
 }: MobileNavigationProps) => {
   return (
     <Flex
@@ -139,7 +139,7 @@ export const MobileNavigation = ({
           }
           isSettingsPanelOpen={isSettingsPanelOpen}
           onSettingsPanelClose={onSettingsPanelClose}
-          onEditUserDataClose={onEditUserDataClose} // Pass these two props
+          onEditUserDataClose={onEditUserDataClose}
           onClearAllDataClose={onClearAllDataClose}
         />
       ))}

@@ -24,7 +24,7 @@ export const SnakeButton = ({
       top="0"
       height="100%"
       w="6rem"
-      display={{ base: 'none', lg: 'flex' }}
+      display={{ base: 'none', xl: 'flex' }}
       alignItems="center">
       <Button
         variant="round"

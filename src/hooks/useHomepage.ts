@@ -54,7 +54,7 @@ export const useHomepage = () => {
   };
 
   const setViewWithLocalStorage = (newView: ViewType) => {
-    if (newView !== 'intro') { // only save to localStorage if view isn't 'intro'
+    if (newView !== 'intro') { 
       localStorage.setItem('currentView', newView);
     }
     setView(newView);
@@ -88,7 +88,6 @@ export const useHomepage = () => {
         setDesktopView('intro')
         setMobileView('intro')
       }
-
       preloadImage(getBackgroundImage());
       setThemeAndColorModeReady(true);
     }
@@ -106,7 +105,7 @@ export const useHomepage = () => {
         return 'url(postap.png)';
       }
     }
-    return 'url(default.png)';
+    return 'url(default.jpg)';
   };
 
   return {

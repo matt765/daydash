@@ -1,4 +1,3 @@
-// hooks/useWelcome.ts
 import { useState, useEffect } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 

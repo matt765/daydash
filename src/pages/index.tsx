@@ -39,7 +39,7 @@ export default function Home() {
     mobileView,
   } = useHomepage();
 
-  const [isMobile] = useMediaQuery('(min-width: 992px)');
+  const [isDesktop] = useMediaQuery('(min-width: 992px)');
 
   if (!isBgImageLoaded) {
     return (
@@ -73,8 +73,8 @@ export default function Home() {
         position="relative"
         bgSize="cover">
         <Flex w="100%" h="100%" justify="center" alignItems="center">
-          {isMobile ? (
-            <Flex w="68rem" h="47rem" justify="center" alignItems="center">
+          {isDesktop ? (
+            <Flex w={{ lg: "60rem", xl: "68rem"}} h="47rem" justify="center" alignItems="center">
               {desktopView === 'loading' && <Loader />}
               {desktopView === 'intro' && (
                 <Intro
@@ -113,7 +113,7 @@ export default function Home() {
         </Flex>
       </Flex>
 
-      {name && city && isMobile && (
+      {name && city && isDesktop && (
         <SideButtons
           desktopView={desktopView}
           handleToggleView={handleViewChange}

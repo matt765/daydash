@@ -27,7 +27,7 @@ export const SideButtons = ({
       position="fixed"
       direction="column"
       bottom="2rem"
-      right="2rem"
+      right={{ lg: "1rem", xl: "2rem"}}
       sx={{
         '& svg': {
           stroke: 'sideButtonIcon',

@@ -1,4 +1,11 @@
-import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Text,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -10,7 +17,7 @@ import { useUserStore } from '../../store/userStore';
 import useSettingsStore from '@/store/settingsStore';
 import { Loader } from '../loader/Loader';
 import { useWeatherStore } from '@/store/weatherStore';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { HandIcon } from '@/assets/icons/HandIcon';
 import { HumidityIcon } from '@/assets/icons/HumidityIcon';
 import { PressureIcon } from '@/assets/icons/PressureIcon';
@@ -33,7 +40,13 @@ export const Weather = ({ firstMount }: PlannerProps) => {
   const { data: fetchedWeatherData, isLoading: isFetchLoading } =
     useWeatherData(storeCity);
   const currentWeatherData = weatherData || fetchedWeatherData;
+  const [isTablet] = useMediaQuery('(min-width: 992px) and (max-width: 1280px)');
 
+  useEffect(() => {
+    if (weatherData === null && fetchedWeatherData) {
+      useWeatherStore.getState().setWeatherData(fetchedWeatherData);
+    }
+  }, [weatherData, fetchedWeatherData]);
   const weatherParameters = useMemo(
     () => [
       {
@@ -67,9 +80,7 @@ export const Weather = ({ firstMount }: PlannerProps) => {
   if (isLoading || isFetchLoading) {
     return <Loader />;
   }
-  if (weatherData === null && fetchedWeatherData) {
-    useWeatherStore.getState().setWeatherData(fetchedWeatherData);
-  }
+
   if (!weatherData)
     return (
       <Flex w="100%" h="100%" justify="center" alignItems="center">
@@ -79,17 +90,18 @@ export const Weather = ({ firstMount }: PlannerProps) => {
       </Flex>
     );
 
+  const weatherBoxCount = isTablet ? 8 : 10;
+
   return (
     <Flex direction="column" gap="1rem" w="100%" position="relative" zIndex="1">
-      <motion.div   
+      <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: firstMount ? 0.3 : 0 }}
-        style={{ height: "100%"}}
-        >
+        style={{ height: '100%' }}>
         <Flex
           w="100%"
-          mt="1rem"
+          mt="0.6rem"
           mb="1rem"
           justify={{ base: 'center', lg: 'unset' }}>
           <Flex
@@ -177,17 +189,16 @@ export const Weather = ({ firstMount }: PlannerProps) => {
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: firstMount ? 0.3 : 0 }}
-      
-        >
+        transition={{ duration: firstMount ? 0.3 : 0 }}>
         <Grid
           mx={{ base: 'auto', md: 'lg' }}
+          pl={{ lg: "0.5rem", xl: "unset" }}
           gap="0.5rem"
           mt="0.3rem"
           templateColumns={{ base: 'repeat(5, 1fr)', lg: 'repeat(10, 1fr)' }}
           maxW={{ base: '22rem', lg: 'unset' }}>
           {weatherData?.hourTemp
-            ?.slice(0, 10)
+            ?.slice(0, weatherBoxCount)
             .map((item: WeatherHourBoxProps, index) => (
               <WeatherHourBox
                 date={getCurrentDate(item?.dt)}
@@ -207,8 +218,7 @@ export const Weather = ({ firstMount }: PlannerProps) => {
         initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: firstMount ? 0.3 : 0 }}
-        style={{ height: "100%", width: "100%"}}
-        >
+        style={{ height: '100%', width: '100%' }}>
         <Grid
           mx={{ base: 'auto', md: 'lg' }}
           templateColumns="repeat(2, 1fr)"

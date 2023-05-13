@@ -34,18 +34,19 @@ export const Dashboard = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setFirstMount(false);
-    }, 1000); // Delay of 1 second
-    return () => clearTimeout(timer); // Clear the timer if the component is unmounted
+    }, 1000); 
+    return () => clearTimeout(timer); 
   }, []);
+
   return (
     <Flex w="100%" height="100%" direction="column" gap="1rem">
       {!isFullPlannerVisible && (
         <Flex direction="row" wrap="nowrap" height="45%" minH="45%" gap="1rem">
-          <ContentBox width="30%" position="relative">
+          <ContentBox width={{ lg: "34.5%", xl: "30%"}} position="relative">
             <Welcome firstMount={firstMount} />
             {colorMode === 'dark' && <BlurOverlay />}
           </ContentBox>
-          <ContentBox width="70%" position="relative">
+          <ContentBox width={{ lg: "64.5%", xl: "70%"}} position="relative">
             <Weather firstMount={firstMount} />
             {colorMode === 'dark' && <BlurOverlay />}
           </ContentBox>

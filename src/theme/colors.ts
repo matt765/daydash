@@ -232,7 +232,7 @@ export const colors = {
   },
   // Settings
   settingsBg: {
-    default: 'rgb(56, 70, 88)',
+    default: 'rgb(47, 60, 76)',
     _dark: 'rgba(57, 68, 81, 0.5)',
   },
   settingsMainColor: {

@@ -1,4 +1,3 @@
-// pages/api/quotes.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const apiKey = process.env.API_NINJAS_API_KEY;
