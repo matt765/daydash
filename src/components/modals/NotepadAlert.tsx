@@ -33,15 +33,15 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
         <ContentBox
           display="flex"
           flexDirection="column"
-          w={{ base: '100%', md: '36rem' }}
-          h={{ base: '100%', md: '20rem' }}          
+          w={{ base: '100%', md: '37rem' }}
+          h={{ base: '100%', md: '21rem' }}          
           alignItems="center"
           textAlign="center"
-          p="2.5rem"
+          p="3rem"
           bgColor="modalBg"
           borderWidth="1px"
           justifyContent={{ base: "flex-start", md: "center" }}
-          pt={{ base: "4.5rem", md: "2.5rem" }}
+          pt={{ base: "4.5rem", md: "3rem" }}
           borderStyle="solid"
           borderColor="modalBorder"
           backdropFilter="blur(24px)"

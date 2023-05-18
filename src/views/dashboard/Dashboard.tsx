@@ -1,5 +1,4 @@
 import { Flex, useColorMode } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
 
 import { Planner } from '@/components/planner/Planner';
 import { Weather } from '@/components/weather/Weather';

@@ -46,7 +46,7 @@ export const PlannerItem = ({
     <Flex
       ref={taskRef}
       w="100%"
-      borderRadius="20px"
+      borderRadius={{ base: '10px', lg: '20px' }}
       alignItems="center"
       justify="space-between"
       cursor="pointer"
@@ -70,13 +70,16 @@ export const PlannerItem = ({
             boxShadow: 'none !important',
             borderWidth: '0px !important',
           },
-        }}>
+        }}
+        overflow="hidden">
         <Flex
           as="span"
           mr="0.7rem"
           color="rgba(73,194,79,0.9)"
           justify="center"
-          alignItems="center">
+          alignItems="flex-start"
+          pt="0.25rem"
+          >
           ✓
         </Flex>
         {isEditing ? (

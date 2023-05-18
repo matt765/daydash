@@ -2,7 +2,7 @@
 Dashboard application designed to be an alternative to default starting page in browser
  
 ## Tech stack
-React, NextJS, TypeScript, ChakraUI, Zustand, React Query, Framer Motion
+React, NextJS, TypeScript, ChakraUI, Zustand, React Query
 
 ## Live link
 [https://daydash.app/](https://daydash.app/)

@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useNotepadStore } from '@/store/notepadStore';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import { useColorMode } from '@chakra-ui/react';
 
 export const useNotepad = () => {
   const [editing, setEditing] = useState(false);
   const [isModified, setIsModified] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const {
     storeNote,
@@ -15,7 +17,7 @@ export const useNotepad = () => {
   } = useNotepadStore();
   const [isModalVisible, setIsModalVisible] = useState(
     !isNotepadModalConfirmed
-  ); 
+  );
 
   useEffect(() => {
     if (textAreaRef.current) {
@@ -56,7 +58,7 @@ export const useNotepad = () => {
       setEditing(false);
     }
   });
-
+  const { colorMode } = useColorMode();
   return {
     textAreaRef,
     editing,
@@ -66,5 +68,8 @@ export const useNotepad = () => {
     handleTextChange,
     handleModalClose,
     isModalVisible,
+    colorMode,
+    hovered,
+    setHovered,
   };
 };

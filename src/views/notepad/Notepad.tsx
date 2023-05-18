@@ -1,4 +1,4 @@
-import { Box, Icon, Button, Flex, useColorMode } from '@chakra-ui/react';
+import { Box, Icon, Button, Flex } from '@chakra-ui/react';
 
 import { NotepadEditIcon } from '@/assets/icons/NotepadEditIcon';
 import { ContentBox } from '@/theme/components/contentBox';
@@ -6,7 +6,6 @@ import { useNotepad } from '@/hooks/useNotepad';
 import { NotepadTextArea } from '@/components/notepad/NotepadTextArea';
 import { NotepadAlert } from '@/components/modals/NotepadAlert';
 import { CheckIcon } from '@/assets/icons/CheckIcon';
-import { useState } from 'react';
 
 export const Notepad = () => {
   const {
@@ -18,10 +17,11 @@ export const Notepad = () => {
     handleTextChange,
     isModalVisible,
     handleModalClose,
+    colorMode,
+    hovered,
+    setHovered,
   } = useNotepad();
-  const [hovered, setHovered] = useState(false);
 
-  const { colorMode } = useColorMode();
   return (
     <>
       <ContentBox

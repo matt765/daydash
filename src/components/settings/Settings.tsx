@@ -6,10 +6,9 @@ import {
   DrawerCloseButton,
   Box,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+
 import { ClearAllData } from '../modals/ClearAllDataModal';
 import { EditUserData } from '../modals/EditUserDataModal';
-
 import { SettingsContent } from './SettingsContent';
 
 interface SettingsProps {
@@ -61,9 +60,8 @@ export const Settings = ({
             }}
             pb="1rem"
             backdropFilter="blur(24px)"
-            h={{ base: "calc(100% - 5rem)", lg: "100%"}}
-            maxW={{ base: "100vw", md: "20rem"}}
-            >
+            h={{ base: 'calc(100% - 5rem)', lg: '100%' }}
+            maxW={{ base: '100vw', md: '20rem' }}>
             <DrawerCloseButton
               mt="0.8rem"
               sx={{

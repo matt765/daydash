@@ -4,7 +4,17 @@ import { useColorMode, useDisclosure } from '@chakra-ui/react';
 import { useUserStoreWrapper } from '@/store/userStore';
 import useSettingsStore from '@/store/settingsStore';
 
-export type ViewType = 'intro' | 'dashboard' | 'notepad' | 'snake' | 'loading' | 'mobileHome' | 'mobileWeather' | 'mobilePlanner' | 'notepad' | 'settings';
+export type ViewType =
+  | 'intro'
+  | 'dashboard'
+  | 'notepad'
+  | 'snake'
+  | 'loading'
+  | 'mobileHome'
+  | 'mobileWeather'
+  | 'mobilePlanner'
+  | 'notepad'
+  | 'settings';
 
 export const useHomepage = () => {
   const { name, city, isMounted } = useUserStoreWrapper();
@@ -15,13 +25,19 @@ export const useHomepage = () => {
   const setView = (view: string) => {
     _setView(view as ViewType);
   };
-  const handleViewChange = (view: ViewType, deviceType: 'mobile' | 'desktop') => {
+  const handleViewChange = (
+    view: ViewType,
+    deviceType: 'mobile' | 'desktop'
+  ) => {
     if (deviceType === 'desktop') {
       setDesktopView(view);
+      localStorage.setItem('currentDesktopView', view);
     } else {
       setMobileView(view);
+      localStorage.setItem('currentMobileView', view);
     }
   };
+
   const {
     isOpen: isSettingsPanelOpen,
     onOpen: onSettingsPanelOpen,
@@ -54,7 +70,7 @@ export const useHomepage = () => {
   };
 
   const setViewWithLocalStorage = (newView: ViewType) => {
-    if (newView !== 'intro') { 
+    if (newView !== 'intro') {
       localStorage.setItem('currentView', newView);
     }
     setView(newView);
@@ -80,14 +96,21 @@ export const useHomepage = () => {
 
   useEffect(() => {
     if (isMounted) {
-      const savedView = localStorage.getItem('currentView');
-      if (name && city && name !== "" && city !== "") {     
-        setDesktopView('dashboard')
-        setMobileView('mobileHome')
+      const savedMobileView = localStorage.getItem(
+        'currentMobileView'
+      ) as ViewType;
+      const savedDesktopView = localStorage.getItem(
+        'currentDesktopView'
+      ) as ViewType;
+
+      if (name && city && name !== '' && city !== '') {
+        setDesktopView(savedDesktopView || 'dashboard');
+        setMobileView(savedMobileView || 'mobileHome');
       } else {
-        setDesktopView('intro')
-        setMobileView('intro')
+        setDesktopView('intro');
+        setMobileView('intro');
       }
+
       preloadImage(getBackgroundImage());
       setThemeAndColorModeReady(true);
     }
@@ -133,6 +156,6 @@ export const useHomepage = () => {
     isBgImageLoaded,
     handleViewChange,
     mobileView,
-    desktopView
+    desktopView,
   };
 };

@@ -1,4 +1,5 @@
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
+
 import { Button } from './components/button';
 import { Text } from './components/text';
 
@@ -57,7 +58,7 @@ export const generateTheme = (colors: any) => {
           },
         },
         ':root': {
-          scrollbarColor: 'rgb(255,255,255,0.1) rgba(255, 255, 255, 0)',
+          scrollbarColor: 'rgb(255,255,255,0.1) rgba(255, 255, 255, 0.0)',
           scrollbarWidth: 'thin',
         },
       },

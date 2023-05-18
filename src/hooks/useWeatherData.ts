@@ -32,17 +32,15 @@ export const fetchWeatherData = async (
     if (!data.coord) {
       throw new Error('City not found');
     }
-   
-    
+
     const { lat, lon } = data.coord;
     const responseOneCall = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
-   
 
     if (!responseOneCall.ok) {
       throw new Error('City not found');
     }
     const oneCallData = await responseOneCall.json();
-    
+
     const weatherData: WeatherData = {
       temp: toCelsius(oneCallData.current.temp),
       desc: oneCallData.current.weather[0].description,
@@ -55,7 +53,6 @@ export const fetchWeatherData = async (
       icon: oneCallData.current.weather[0].icon,
       region: oneCallData.timezone,
     };
-
     return weatherData;
   } catch (error) {
     throw error;

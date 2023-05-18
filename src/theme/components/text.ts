@@ -2,7 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const Text: ComponentStyleConfig = {
   variants: {
-    // First row, upper left
+    // Greeting
     welcomeTitle: {
       fontSize: { base: "3.2rem", lg: "3rem"},
       fontWeight: 400,
@@ -19,7 +19,7 @@ export const Text: ComponentStyleConfig = {
       fontWeight: 400,
       color: 'welcomeSecondaryText',
     },
-    // First row, upper right
+    // Weather forecast
     weatherCity: {
       fontSize: '2rem',
       fontWeight: 400,
@@ -63,7 +63,7 @@ export const Text: ComponentStyleConfig = {
       color: 'primaryText',
       lineHeight: '1.25rem',
     },
-    // Second row
+    // Planner
     plannerPlaceholder: {
       fontSize: '1rem',
       fontWeight: 400,

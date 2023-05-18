@@ -18,9 +18,8 @@ export const SnakeGame = () => {
     resetGame,
     isSnake,
     isFood,
+    colorMode
   } = useSnake();
-
-  const { colorMode } = useColorMode();
 
   return (
     <ContentBox

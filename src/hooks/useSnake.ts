@@ -27,6 +27,7 @@ export const useSnake = () => {
       setShouldIntroTitleAppear(false);
       setGameOver(false);
       setRestart(false);
+      setNewRecord(false);
       if (gameOver) {
         resetGame();
       }
@@ -46,6 +47,7 @@ export const useSnake = () => {
     initializeBoard();
     setRestart(true);
     setShouldIntroTitleAppear(true);
+    setNewRecord(false);
   };
 
   useEffect(() => {
@@ -238,5 +240,6 @@ export const useSnake = () => {
     resetGame,
     isSnake,
     isFood,
+    colorMode,
   };
 };

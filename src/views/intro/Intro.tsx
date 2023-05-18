@@ -13,7 +13,7 @@ interface IntroProps {
   onDataSaved: () => void;
 }
 
-export const Intro = ({ setView, onDataSaved }: IntroProps) => {
+export const Intro = ({ onDataSaved }: IntroProps) => {
   const { handleViewChange } = useHomepage();
   const { name, city, setName, setCity, handleSubmit, isSubmitting, isError } =
     useIntro(handleViewChange, onDataSaved);
@@ -38,7 +38,12 @@ export const Intro = ({ setView, onDataSaved }: IntroProps) => {
         },
       }}>
       <form onSubmit={handleSubmit}>
-        <Flex mb="1rem" mt="0.5rem" justify="center" w="100%" direction={{ base: "column", sm: "row"}}>
+        <Flex
+          mb="1rem"
+          mt="0.5rem"
+          justify="center"
+          w="100%"
+          direction={{ base: 'column', sm: 'row' }}>
           <Text mr="0.5rem" variant="dataModalTitle">
             Welcome to
           </Text>

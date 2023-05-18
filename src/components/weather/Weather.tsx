@@ -1,13 +1,5 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  Text,
-  useMediaQuery,
-} from '@chakra-ui/react';
+import { Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 import { WeatherHourBox, WeatherHourBoxProps } from './WeatherHourBox';
 import { WeatherParameter } from './WeatherParameter';
@@ -30,23 +22,28 @@ interface PlannerProps {
 export const Weather = ({ firstMount }: PlannerProps) => {
   const storeCity = useUserStore((state) => state.city);
   const useFahrenheit = useSettingsStore((state) => state.useFahrenheit);
-  const { weatherData, isLoading, isError } = useWeatherStore((state) => ({
+  const { weatherData, isLoading } = useWeatherStore((state) => ({
     weatherData: state.weatherData,
     isLoading: state.isLoading,
     isError: state.isError,
   }));
-  const { getWeatherImage, getHour, getCurrentDate, toCelsius, toFahrenheit } =
-    useWeatherUtils();
+  const {
+    getWeatherImage,
+    getHour,
+    getCurrentDate,
+    toCelsius,
+    toFahrenheit,
+    isTablet,
+  } = useWeatherUtils();
   const { data: fetchedWeatherData, isLoading: isFetchLoading } =
     useWeatherData(storeCity);
-  const currentWeatherData = weatherData || fetchedWeatherData;
-  const [isTablet] = useMediaQuery('(min-width: 992px) and (max-width: 1280px)');
 
   useEffect(() => {
     if (weatherData === null && fetchedWeatherData) {
       useWeatherStore.getState().setWeatherData(fetchedWeatherData);
     }
   }, [weatherData, fetchedWeatherData]);
+
   const weatherParameters = useMemo(
     () => [
       {
@@ -94,143 +91,81 @@ export const Weather = ({ firstMount }: PlannerProps) => {
 
   return (
     <Flex direction="column" gap="1rem" w="100%" position="relative" zIndex="1">
-      <motion.div
-        initial={{ opacity: 0, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: firstMount ? 0.3 : 0 }}
-        style={{ height: '100%' }}>
+      <Flex
+        w="100%"
+        mt="0.6rem"
+        mb="1rem"
+        justify={{ base: 'center', lg: 'unset' }}>
         <Flex
-          w="100%"
-          mt="0.6rem"
-          mb="1rem"
-          justify={{ base: 'center', lg: 'unset' }}>
-          <Flex
-            direction="column"
-            w="50%"
-            maxW="50%"
-            justify="center"
-            alignItems="center">
-            <Flex maxW="13rem" overflow="hidden" whiteSpace="nowrap">
-              <Flex
-                sx={{
-                  '& img': {
-                    maxWidth: '80px',
-                    maxHeight: '80px',
-                  },
-                }}
-                h="100%"
-                justify="center"
-                alignItems="center">
-                <Image
-                  src={getWeatherImage(weatherData?.icon)}
-                  alt="Weather Icon"
-                  width={80}
-                  height={80}
-                />
-              </Flex>
-              <Flex direction="column" h="6rem" maxH="7rem">
-                <Text variant="weatherTemperature" mb="-0.3rem">
-                  {useFahrenheit
-                    ? toFahrenheit(weatherData?.temp, 'celsius')
-                    : weatherData?.temp}
-                  °
-                </Text>
-                <Text variant="weatherDesc" mb="1rem">
-                  {weatherData?.desc.split(' ').slice(0, 2).join(' ')}
-                </Text>
-              </Flex>
-            </Flex>
+          direction="column"
+          w="50%"
+          maxW="50%"
+          justify="center"
+          alignItems="center">
+          <Flex maxW="13rem" overflow="hidden" whiteSpace="nowrap">
             <Flex
-              as="div"
-              display="grid"
-              gridTemplateColumns="min-content auto"
-              gap="0.5rem"
-              alignItems="center"
-              mt={storeCity.length > 16 ? '0.5rem' : '0rem'}>
-              <Text
-                variant="weatherCity"
-                mr="0.1rem"
-                whiteSpace="pre"
-                fontSize={storeCity.length > 16 ? '1.7rem' : '2rem'}
-                display="inline">
-                {storeCity.charAt(0).toUpperCase() + storeCity.slice(1)},
+              sx={{
+                '& img': {
+                  maxWidth: '80px',
+                  maxHeight: '80px',
+                },
+              }}
+              h="100%"
+              justify="center"
+              alignItems="center">
+              <Image
+                src={getWeatherImage(weatherData?.icon)}
+                alt="Weather Icon"
+                width={80}
+                height={80}
+              />
+            </Flex>
+            <Flex direction="column" h="6rem" maxH="7rem">
+              <Text variant="weatherTemperature" mb="-0.3rem">
+                {useFahrenheit
+                  ? toFahrenheit(weatherData?.temp, 'celsius')
+                  : weatherData?.temp}
+                °
               </Text>
-              <Text
-                variant="weatherCountry"
-                fontSize={storeCity.length > 16 ? '1.7rem' : '2rem'}>
-                {weatherData?.country}
+              <Text variant="weatherDesc" mb="1rem">
+                {weatherData?.desc.split(' ').slice(0, 2).join(' ')}
               </Text>
             </Flex>
           </Flex>
-          <Grid
-            templateColumns="repeat(2, 1fr)"
-            templateRows="repeat(2, 1fr)"
+          <Flex
+            as="div"
+            display="grid"
+            gridTemplateColumns="min-content auto"
             gap="0.5rem"
-            w="46%"
-            ml="0.3rem"
-            maxW="50%"
-            h="100%"
-            minH="9rem"
             alignItems="center"
-            mt="0.5rem"
-            display={{ base: 'none', lg: 'grid' }}>
-            {weatherParameters.map((item, index) => (
-              <GridItem key={`${item.title}-${index}`}>
-                <WeatherParameter
-                  icon={item.icon}
-                  title={item.title}
-                  value={item.value}
-                />
-              </GridItem>
-            ))}
-          </Grid>
+            mt={storeCity.length > 16 ? '0.5rem' : '0rem'}>
+            <Text
+              variant="weatherCity"
+              mr="0.1rem"
+              whiteSpace="pre"
+              fontSize={storeCity.length > 16 ? '1.5rem' : '2rem'}
+              display="inline">
+              {storeCity.charAt(0).toUpperCase() + storeCity.slice(1)},
+            </Text>
+            <Text
+              variant="weatherCountry"
+              fontSize={storeCity.length > 16 ? '1.7rem' : '2rem'}>
+              {weatherData?.country}
+            </Text>
+          </Flex>
         </Flex>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: firstMount ? 0.3 : 0 }}>
         <Grid
-          mx={{ base: 'auto', md: 'lg' }}
-          pl={{ lg: "0.5rem", xl: "unset" }}
-          gap="0.5rem"
-          mt="0.3rem"
-          templateColumns={{ base: 'repeat(5, 1fr)', lg: 'repeat(10, 1fr)' }}
-          maxW={{ base: '22rem', lg: 'unset' }}>
-          {weatherData?.hourTemp
-            ?.slice(0, weatherBoxCount)
-            .map((item: WeatherHourBoxProps, index) => (
-              <WeatherHourBox
-                date={getCurrentDate(item?.dt)}
-                hour={getHour(item?.dt)}
-                icon={item?.weather?.[0].icon}
-                temp={
-                  useFahrenheit
-                    ? toFahrenheit(item?.temp)
-                    : toCelsius(item?.temp)
-                }
-                key={`${item.hour}-${index}`}
-              />
-            ))}
-        </Grid>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: firstMount ? 0.3 : 0 }}
-        style={{ height: '100%', width: '100%' }}>
-        <Grid
-          mx={{ base: 'auto', md: 'lg' }}
           templateColumns="repeat(2, 1fr)"
           templateRows="repeat(2, 1fr)"
-          gap="1.5rem"
-          maxW={{ base: '20rem', lg: 'unset' }}
+          gap="0.5rem"
+          w="46%"
+          ml="0.3rem"
+          maxW="50%"
           h="100%"
+          minH="9rem"
           alignItems="center"
-          justifyContent="center"
-          pl="1rem"
-          mt="1.5rem"
-          display={{ base: 'grid', lg: 'none' }}>
+          mt="0.5rem"
+          display={{ base: 'none', lg: 'grid' }}>
           {weatherParameters.map((item, index) => (
             <GridItem key={`${item.title}-${index}`}>
               <WeatherParameter
@@ -241,7 +176,52 @@ export const Weather = ({ firstMount }: PlannerProps) => {
             </GridItem>
           ))}
         </Grid>
-      </motion.div>
+      </Flex>
+
+      <Grid
+        mx={{ base: 'auto', md: 'lg' }}
+        pl={{ lg: '0.5rem', xl: 'unset' }}
+        gap="0.5rem"
+        mt="0.3rem"
+        templateColumns={{ base: 'repeat(5, 1fr)', lg: 'repeat(10, 1fr)' }}
+        maxW={{ base: '22rem', lg: 'unset' }}>
+        {weatherData?.hourTemp
+          ?.slice(0, weatherBoxCount)
+          .map((item: WeatherHourBoxProps, index) => (
+            <WeatherHourBox
+              date={getCurrentDate(item?.dt)}
+              hour={getHour(item?.dt)}
+              icon={item?.weather?.[0].icon}
+              temp={
+                useFahrenheit ? toFahrenheit(item?.temp) : toCelsius(item?.temp)
+              }
+              key={`${item.hour}-${index}`}
+            />
+          ))}
+      </Grid>
+
+      <Grid
+        mx={{ base: 'auto', md: 'lg' }}
+        templateColumns="repeat(2, 1fr)"
+        templateRows="repeat(2, 1fr)"
+        gap="1.5rem"
+        maxW={{ base: '20rem', lg: 'unset' }}
+        h="100%"
+        alignItems="center"
+        justifyContent="center"
+        pl="1rem"
+        mt="1.5rem"
+        display={{ base: 'grid', lg: 'none' }}>
+        {weatherParameters.map((item, index) => (
+          <GridItem key={`${item.title}-${index}`}>
+            <WeatherParameter
+              icon={item.icon}
+              title={item.title}
+              value={item.value}
+            />
+          </GridItem>
+        ))}
+      </Grid>
     </Flex>
   );
 };

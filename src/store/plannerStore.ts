@@ -5,7 +5,6 @@ import {
   saveToLocalStorage,
 } from '@/utils/localStorageUtils';
 
-
 export const plannerItemsDefault = [
   {
     text: 'Finish front-end project',
