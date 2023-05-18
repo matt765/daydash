@@ -6,11 +6,7 @@ import { Loader } from '../loader/Loader';
 import { PlannerHeader } from './PlannerHeader';
 import { PlannerItem } from './PlannerItem';
 
-interface PlannerProps {
-  firstMount?: boolean;
-}
-
-export const Planner = ({ firstMount }: PlannerProps) => {
+export const Planner = () => {
   const {
     plannerItems,
     inputValue,

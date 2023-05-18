@@ -5,8 +5,6 @@ import { Weather } from '@/components/weather/Weather';
 import { Welcome } from '@/components/welcome/Welcome';
 import { ContentBox } from '@/theme/components/contentBox';
 import useSettingsStore from '@/store/settingsStore';
-import { useEffect } from 'react';
-import { useUserStore } from '@/store/userStore';
 
 const BlurOverlay = () => (
   <Flex
@@ -27,26 +25,17 @@ export const Dashboard = () => {
     (state) => state.isFullPlannerVisible
   );
   const { colorMode } = useColorMode();
-  const firstMount = useUserStore((state) => state.firstMount);
-  const setFirstMount = useUserStore((state) => state.setFirstMount);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFirstMount(false);
-    }, 1000); 
-    return () => clearTimeout(timer); 
-  }, []);
 
   return (
     <Flex w="100%" height="100%" direction="column" gap="1rem">
       {!isFullPlannerVisible && (
         <Flex direction="row" wrap="nowrap" height="45%" minH="45%" gap="1rem">
-          <ContentBox width={{ lg: "34.5%", xl: "30%"}} position="relative">
-            <Welcome firstMount={firstMount} />
+          <ContentBox width={{ lg: '34.5%', xl: '30%' }} position="relative">
+            <Welcome />
             {colorMode === 'dark' && <BlurOverlay />}
           </ContentBox>
-          <ContentBox width={{ lg: "64.5%", xl: "70%"}} position="relative">
-            <Weather firstMount={firstMount} />
+          <ContentBox width={{ lg: '64.5%', xl: '70%' }} position="relative">
+            <Weather />
             {colorMode === 'dark' && <BlurOverlay />}
           </ContentBox>
         </Flex>
@@ -62,7 +51,7 @@ export const Dashboard = () => {
         minW="100%"
         w="100%"
         position="relative">
-        <Planner firstMount={firstMount} />
+        <Planner />
         {colorMode === 'dark' && <BlurOverlay />}
         <Flex h="1rem" w="100%" />
       </ContentBox>

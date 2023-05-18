@@ -28,8 +28,7 @@ export const NotepadTextArea = ({
       onClick={handleBoxClick}
       onChange={handleTextChange}
       p={6}
-      fontSize="xl"
-      fontWeight="bold"
+      fontSize="xl"   
       color="primaryText"
       outline="none !important"
       _focusVisible={{ outline: 'none' }}
@@ -38,8 +37,9 @@ export const NotepadTextArea = ({
       _placeholder={{
         color: 'notepadPlaceholder',
       }}
-      fontFamily="Roboto"
+      fontFamily="Quicksand"
       maxLength={5000}
+      letterSpacing="0.3px"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     />

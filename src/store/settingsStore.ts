@@ -48,7 +48,7 @@ export const useSettingsStore = create<SettingsState>((set) => {
       setAndStore('welcomeSectionContent', value),
     sliderValue: loadFromLocalStorage('sliderValue', 40),
     setSliderValue: (value: number) => setAndStore('sliderValue', value),
-    showSnakeButton: loadFromLocalStorage('showSnakeButton', true),
+    showSnakeButton: loadFromLocalStorage('showSnakeButton', false),
     setShowSnakeButton: (value: boolean) =>
       setAndStore('showSnakeButton', value),
     useFahrenheit: loadFromLocalStorage('useFahrenheit', false),
@@ -61,7 +61,7 @@ export const useSettingsStore = create<SettingsState>((set) => {
       setAndStore('isFullPlannerVisible', false);
       setAndStore('welcomeSectionContent', 'did_you_know');
       setAndStore('sliderValue', 40);
-      setAndStore('showSnakeButton', true);
+      setAndStore('showSnakeButton', false);
       setAndStore('useFahrenheit', false);
       setAndStore('theme', 'basicTheme');
       setAndStore('isImageVisible', true);

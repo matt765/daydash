@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useUserStoreWrapper } from '@/store/userStore';
 import { useWeatherStore } from '@/store/weatherStore';
-import { fetchWeatherData } from './useWeatherData';
 import { saveToLocalStorage } from '@/utils/localStorageUtils';
+import { fetchWeatherData } from '@/services/fetchWeatherData';
 
 const LOCAL_STORAGE_KEY = 'weatherStoreData';
 

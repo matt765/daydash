@@ -61,6 +61,12 @@ export const generateTheme = (colors: any) => {
           scrollbarColor: 'rgb(255,255,255,0.1) rgba(255, 255, 255, 0.0)',
           scrollbarWidth: 'thin',
         },
+        '::-webkit-input-placeholder': {
+          color: 'rgb(255,255,255,0.4) !important',
+        },   
+        'option, optgroup': {
+          '-webkit-appearance': 'none !important',
+        },    
       },
     },
     components: {

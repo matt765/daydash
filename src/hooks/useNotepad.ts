@@ -71,5 +71,6 @@ export const useNotepad = () => {
     colorMode,
     hovered,
     setHovered,
+    storeNote
   };
 };

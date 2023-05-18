@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import { useUserStore } from '@/store/userStore';
-import { fetchWeatherData, WeatherData } from '@/hooks/useWeatherData';
 import { useWeatherStore } from '@/store/weatherStore';
 import {
   loadFromLocalStorage,
   saveToLocalStorage,
 } from '@/utils/localStorageUtils';
+import { fetchWeatherData } from '@/services/fetchWeatherData';
 
 interface UseIntro {
   name: string;
@@ -66,6 +66,6 @@ export const useIntro = (
     setCity,
     handleSubmit,
     isSubmitting,
-    isError
+    isError,
   };
 };

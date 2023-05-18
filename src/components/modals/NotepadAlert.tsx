@@ -29,19 +29,19 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
       justify="center"
       alignItems="center"
       bg="rgb(0,0,0,0.4)">
-      <Box h={{ base: '100%', md: 'unset' }} ref={wrapperRef} >
+      <Box h={{ base: '100%', md: 'unset' }} ref={wrapperRef}>
         <ContentBox
           display="flex"
           flexDirection="column"
           w={{ base: '100%', md: '37rem' }}
-          h={{ base: '100%', md: '21rem' }}          
+          h={{ base: '100%', md: '21rem' }}
           alignItems="center"
           textAlign="center"
           p="3rem"
           bgColor="modalBg"
           borderWidth="1px"
-          justifyContent={{ base: "flex-start", md: "center" }}
-          pt={{ base: "4.5rem", md: "3rem" }}
+          justifyContent={{ base: 'flex-start', md: 'center' }}
+          pt={{ base: '4.5rem', md: '3rem' }}
           borderStyle="solid"
           borderColor="modalBorder"
           backdropFilter="blur(24px)"
@@ -79,12 +79,12 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
           <Flex w="100%" justify="flex-end" mt="-0.5rem" gap="1rem">
             <Button
               variant="solid"
-              bg="mainColor"
+              bg="coloredButtonBg"
               onClick={handleConfirm}
               height="3rem"
               borderRadius="10px"
               w="10rem"
-              _hover={{ bg: 'mainColorHover' }}>
+              _hover={{ bg: 'coloredButtonHoverBg' }}>
               I understand
             </Button>
           </Flex>

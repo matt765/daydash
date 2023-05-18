@@ -60,7 +60,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-
       <Flex
         w="100%"
         h="100vh"
@@ -69,12 +68,15 @@ export default function Home() {
         bgImage={getBackgroundImage()}
         bgColor="homepageBg"
         bgRepeat="no-repeat"
-        bgAttachment="fixed"
         position="relative"
         bgSize="cover">
         <Flex w="100%" h="100%" justify="center" alignItems="center">
           {isDesktop ? (
-            <Flex w={{ lg: "60rem", xl: "68rem"}} h="47rem" justify="center" alignItems="center">
+            <Flex
+              w={{ lg: '60rem', xl: '68rem' }}
+              h="47rem"
+              justify="center"
+              alignItems="center">
               {desktopView === 'loading' && <Loader />}
               {desktopView === 'intro' && (
                 <Intro

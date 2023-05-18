@@ -20,6 +20,7 @@ export const Notepad = () => {
     colorMode,
     hovered,
     setHovered,
+    storeNote,
   } = useNotepad();
 
   return (
@@ -50,12 +51,14 @@ export const Notepad = () => {
                 fill: hovered ? 'notepadIconHover' : 'notepadIcon',
               },
             }}>
-            <Icon
-              as={NotepadEditIcon}
-              boxSize={7}
-              transition="0.5s"
-              className="notepad-main-icon"
-            />
+            {!storeNote && (
+              <Icon
+                as={NotepadEditIcon}
+                boxSize={7}
+                transition="0.5s"
+                className="notepad-main-icon"
+              />
+            )}
           </Box>
         )}
         <NotepadTextArea

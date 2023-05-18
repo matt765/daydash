@@ -4,26 +4,8 @@ import { useQuery, useQueryClient } from 'react-query';
 import useCurrentDate from '@/hooks/useCurrentDate';
 import useSettingsStore from '@/store/settingsStore';
 import { useUserStore } from '@/store/userStore';
-const fetchFact = async () => {
-  let data;
-  do {
-    const response = await fetch(
-      'https://uselessfacts.jsph.pl/random.json?language=en'
-    );
-    data = await response.json();
-  } while (data.text.length > 130 || data.text.length < 35);
-  return data.text;
-};
-
-const fetchQuote = async () => {
-  let data;
-  const category = 'happiness';
-  do {
-    const response = await fetch(`/api/quotes?category=${category}`);
-    data = await response.json();
-  } while (data[0].quote.length > 125 || data[0].quote.length < 35);
-  return { quote: data[0].quote, author: data[0].author };
-};
+import { fetchFact } from '@/services/fetchFact';
+import { fetchQuote } from '@/services/fetchQuote';
 
 export const useWelcome = () => {
   const userName = useUserStore((state) => state.name);

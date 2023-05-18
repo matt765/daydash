@@ -4,11 +4,7 @@ import { useWelcome } from '@/hooks/useWelcome';
 import { Loader } from '../loader/Loader';
 import { RefreshIcon } from '@/assets/icons/RefreshIcon';
 
-interface WelcomeProps {
-  firstMount?: boolean;
-}
-
-export const Welcome = ({ firstMount }: WelcomeProps) => {
+export const Welcome = () => {
   const {
     userName,
     dayOfWeek,
@@ -103,7 +99,7 @@ export const Welcome = ({ firstMount }: WelcomeProps) => {
                   <Loader isSmall />
                 </Flex>
               ) : (
-                <Text variant="welcomeSecondary" w="100%">
+                <Text variant="welcomeSecondary" w="100%" mb={{ base: "1.5rem", lg: "unset"}}>
                   {fact}
                 </Text>
               )}

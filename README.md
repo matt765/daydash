@@ -24,6 +24,7 @@ React, NextJS, TypeScript, ChakraUI, Zustand, React Query
 │   ├── hooks
 │   ├── pages
 │   │   └── api
+│   ├── services
 │   ├── store
 │   ├── theme
 │   │   └── components

@@ -15,11 +15,7 @@ import { HumidityIcon } from '@/assets/icons/HumidityIcon';
 import { PressureIcon } from '@/assets/icons/PressureIcon';
 import { WindIcon } from '@/assets/icons/WindIcon';
 
-interface PlannerProps {
-  firstMount?: boolean;
-}
-
-export const Weather = ({ firstMount }: PlannerProps) => {
+export const Weather = () => {
   const storeCity = useUserStore((state) => state.city);
   const useFahrenheit = useSettingsStore((state) => state.useFahrenheit);
   const { weatherData, isLoading } = useWeatherStore((state) => ({
@@ -111,6 +107,7 @@ export const Weather = ({ firstMount }: PlannerProps) => {
                 },
               }}
               h="100%"
+              mr="0.3rem"
               justify="center"
               alignItems="center">
               <Image
