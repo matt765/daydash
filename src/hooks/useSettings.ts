@@ -1,9 +1,10 @@
 // hooks/useSettings.ts
 import { useColorMode } from '@chakra-ui/react';
+import { useState } from 'react';
+
 import useSettingsStore, {
   WelcomeSectionContentType,
 } from '@/store/settingsStore';
-import { useState } from 'react';
 
 export const useSettings = () => {
   const {

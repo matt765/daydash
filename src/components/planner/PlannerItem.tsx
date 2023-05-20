@@ -46,7 +46,7 @@ export const PlannerItem = ({
     <Flex
       ref={taskRef}
       w="100%"
-      borderRadius={{ base: '10px', lg: '20px' }}
+      borderRadius={{ base: '10px', lg: '12px' }}
       alignItems="center"
       justify="space-between"
       cursor="pointer"
@@ -75,11 +75,11 @@ export const PlannerItem = ({
         <Flex
           as="span"
           mr="0.7rem"
-          color="rgba(73,194,79,0.9)"
+          color={item.isCrossed ? 'rgba(73,194,79,0.3)' : 'rgba(73,194,79,0.9)'}
           justify="center"
           alignItems="flex-start"
           pt="0.25rem"
-          >
+          h="100%">
           ✓
         </Flex>
         {isEditing ? (
@@ -94,11 +94,13 @@ export const PlannerItem = ({
             fontWeight="400"
             color="primaryText"
             ml="-1rem"
+            h="100%"
           />
         ) : (
           <Text
             variant="plannerItem"
             color={item.isCrossed ? 'disabledText' : 'primaryText'}
+            h="100%"
             textDecoration={item.isCrossed ? 'line-through' : 'none'}>
             {item.text}
           </Text>

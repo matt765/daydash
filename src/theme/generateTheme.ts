@@ -16,7 +16,7 @@ export const generateTheme = (colors: any) => {
       md: '48em', // 768px
       lg: '62em', // 992px
       xl: '80em', // 1280px
-      '2xl': '96em', // 1536px
+      '2xl': '102em', // 1632px
       '3xl': '110em', // 1760px
     },
     semanticTokens: {

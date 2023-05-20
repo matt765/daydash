@@ -74,7 +74,7 @@ export default function Home() {
           {isDesktop ? (
             <Flex
               w={{ lg: '60rem', xl: '68rem' }}
-              h="47rem"
+              h={{ lg: "43rem", '2xl': "47rem" }}
               justify="center"
               alignItems="center">
               {desktopView === 'loading' && <Loader />}

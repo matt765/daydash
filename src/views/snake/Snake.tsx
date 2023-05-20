@@ -18,7 +18,7 @@ export const SnakeGame = () => {
     resetGame,
     isSnake,
     isFood,
-    colorMode
+    colorMode,
   } = useSnake();
 
   return (
@@ -43,7 +43,7 @@ export const SnakeGame = () => {
         justify="space-between"
         alignItems="Center"
         w="100%"
-        px="7rem"
+        px={{ base: "10rem", '2xl': "7.5rem" }}
         position="relative"
         zIndex="1">
         <Flex
@@ -92,8 +92,8 @@ export const SnakeGame = () => {
             {row.map((col, colIndex) => (
               <Box
                 key={colIndex}
-                width="27px"
-                height="27px"
+                width={{ base: '24px', '2xl': '27px' }}
+                height={{ base: '24px', '2xl': '27px' }}
                 bg={
                   isSnake(rowIndex, colIndex)
                     ? 'green.500'

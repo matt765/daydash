@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { DropResult } from 'react-beautiful-dnd';
+
 import { usePlannerStore } from '../store/plannerStore';
 
 interface PlannerItem {
@@ -28,10 +29,13 @@ export const usePlanner = (): UsePlanner => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(false);
   }, []);
+
   const [showTooltip, setShowTooltip] = useState(false);
+
   const reorder = (
     list: PlannerItem[],
     startIndex: number,
@@ -60,7 +64,6 @@ export const usePlanner = (): UsePlanner => {
       setShowTooltip(true);
     }
   };
-  
 
   const updateTask = (index: number, newText: string) => {
     const newPlannerItems = plannerItems.map((item, i) => {
@@ -116,6 +119,6 @@ export const usePlanner = (): UsePlanner => {
     removeTask,
     onDragEnd,
     showTooltip,
-    setShowTooltip
+    setShowTooltip,
   };
 };

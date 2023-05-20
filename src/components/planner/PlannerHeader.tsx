@@ -1,8 +1,7 @@
-import { usePlanner } from '@/hooks/usePlanner';
 import { Box, Button, Flex, Input, Tooltip } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+
 import { useClickOutside } from '@/hooks/useClickOutside';
-import { useRef } from 'react';
 
 interface PlannerHeaderProps {
   inputValue: string;
@@ -26,7 +25,7 @@ export const PlannerHeader = ({
     <form onSubmit={addTask}>
       <Flex
         w="100%"
-        gap={{ base: "1rem", lg: "2rem" }}
+        gap={{ base: '1rem', lg: '2rem' }}
         mb="1.2rem"
         h={{ base: 'auto', lg: '3rem' }}
         alignItems="center">
@@ -47,7 +46,7 @@ export const PlannerHeader = ({
             h="100%"
             minH={{ base: '3.5rem', lg: 'unset' }}
             required
-            borderRadius="15px"
+            borderRadius="12px"
             _hover={{ bg: 'plannerInputHoverBg' }}
             _placeholder={{ color: 'secondaryText' }}
             _focusVisible={{ borderWidth: '0 !important' }}
@@ -58,10 +57,11 @@ export const PlannerHeader = ({
           variant="transparent"
           flexBasis={{ base: '4rem', lg: '15rem' }}
           type="submit"
-          h={{ base: "3.5rem", md: "3rem" }}
-        >
+          h={{ base: '3.5rem', md: '3rem' }}>
           <Box display={{ base: 'none', lg: 'unset' }}>Add task</Box>
-          <Box display={{ base: 'unset', lg: 'none' }} fontSize="2rem">+</Box>
+          <Box display={{ base: 'unset', lg: 'none' }} fontSize="2rem">
+            +
+          </Box>
         </Button>
       </Flex>
     </form>

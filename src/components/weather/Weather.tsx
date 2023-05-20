@@ -91,6 +91,7 @@ export const Weather = () => {
         w="100%"
         mt="0.6rem"
         mb="1rem"
+        pl={{ base: 'unset', lg: '1rem', '2xl': 'unset' }}
         justify={{ base: 'center', lg: 'unset' }}>
         <Flex
           direction="column"
@@ -162,6 +163,7 @@ export const Weather = () => {
           minH="9rem"
           alignItems="center"
           mt="0.5rem"
+          pl={{ base: 'unset', lg: '1rem', '2xl': 'unset' }}
           display={{ base: 'none', lg: 'grid' }}>
           {weatherParameters.map((item, index) => (
             <GridItem key={`${item.title}-${index}`}>

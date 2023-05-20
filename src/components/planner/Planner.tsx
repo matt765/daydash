@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, useMediaQuery } from '@chakra-ui/react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 import { usePlanner } from '../../hooks/usePlanner';
@@ -25,14 +25,21 @@ export const Planner = () => {
     <Loader />;
   }
 
+  const [isLaptop] = useMediaQuery(
+    '(min-width: 992px) and (max-width: 1632px)'
+  );
+
+  const numberOfItems = isLaptop ? 5 : 6;
+
   return (
     <>
       <Flex
         direction="column"
         w="100%"
         pr="1rem"
+        pl={{ base: 'unset', lg: '0.3rem' }}
         position="relative"
-        overflow={plannerItems.length < 6 ? 'visible' : 'auto'}
+        overflow={plannerItems.length < numberOfItems ? 'visible' : 'auto'}
         zIndex="1">
         <PlannerHeader
           inputValue={inputValue}
