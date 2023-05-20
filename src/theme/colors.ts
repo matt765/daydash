@@ -119,7 +119,7 @@ export const colors = {
   },
   plannerItemIcon: {
     default: 'rgb(107, 118, 153)',
-    _dark: 'rgb(255, 255, 255, 0.6)',
+    _dark: 'rgb(255, 255, 255, 0.4)',
   },
   plannerItemIconHover: {
     default: 'rgb(137, 150, 192)',

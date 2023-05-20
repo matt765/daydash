@@ -118,8 +118,8 @@ export const extendedColors = {
     _dark: 'rgba(115, 130, 147, 0.2)',
   },
   plannerItemIcon: {
-    default: 'rgba(255, 255, 255, 0.5)',
-    _dark: 'rgb(255, 255, 255, 0.5)',
+    default: 'rgba(255, 255, 255, 0.3)',
+    _dark: 'rgb(255, 255, 255, 0.3)',
   },
   plannerItemIconHover: {
     default: 'rgb(255, 255, 255, 0.8)',

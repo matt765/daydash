@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Analytics } from '@vercel/analytics/react';
 
 import '@fontsource/roboto/100.css';
 import '@fontsource/quicksand';
@@ -28,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ChakraProvider
         theme={theme === 'basicTheme' ? basicTheme : extendedTheme}>
         <Component {...pageProps} />
+        <Analytics />
       </ChakraProvider>
     </QueryClientProvider>
   );

@@ -1,4 +1,4 @@
-import { Button, Flex, Icon } from '@chakra-ui/react';
+import { Button, Flex, Icon, Tooltip } from '@chakra-ui/react';
 
 import { NotepadEditIcon } from '@/assets/icons/NotepadEditIcon';
 import { SettingsIcon } from '@/assets/icons/SettingsIcon';
@@ -27,7 +27,7 @@ export const SideButtons = ({
       position="fixed"
       direction="column"
       bottom="2rem"
-      right={{ lg: "1rem", xl: "2rem"}}
+      right={{ lg: '1rem', xl: '2rem' }}
       sx={{
         '& svg': {
           stroke: 'sideButtonIcon',
@@ -36,24 +36,46 @@ export const SideButtons = ({
         },
       }}
       gap="1rem">
-      <Button
-        variant="round"
-        onClick={toggleView}
-        sx={{
-          '& svg': {
-            fill: 'sideButtonIcon',
-            width: '22px',
-            height: '22px',
-          },
-        }}>
-        <Icon
-          as={desktopView === 'notepad' ? HomeIcon : NotepadEditIcon}
-          boxSize={7}
-        />
-      </Button>
-      <Button variant="round" onClick={openDrawer}>
-        <Icon as={SettingsIcon} boxSize={7} />
-      </Button>
+      <Tooltip
+        label={desktopView === 'notepad' ? 'Show dashboard' : 'Show notepad'}
+        fontSize="md"
+        placement="left"
+        px="0.7rem"
+        py="0.4rem"
+        borderRadius="5px"
+        color="primaryText"
+        mb="0.3rem"
+        bg="sideButtonBg">
+        <Button
+          variant="round"
+          onClick={toggleView}
+          sx={{
+            '& svg': {
+              fill: 'sideButtonIcon',
+              width: '22px',
+              height: '22px',
+            },
+          }}>
+          <Icon
+            as={desktopView === 'notepad' ? HomeIcon : NotepadEditIcon}
+            boxSize={7}
+          />
+        </Button>
+      </Tooltip>
+      <Tooltip
+        label="Settings"
+        fontSize="md"
+        placement="left"
+        px="0.7rem"
+        py="0.4rem"
+        borderRadius="5px"
+        color="primaryText"
+        mb="0.3rem"
+        bg="sideButtonBg">
+        <Button variant="round" onClick={openDrawer}>
+          <Icon as={SettingsIcon} boxSize={7} />
+        </Button>
+      </Tooltip>
     </Flex>
   );
 };
