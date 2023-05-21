@@ -1,5 +1,7 @@
 # DayDash
-Dashboard application designed to be an alternative to default starting page in browser
+Dashboard application designed to be an alternative to default starting page in browser.
+
+![Screenshot of Daydash on a desktop browser](https://i.imgur.com/Fh24aVs.png "DayDash Screenshot")
  
 ## Tech stack
 React, NextJS, TypeScript, ChakraUI, Zustand, React Query
