@@ -74,7 +74,7 @@ export default function Home() {
           {isDesktop ? (
             <Flex
               w={{ lg: '60rem', xl: '68rem' }}
-              h={{ lg: "43rem", '2xl': "47rem" }}
+              h={{ lg: '43rem', '2xl': '47rem' }}
               justify="center"
               alignItems="center">
               {desktopView === 'loading' && <Loader />}
@@ -114,7 +114,6 @@ export default function Home() {
           )}
         </Flex>
       </Flex>
-
       {name && city && isDesktop && (
         <SideButtons
           desktopView={desktopView}
@@ -123,12 +122,7 @@ export default function Home() {
             onSettingsPanelOpen();
             setIsDrawerContentVisible(true);
           }}
-        />
-      )}
-      {showSnakeButton && name && city && (
-        <SnakeButton
-          desktopView={desktopView}
-          handleToggleView={handleViewChange}
+          showSnakeButton={showSnakeButton}
         />
       )}
       <Settings
