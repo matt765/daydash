@@ -7,6 +7,15 @@ import useSettingsStore from '@/store/settingsStore';
 import { useWeatherUtils } from './useWeatherUtils';
 import { fetchWeatherData } from '@/services/fetchWeatherData';
 
+export interface HourlyData {
+  time_epoch: number;
+  temp_c: number;
+  condition: {
+    icon: string;
+    text: string;
+    code: number;
+  };
+}
 export interface WeatherData {
   temp: string;
   desc: string;
@@ -15,7 +24,7 @@ export interface WeatherData {
   pressure: string;
   country: string;
   wind: string;
-  hourTemp: never[];
+  hourTemp: HourlyData[];
   icon: string;
   region: string;
 }

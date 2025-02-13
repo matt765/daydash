@@ -1,0 +1,13 @@
+Weather Icons License
+=====================
+
+Weather icons provided by OpenWeather.
+
+Source: https://openweathermap.org/  
+Copyright (c) OpenWeather Ltd.  
+Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)  
+License: https://creativecommons.org/licenses/by-sa/4.0/  
+
+No modifications have been made to the original icons.  
+
+This project is not affiliated with or endorsed by OpenWeather Ltd.

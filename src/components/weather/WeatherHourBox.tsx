@@ -1,5 +1,6 @@
 import { Flex, Text } from '@chakra-ui/react';
 import Image from 'next/image';
+import { useWeatherUtils } from '@/hooks/useWeatherUtils';
 
 export interface WeatherHourBoxProps {
   date?: string;
@@ -16,11 +17,8 @@ export const WeatherHourBox = ({
   icon,
   temp,
 }: WeatherHourBoxProps) => {
-  const getWeatherImage = (id?: string) => {
-    if (id) {
-      return require(`../../assets/images/weather/${id}@2x.png`);
-    }
-  };
+  const { getWeatherImage } = useWeatherUtils();
+  const iconUrl = icon ? getWeatherImage(icon) : '/images/weather/01d@2x.png';
 
   return (
     <Flex
@@ -28,18 +26,13 @@ export const WeatherHourBox = ({
       justify="center"
       alignItems="center"
       bg="weatherBoxBg"
-      w={{ base: "3.7rem", sm: "4rem"}}
+      w={{ base: '3.7rem', sm: '4rem' }}
       h="6.25rem"
       _hover={{ bg: 'weatherBoxHoverBg' }}
       transition="0.1s">
       <Text variant="weatherBoxDate">{date}</Text>
       <Text variant="weatherBoxDate">{hour}:00</Text>
-      <Image
-        src={getWeatherImage(icon)}
-        alt="Weather Icon"
-        width={25}
-        height={25}
-      />
+      <Image src={iconUrl} alt="Weather Icon" width={25} height={25} />
       <Text variant="weatherBoxValue">{temp}°</Text>
     </Flex>
   );

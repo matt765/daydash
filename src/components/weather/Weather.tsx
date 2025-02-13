@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { WeatherHourBox, WeatherHourBoxProps } from './WeatherHourBox';
 import { WeatherParameter } from './WeatherParameter';
-import { useWeatherData } from '@/hooks/useWeatherData';
+import { HourlyData, useWeatherData } from '@/hooks/useWeatherData';
 import { useWeatherUtils } from '@/hooks/useWeatherUtils';
 import { useUserStore } from '../../store/userStore';
 import useSettingsStore from '@/store/settingsStore';
@@ -186,15 +186,17 @@ export const Weather = () => {
         maxW={{ base: '22rem', lg: 'unset' }}>
         {weatherData?.hourTemp
           ?.slice(0, weatherBoxCount)
-          .map((item: WeatherHourBoxProps, index) => (
+          .map((item: HourlyData, index) => (
             <WeatherHourBox
-              date={getCurrentDate(item?.dt)}
-              hour={getHour(item?.dt)}
-              icon={item?.weather?.[0].icon}
+              date={getCurrentDate(item.time_epoch)}
+              hour={getHour(item.time_epoch)}
+              icon={item.condition.icon}
               temp={
-                useFahrenheit ? toFahrenheit(item?.temp) : toCelsius(item?.temp)
+                useFahrenheit
+                  ? toFahrenheit(item.temp_c.toString(), 'celsius')
+                  : Math.round(item.temp_c).toString()
               }
-              key={`${item.hour}-${index}`}
+              key={`${item.time_epoch}-${index}`}
             />
           ))}
       </Grid>

@@ -1,4 +1,5 @@
 import { WeatherData } from '@/hooks/useWeatherData';
+import { getCountryCode } from '@/utils/countryMapping';
 
 export const fetchWeatherData = async (
   cityValue: string
@@ -10,33 +11,27 @@ export const fetchWeatherData = async (
     }
     const data = await response.json();
 
-    if (!data.coord) {
-      throw new Error('City not found');
-    }
-
-    const { lat, lon } = data.coord;
-    const responseOneCall = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
-
-    if (!responseOneCall.ok) {
-      throw new Error('City not found');
-    }
-    const oneCallData = await responseOneCall.json();
-
-    const toCelsius = (value: number): string => {
-      return Math.round(value - 273.15).toString();
-    };
-
     const weatherData: WeatherData = {
-      temp: toCelsius(oneCallData.current.temp),
-      desc: oneCallData.current.weather[0].description,
-      humidity: oneCallData.current.humidity.toString(),
-      rain: oneCallData.current.feels_like.toString(),
-      pressure: oneCallData.current.pressure.toString(),
-      country: data.sys.country,
-      wind: (oneCallData.hourly[0].wind_speed * 3.6).toFixed(1),
-      hourTemp: oneCallData.hourly,
-      icon: oneCallData.current.weather[0].icon,
-      region: oneCallData.timezone,
+      // Use the current temperature (already in Celsius) and round it
+      temp: Math.round(data.current.temp_c).toString(),
+      // Weather description from the current condition
+      desc: data.current.condition.text,
+      // Convert humidity to string
+      humidity: data.current.humidity.toString(),
+      // Use "feels like" (in °C) for the "Feels like" parameter
+      rain: Math.round(data.current.feelslike_c).toString(),
+      // Pressure in millibars
+      pressure: data.current.pressure_mb.toString(),
+      // Country comes from the location object
+      country: getCountryCode(data.location.country),
+      // Wind speed in kph (as a string with one decimal)
+      wind: data.current.wind_kph.toFixed(1),
+      // Hourly forecast array from the first forecast day
+      hourTemp: data.forecast.forecastday[0].hour,
+      // Icon URL from the current condition (if needed, prepend "https:" if required)
+      icon: data.current.condition.icon,
+      // Use the timezone id (or region) from the location object
+      region: data.location.tz_id || data.location.region,
     };
     return weatherData;
   } catch (error) {
