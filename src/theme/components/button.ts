@@ -40,7 +40,7 @@ export const Button: ComponentStyleConfig = {
       borderStyle: 'solid',
       borderWidth: '1px',
       borderRadius: '10px',
-      fontSize: "0.9rem",
+      fontSize: { base: '0.8rem', '3xl': '0.9rem' },
       paddingBottom: "0.1rem",
       _hover: {
         bg: 'transparentButtonHoverBg',

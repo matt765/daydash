@@ -54,17 +54,18 @@ export const PlannerItem = ({
       _hover={{
         bg: item.isCrossed ? 'plannerItemCrossedHoverBg' : 'plannerItemHoverBg',
       }}
-      h={{ base: 'auto', xl: '3rem' }}
-      minH="3rem"
+      h={{ base: 'auto', xl: '2.4rem', '3xl': '3rem' }}
+      minH={{ base: 'auto', xl: '2rem', '3xl': '3rem' }}
       py="0.5rem"
       pr={{ base: '1rem', xl: '2rem' }}
       pl="1.3rem"
       onClick={!isEditing ? toggleCrossed : undefined}
-      mb="0.75rem"
+      mb={{ base: 'auto', xl: '0.55rem', '3xl': '0.75rem' }}
       transition="0.2s">
       <Flex
         w="100%"
         pr="2rem"
+        alignItems="center"
         sx={{
           '& input': {
             boxShadow: 'none !important',
@@ -78,7 +79,6 @@ export const PlannerItem = ({
           color={item.isCrossed ? 'rgba(73,194,79,0.3)' : 'rgba(73,194,79,0.9)'}
           justify="center"
           alignItems="flex-start"
-          pt="0.25rem"
           h="100%">
           ✓
         </Flex>
@@ -90,7 +90,7 @@ export const PlannerItem = ({
             autoFocus
             maxLength={60}
             w="100%"
-            fontSize="1.25rem"
+            fontSize={{ base: '1rem', '3xl': '1.25rem' }}
             fontWeight="400"
             color="primaryText"
             ml="-1rem"
@@ -101,6 +101,8 @@ export const PlannerItem = ({
             variant="plannerItem"
             color={item.isCrossed ? 'disabledText' : 'primaryText'}
             h="100%"
+            display="flex"
+            alignItems="center"
             textDecoration={item.isCrossed ? 'line-through' : 'none'}>
             {item.text}
           </Text>
@@ -151,6 +153,7 @@ export const PlannerItem = ({
                     fill: 'lightgreen',
                   },
                 }}
+                h="100%"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleSave(null);
@@ -161,6 +164,10 @@ export const PlannerItem = ({
           ) : (
             <Flex
               sx={{
+                '& svg': {
+                  width: { base: '20px', '3xl': '20px' },
+                  height: { base: '20px', '3xl': '20px' },
+                },
                 '&:hover': {
                   '& svg': {
                     color: 'plannerItemIconHover',
@@ -185,6 +192,10 @@ export const PlannerItem = ({
                 color: 'plannerItemIconHover',
                 fill: 'plannerItemIconHover',
               },
+            },
+            '& svg': {
+              width: { base: '20px', '3xl': '20px' },
+              height: { base: '20px', '3xl': '20px' },
             },
           }}>
           <Icon as={DeleteIcon} boxSize={7} transition="0.2s" />

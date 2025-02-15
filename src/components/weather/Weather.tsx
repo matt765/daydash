@@ -83,23 +83,34 @@ export const Weather = () => {
       </Flex>
     );
 
-  const weatherBoxCount = isTablet ? 8 : 10;
+  const weatherBoxCount = isTablet ? 10 : 10;
 
   return (
-    <Flex direction="column" gap="1rem" w="100%" position="relative" zIndex="1">
+    <Flex
+      direction="column"
+      gap="1rem"
+      w="100%"
+   
+      position="relative"
+      zIndex="1"
+      justifyContent="space-between">
       <Flex
         w="100%"
-        mt="0.6rem"
+        mt={{ base: '0rem', '3xl': '0.6rem' }}
         mb="1rem"
-        pl={{ base: 'unset', lg: '1rem', '2xl': 'unset' }}
-        justify={{ base: 'center', lg: 'unset' }}>
+        pl={{ base: 'unset', lg: '0rem', '2xl': 'unset' }}
+        justify={{ base: 'center', xl: 'unset' }}>
         <Flex
           direction="column"
           w="50%"
           maxW="50%"
           justify="center"
           alignItems="center">
-          <Flex maxW="13rem" overflow="hidden" whiteSpace="nowrap">
+          <Flex
+            maxW="13rem"
+            overflow="hidden"
+            whiteSpace="nowrap"
+            pt={{ base: '0.5rem', '3xl': '0rem' }}>
             <Flex
               sx={{
                 '& img': {
@@ -118,14 +129,21 @@ export const Weather = () => {
                 height={80}
               />
             </Flex>
-            <Flex direction="column" h="6rem" maxH="7rem">
+            <Flex
+              direction="column"
+              h="6rem"
+              maxH="7rem"
+              mb={{ base: '-0.7rem', '3xl': '0rem' }}>
               <Text variant="weatherTemperature" mb="-0.3rem">
                 {useFahrenheit
                   ? toFahrenheit(weatherData?.temp, 'celsius')
                   : weatherData?.temp}
                 °
               </Text>
-              <Text variant="weatherDesc" mb="1rem">
+              <Text
+                variant="weatherDesc"
+                mb="1rem"
+                mt={{ base: '-0.3rem', '3xl': '0rem' }}>
                 {weatherData?.desc.split(' ').slice(0, 2).join(' ')}
               </Text>
             </Flex>
@@ -136,18 +154,30 @@ export const Weather = () => {
             gridTemplateColumns="min-content auto"
             gap="0.5rem"
             alignItems="center"
-            mt={storeCity.length > 16 ? '0.5rem' : '0rem'}>
+            mt={
+              storeCity.length > 16
+                ? { base: '0rem', sm: '0.5rem', '3xl': '0.5rem' }
+                : { base: '0rem', sm: '-0.5rem', '3xl': '0rem' }
+            }>
             <Text
               variant="weatherCity"
               mr="0.1rem"
               whiteSpace="pre"
-              fontSize={storeCity.length > 16 ? '1.5rem' : '2rem'}
+              fontSize={
+                storeCity.length > 16
+                  ? { base: '1.2rem', sm: '1.3rem', '3xl': '1.5rem' }
+                  : { base: '1.5rem', sm: '1.6rem', '3xl': '2rem' }
+              }
               display="inline">
               {storeCity.charAt(0).toUpperCase() + storeCity.slice(1)},
             </Text>
             <Text
               variant="weatherCountry"
-              fontSize={storeCity.length > 16 ? '1.7rem' : '2rem'}>
+              fontSize={
+                storeCity.length > 16
+                  ? { base: '1.2rem', sm: '1.3rem', '3xl': '1.5rem' }
+                  : { base: '1.5rem', sm: '1.8rem', '3xl': '2rem' }
+              }>
               {weatherData?.country}
             </Text>
           </Flex>
@@ -159,12 +189,13 @@ export const Weather = () => {
           w="46%"
           ml="0.3rem"
           maxW="50%"
-          h="100%"
-          minH="9rem"
+          h={{ base: '2rem', '3xl': '100%' }}
+          minH={{ base: '6rem', '3xl': '9rem' }}
           alignItems="center"
-          mt="0.5rem"
+          mt={{ base: '1.5rem', '3xl': '0.5rem' }}
           pl={{ base: 'unset', lg: '1rem', '2xl': 'unset' }}
-          display={{ base: 'none', lg: 'grid' }}>
+          mr={{ base: '2rem', '3xl': '1rem' }}
+          display={{ base: 'none', xl: 'grid' }}>
           {weatherParameters.map((item, index) => (
             <GridItem key={`${item.title}-${index}`}>
               <WeatherParameter
@@ -182,7 +213,7 @@ export const Weather = () => {
         pl={{ lg: '0.5rem', xl: 'unset' }}
         gap="0.5rem"
         mt="0.3rem"
-        templateColumns={{ base: 'repeat(5, 1fr)', lg: 'repeat(10, 1fr)' }}
+        templateColumns={{ base: 'repeat(5, 1fr)', xl: 'repeat(10, 1fr)' }}
         maxW={{ base: '22rem', lg: 'unset' }}>
         {weatherData?.hourTemp
           ?.slice(0, weatherBoxCount)
@@ -212,7 +243,7 @@ export const Weather = () => {
         justifyContent="center"
         pl="1rem"
         mt="1.5rem"
-        display={{ base: 'grid', lg: 'none' }}>
+        display={{ base: 'grid', xl: 'none' }}>
         {weatherParameters.map((item, index) => (
           <GridItem key={`${item.title}-${index}`}>
             <WeatherParameter

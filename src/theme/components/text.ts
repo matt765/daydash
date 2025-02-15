@@ -4,24 +4,24 @@ export const Text: ComponentStyleConfig = {
   variants: {
     // Greeting
     welcomeTitle: {
-      fontSize: { base: "3.2rem", lg: "3rem"},
+      fontSize: { base: '2.5rem', '3xl': '3rem' },
       fontWeight: 400,
       color: 'primaryText',
-      lineHeight: { base: "4rem", lg: "3.5rem"},
+      lineHeight: { base: '2.8rem', '3xl': '3.5rem' },
     },
     welcomePrimary: {
-      fontSize: { base: "1.4rem", lg: "1rem"},
+      fontSize: { base: '0.85rem', '3xl': '1rem' },
       fontWeight: 400,
       color: 'welcomePrimaryText',
     },
     welcomeSecondary: {
-      fontSize: { base: "1.4rem", lg: "1rem"},
+      fontSize: { base: '0.85rem', '3xl': '1rem' },
       fontWeight: 400,
       color: 'welcomeSecondaryText',
     },
     // Weather forecast
     weatherCity: {
-      fontSize: '2rem',
+      fontSize:  { base: '1.5rem', '3xl': '2rem' },
       fontWeight: 400,
       color: 'primaryText',
     },
@@ -31,34 +31,34 @@ export const Text: ComponentStyleConfig = {
       color: 'weatherCountryText',
     },
     weatherTemperature: {
-      fontSize: '3rem',
+      fontSize: { base: '2.5rem', '3xl': '3rem' },
       fontWeight: 400,
       color: 'primaryText',
     },
     weatherDesc: {
-      fontSize: '1rem',
+      fontSize: { base: '0.9rem', '3xl': '1rem' },
       fontWeight: 400,
       color: 'weatherDescText',
     },
     weatherParameterTitle: {
-      fontSize: '1rem',
+      fontSize:  { base: '0.9rem', '3xl': '1rem' },
       fontWeight: 400,
       color: 'primaryText',
     },
     weatherParameterValue: {
-      fontSize: '1.25rem',
+      fontSize: { base: '1rem', '3xl': '1.25rem' },
       fontWeight: 400,
       color: 'primaryText',
       letterSpacing: '0.5px',
     },
     weatherBoxDate: {
-      fontSize: '0.75rem',
+      fontSize: { base: '0.6rem', '3xl': '0.75rem' },
       fontWeight: 400,
       color: 'primaryText',
-      lineHeight: '1.25rem',
+      lineHeight: { base: '1rem', '3xl': '1.25rem' },
     },
     weatherBoxValue: {
-      fontSize: '0.75rem',
+      fontSize: { base: '0.6rem', '3xl': '0.75rem' },
       fontWeight: 400,
       color: 'primaryText',
       lineHeight: '1.25rem',
@@ -76,12 +76,13 @@ export const Text: ComponentStyleConfig = {
       color: 'primaryText',
     },
     plannerItem: {
-      fontSize: '1.25rem',
+      fontSize:  { base: '1rem', '3xl': '1.25rem' },
       fontWeight: 400,
       color: 'primaryText',
+      lineHeight:  { base: '1.8rem', '3xl': '1.25rem' },
     },
     plannerItemCrossed: {
-      fontSize: '1.25rem',
+      fontSize:  { base: '1rem', '3xl': '1.25rem' },
       fontWeight: 400,
       color: 'secondaryText',
     },
@@ -101,7 +102,7 @@ export const Text: ComponentStyleConfig = {
     dataModalSubtitle: {
       fontSize: '1.1rem',
       fontWeight: 500,
-      color: 'secondaryText',      
+      color: 'secondaryText',
     },
   },
 };

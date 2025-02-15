@@ -20,22 +20,19 @@ export const SideButtons = ({
   showSnakeButton,
 }: SideButtonsProps) => {
   const handleViewChange = (newView: ViewType) => {
-    handleToggleView(
-      desktopView === newView ? 'dashboard' : newView,
-      'desktop'
-    );
+    handleToggleView(newView, 'desktop');
   };
 
   return (
     <Flex
       position="fixed"
-      left="1rem"
+      left="0.5rem"
       top="0"
       height="100%"
       direction="column"
       justify="center"
-      gap="0.7rem"
-      display={{ base: 'none', xl: 'flex' }}
+      gap="0.5rem"
+      display={{ base: 'none', lg: 'flex' }}
       sx={{
         '& svg': {
           width: '30px',
@@ -43,7 +40,7 @@ export const SideButtons = ({
         },
       }}>
       <Tooltip
-        label={desktopView === 'dashboard' ? 'Current view' : 'Show dashboard'}
+        label="Dashboard"
         fontSize="md"
         placement="right"
         px="0.7rem"
@@ -53,14 +50,17 @@ export const SideButtons = ({
         bg="sideButtonBg">
         <Button
           variant="round"
-          width="4rem"
-          height="4rem"
+          width={{ base: '3.5rem', '3xl': '4rem' }}
+          height={{ base: '3.5rem', '3xl': '4rem' }}
           onClick={() => handleViewChange('dashboard')}
           sx={{
             '& svg': {
-              fill: desktopView === 'dashboard' ? 'mainColor' : 'rgb(255,255,255,0.6)',
-              width: '27px',
-              height: '27px',
+              fill:
+                desktopView === 'dashboard'
+                  ? 'mainColor'
+                  : 'rgb(255,255,255,0.6)',
+              width: { base: '22px', '3xl': '25px' },
+              height: { base: '22px', '3xl': '25px' },
             },
           }}>
           <Icon as={HomeIcon} boxSize={7} />
@@ -68,7 +68,7 @@ export const SideButtons = ({
       </Tooltip>
 
       <Tooltip
-        label={desktopView === 'notepad' ? 'Current view' : 'Show notepad'}
+        label="Notepad"
         fontSize="md"
         placement="right"
         px="0.7rem"
@@ -78,14 +78,17 @@ export const SideButtons = ({
         bg="sideButtonBg">
         <Button
           variant="round"
-          width="4rem"
-          height="4rem"
+          width={{ base: '3.5rem', '3xl': '4rem' }}
+          height={{ base: '3.5rem', '3xl': '4rem' }}
           onClick={() => handleViewChange('notepad')}
           sx={{
             '& svg': {
-              fill: desktopView === 'notepad' ? 'mainColor' : 'rgb(255,255,255,0.6)',
-              width: '22px',
-              height: '22px',
+              fill:
+                desktopView === 'notepad'
+                  ? 'mainColor'
+                  : 'rgb(255,255,255,0.6)',
+              width: { base: '19px', '3xl': '22px' },
+              height: { base: '19px', '3xl': '22px' },
             },
           }}>
           <Icon as={NotepadEditIcon} boxSize={7} />
@@ -94,7 +97,7 @@ export const SideButtons = ({
 
       {showSnakeButton && (
         <Tooltip
-          label={desktopView === 'snake' ? 'Current view' : 'Show snake game'}
+          label="Snake"
           fontSize="md"
           placement="right"
           px="0.7rem"
@@ -104,21 +107,23 @@ export const SideButtons = ({
           bg="sideButtonBg">
           <Button
             variant="round"
-            width="4rem"
-            height="4rem"
+            width={{ base: '3.5rem', '3xl': '4rem' }}
+            height={{ base: '3.5rem', '3xl': '4rem' }}
             onClick={() => handleViewChange('snake')}
             sx={{
               '& svg': {
-                fill: desktopView === 'snake' ? 'mainColor' : 'rgb(255,255,255,0.6)',
-                width: '20px',
-                height: '20px',
+                fill:
+                  desktopView === 'snake'
+                    ? 'mainColor'
+                    : 'rgb(255,255,255,0.6)',
+                width: { base: '18px', '3xl': '22px' },
+                height: { base: '18px', '3xl': '22px' },
               },
             }}>
             <Icon as={SnakeIcon} boxSize={7} />
           </Button>
         </Tooltip>
       )}
-
       <Tooltip
         label="Settings"
         fontSize="md"
@@ -130,14 +135,14 @@ export const SideButtons = ({
         bg="sideButtonBg">
         <Button
           variant="round"
-          width="4rem"
-          height="4rem"
+          width={{ base: '3.5rem', '3xl': '4rem' }}
+          height={{ base: '3.5rem', '3xl': '4rem' }}
           onClick={openDrawer}
           sx={{
             '& svg': {
               stroke: 'secondaryText',
-              width: '22px',
-              height: '22px',
+              width: { base: '25px', '3xl': '27px' },
+              height: { base: '25px', '3xl': '27px' },
             },
           }}>
           <Icon as={SettingsIcon} boxSize={7} />

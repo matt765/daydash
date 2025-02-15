@@ -18,7 +18,7 @@ export const NotepadTextArea = ({
   return (
     <Textarea
       ref={textAreaRef}
-      w="100%"
+      w={{ base: '-0.3rem', '3xl': '0' }}
       h="100%"
       borderWidth="1px !important"
       borderStyle="solid"
@@ -28,7 +28,7 @@ export const NotepadTextArea = ({
       onClick={handleBoxClick}
       onChange={handleTextChange}
       p={6}
-      fontSize="xl"   
+      fontSize={{ base: '1rem', '3xl': '1.2rem' }} 
       color="primaryText"
       outline="none !important"
       _focusVisible={{ outline: 'none' }}

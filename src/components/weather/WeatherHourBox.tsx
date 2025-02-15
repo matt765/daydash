@@ -24,10 +24,11 @@ export const WeatherHourBox = ({
     <Flex
       direction="column"
       justify="center"
+      borderRadius="6px"
       alignItems="center"
       bg="weatherBoxBg"
-      w={{ base: '3.7rem', sm: '4rem' }}
-      h="6.25rem"
+      w={{ base: '3.7rem', sm: '3.2rem', '3xl': '4rem' }}
+      h={{ base: '5.2rem', '3xl': '6.25rem' }}
       _hover={{ bg: 'weatherBoxHoverBg' }}
       transition="0.1s">
       <Text variant="weatherBoxDate">{date}</Text>

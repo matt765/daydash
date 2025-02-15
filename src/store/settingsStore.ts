@@ -48,7 +48,7 @@ export const useSettingsStore = create<SettingsState>((set) => {
       setAndStore('welcomeSectionContent', value),
     sliderValue: loadFromLocalStorage('sliderValue', 40),
     setSliderValue: (value: number) => setAndStore('sliderValue', value),
-    showSnakeButton: loadFromLocalStorage('showSnakeButton', false),
+    showSnakeButton: loadFromLocalStorage('showSnakeButton', true),
     setShowSnakeButton: (value: boolean) =>
       setAndStore('showSnakeButton', value),
     useFahrenheit: loadFromLocalStorage('useFahrenheit', false),

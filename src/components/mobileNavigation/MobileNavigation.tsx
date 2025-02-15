@@ -106,7 +106,7 @@ export const MobileNavigation = ({
 }: MobileNavigationProps) => {
   return (
     <Flex
-      display={{ base: 'flex', lg: 'none' }}
+      display={{ base: 'flex', xl: 'none' }}
       w="100%"
       h="5rem"
       position="fixed"

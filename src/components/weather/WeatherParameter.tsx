@@ -23,8 +23,16 @@ export const WeatherParameter = ({
       <Icon as={icon} />
     </Flex>
     <Flex direction="column">
-      <Text variant="weatherParameterTitle">{title}</Text>
-      <Text variant="weatherParameterValue">{value}</Text>
+      <Text
+        variant="weatherParameterTitle"
+        fontSize={{ base: '0.9rem', '3xl': '1rem' }}>
+        {title}
+      </Text>
+      <Text
+        variant="weatherParameterValue"
+        fontSize={{ base: '0.9rem', '3xl': '1rem' }}>
+        {value}
+      </Text>
     </Flex>
   </Flex>
 );

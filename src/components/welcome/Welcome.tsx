@@ -28,17 +28,19 @@ export const Welcome = () => {
   }
 
   return (
-    <Box h="100%" w="100%">
+    <Box h="100%" w="100%" display="flex" alignItems="center">
       <Flex
         direction="column"
         paddingLeft="1rem"
-        pt={{ base: '3rem', md: '7rem', lg: '1.2rem' }}
-        w="100%"
-        h="100%"
+        pt={{ base: '3rem', md: '7rem', lg: '0.8rem', '3xl': '1.2rem' }}
+        w="20rem"
+        height={{ base: 'unset', lg: '16rem', xl: '100%', '3xl': '100%' }}
+        minHeight="16rem"
         position="relative"
+        ml="-0.4rem"
         zIndex="1"
-        overflow={{ base: 'unset', lg: 'hidden' }}
-        gap={{ base: '1.5rem', md: '0.5rem' }}
+        overflow="visible"
+        gap={{ base: '0.3rem', '3xl': '0.5rem' }}
         maxW="38rem">
         <Text
           variant="welcomeTitle"
@@ -57,6 +59,7 @@ export const Welcome = () => {
         <Flex
           mt="-0.5rem"
           mb="0.3rem"
+          whiteSpace="nowrap"
           direction={{ base: 'column', md: 'row' }}>
           <Text variant="welcomeSecondary" mr="0.3rem">
             Today is
@@ -99,7 +102,10 @@ export const Welcome = () => {
                   <Loader isSmall />
                 </Flex>
               ) : (
-                <Text variant="welcomeSecondary" w="100%" mb={{ base: "1.5rem", lg: "unset"}}>
+                <Text
+                  variant="welcomeSecondary"
+                  w="100%"
+                  mb={{ base: '1.5rem', lg: 'unset' }}>
                   {fact}
                 </Text>
               )}

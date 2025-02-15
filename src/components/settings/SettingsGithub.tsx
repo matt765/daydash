@@ -16,7 +16,7 @@ export const SettingsGithub = () => {
         height: '3.5rem',
         width: '100%',
         position: 'fixed',
-        bottom: 0,     
+        bottom: 0,
         borderWidth: '1px 0 0 0',
         borderStyle: 'solid',
         borderColor: 'rgb(255,255,255,0.2)',
@@ -50,7 +50,9 @@ export const SettingsGithub = () => {
           }}>
           <Icon as={GithubIcon} boxSize={7} transition="0.5s" />
         </Box>
-        <Box>GitHub Repository</Box>
+        <Box fontSize={{ base: '0.9rem', '3xl': '1rem' }}>
+          GitHub Repository
+        </Box>
       </Flex>
     </Link>
   );

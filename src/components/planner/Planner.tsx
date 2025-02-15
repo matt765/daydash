@@ -29,18 +29,27 @@ export const Planner = () => {
     '(min-width: 992px) and (max-width: 1632px)'
   );
 
-  const numberOfItems = isLaptop ? 5 : 6;
+  const numberOfItems = isLaptop ? 6 : 6;
 
   return (
     <>
       <Flex
         direction="column"
-        w="100%"
-        pr="1rem"
+        w={{ base: '100%', xl: '100%' }}
+        justifyContent={{ base: 'flex-start', md: 'center', xl: 'unset' }}
+        alignItems="center"
+        pr={{ base: '0.5rem', '3xl': '1rem' }}
         pl={{ base: 'unset', lg: '0.3rem' }}
         position="relative"
         overflow={plannerItems.length < numberOfItems ? 'visible' : 'auto'}
-        zIndex="1">
+        zIndex="1"
+        ml={{ base: '-0.3rem', '3xl': '0' }}
+        mt={{ base: '-0.3rem', '3xl': '0' }}
+        sx={{
+          form: {
+            width: { base: '100%', md: '70vw', xl: '100%' },
+          },
+        }}>
         <PlannerHeader
           inputValue={inputValue}
           setInputValue={setInputValue}
@@ -53,7 +62,8 @@ export const Planner = () => {
             {(provided) => (
               <Flex
                 direction="column"
-                w="100%"
+                gap={{ base: '0.5rem', xl: '0' }}
+                w={{ base: '100%', md: '70vw', xl: '100%' }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}>
                 {plannerItems.map((item, index) => (

@@ -10,7 +10,7 @@ export const SettingsTitle = ({ title }: SettingsTitleProps) => {
       sx={{
         color: 'rgb(255,255,255,0.5)',
         textTransform: 'uppercase',
-        fontSize: '0.8rem',
+        fontSize: { base: '0.7rem', '3xl': '0.8rem' },
         fontFamily: 'Quicksand',
         letterSpacing: '1px',
         paddingLeft: '0.5rem',

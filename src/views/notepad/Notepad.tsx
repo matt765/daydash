@@ -26,8 +26,8 @@ export const Notepad = () => {
   return (
     <>
       <ContentBox
-        w="100%"
-        h="100%"
+        w={{ base: '90vw', md: '50vw', 'xl': '100%' }}
+        h={{ base: '70vh', md: '70vh', 'xl': '100%' }}
         display="flex"
         flexDirection="column"
         bg={{ base: 'rgb(255,255,255,0)', lg: 'contentBg' }}

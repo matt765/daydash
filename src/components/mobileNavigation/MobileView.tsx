@@ -18,7 +18,9 @@ const WelcomeMobileView = () => (
     px={{ base: '5vw', sm: '10vw' }}
     bg="contentBg"
     overflow="auto"
-    display={{ base: 'flex', lg: 'none' }}
+    justifyContent="center"
+    alignItems={{ base: 'center', xl: 'center' }}
+    display={{ base: 'flex', xl: 'none' }}
     direction="column">
     <Welcome />
     <Flex w="100%" h="3rem" />
@@ -32,7 +34,7 @@ const WeatherMobileView = () => (
     p="1rem"
     bg="contentBg"
     justify="flex-start"
-    alignItems={{ base: 'flex-start', md: 'center' }}
+    alignItems={{ base: 'flex-start', xl: 'center' }}
     mb={{ base: '0', md: '0rem' }}
     overflow="auto"
     pb="3rem"
@@ -55,7 +57,15 @@ const PlannerMobileView = () => (
 );
 
 const NotepadMobileView = () => (
-  <Flex w="100%" h="100%" p="1.5rem" bg="contentBg" pb="5.5rem">
+  <Flex
+    w="100%"
+    h="100%"
+    p="1.5rem"
+    bg="contentBg"
+    pb="5.5rem"
+    justify="center"
+    alignItems="center"
+    pt="2rem">
     <Notepad />
   </Flex>
 );

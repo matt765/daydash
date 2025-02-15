@@ -51,7 +51,7 @@ export const SettingsSectionRow = ({
           }}>
           <Box
             sx={{
-              fontSize: '1rem',
+              fontSize: { base: '0.9rem', '3xl': '1rem' },
               color: 'rgb(255,255,255,0.9)',
             }}>
             {name}
@@ -78,18 +78,21 @@ export const SettingsSectionRow = ({
             flexDirection: 'column',
             height: '2.5rem',
             marginBottom: '0.7rem',
+            fontSize: { base: '0.7rem', '3xl': '0.8rem' },
           }}>
           {name && (
             <Box
               sx={{
-                fontSize: '1rem',
+                fontSize: { base: '0.9rem', '3xl': '1rem' },
                 color: 'rgb(255,255,255,0.9)',
               }}>
               {name}
             </Box>
           )}
           <RadioGroup
-            sx={{ marginTop: '0rem' }}
+            sx={{
+              marginTop: '0rem',
+            }}
             onChange={(value) => handleChange(value)}
             value={radioValue}>
             <Flex direction="row" marginBottom="1rem" gap="1rem">
@@ -114,8 +117,11 @@ export const SettingsSectionRow = ({
                         borderRadius: '50%',
                         background: 'settingsRadioBefore',
                       },
+                      span: {},
                     }}>
-                    {option.label}
+                    <Flex fontSize={{ base: '0.9rem', '3xl': '1rem' }}>
+                      {option.label}
+                    </Flex>
                   </Radio>
                 ))}
             </Flex>

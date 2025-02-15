@@ -26,8 +26,8 @@ export const PlannerHeader = ({
       <Flex
         w="100%"
         gap={{ base: '1rem', lg: '2rem' }}
-        mb="1.2rem"
-        h={{ base: 'auto', lg: '3rem' }}
+        mb={{ base: '1rem', lg: '0.85rem', '3xl': '1.2rem' }}
+        h={{ base: 'auto', lg: '2.5rem', '3xl': '3rem' }}
         alignItems="center">
         <Tooltip
           hasArrow
@@ -48,16 +48,19 @@ export const PlannerHeader = ({
             required
             borderRadius="12px"
             _hover={{ bg: 'plannerInputHoverBg' }}
-            _placeholder={{ color: 'secondaryText' }}
+            _placeholder={{ color: 'rgb(255,255,255,0.7)' }}
             _focusVisible={{ borderWidth: '0 !important' }}
             maxLength={80}
+            fontSize={{ base: '0.9rem', '3xl': '1rem' }}
           />
         </Tooltip>
         <Button
           variant="transparent"
-          flexBasis={{ base: '4rem', lg: '15rem' }}
+          flexBasis={{ base: '4rem', lg: '12rem', '3xl': '15rem' }}
           type="submit"
-          h={{ base: '3.5rem', md: '3rem' }}>
+          h={{ base: '2.5rem', '3xl': '3rem' }}
+          fontSize={{ base: '0.8rem', '3xl': '0.9rem' }}
+          >
           <Box display={{ base: 'none', lg: 'unset' }}>Add task</Box>
           <Box display={{ base: 'unset', lg: 'none' }} fontSize="2rem">
             +

@@ -81,7 +81,7 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
                 value={name}
                 onChange={(e) => setNameInput(e.target.value)}
                 required
-                maxLength={10}
+                maxLength={11}
               />
               <Input
                 placeholder="City"

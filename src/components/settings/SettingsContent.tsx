@@ -67,8 +67,9 @@ export const SettingsContent = ({
         <SettingsSection paddingBottom="1rem">
           <Box
             mb="0.2rem"
+            fontSize={{ base: '1.2rem', '3xl': '1.5rem' }}
             sx={{
-              fontSize: '1.4rem',
+          
               color: 'rgb(255,255,255,0.8)',
               paddingLeft: '0.3rem',
             }}>
@@ -87,6 +88,7 @@ export const SettingsContent = ({
                 borderColor="rgb(255,255,255,0.2)"
                 variant="outline"
                 backgroundColor="settingsBg"
+                fontSize={{ base: '0.9rem', '3xl': '1rem' }}
                 sx={{
                   '& option': {
                     backgroundColor: 'settingsBg',
@@ -109,9 +111,8 @@ export const SettingsContent = ({
                 py="0.4rem"
                 borderRadius="5px"
                 color="primaryText"
-                mb="0.3rem"               
-                bg="rgba(87, 96, 123, 0.3)"
-                >
+                mb="0.3rem"
+                bg="rgba(87, 96, 123, 0.3)">
                 <Flex
                   justify="center"
                   alignItems="center"
@@ -179,7 +180,7 @@ export const SettingsContent = ({
               onSwitchChange={handleUseFahrenheitChange}
             />
           </SettingsSection>
-          <SettingsSection  display={{ base: "none", lg: "flex"}}>
+          <SettingsSection display={{ base: 'none', lg: 'flex' }}>
             <SettingsTitle title="Planner" />
             <SettingsSectionRow
               name="Show full height"
@@ -188,7 +189,7 @@ export const SettingsContent = ({
               onSwitchChange={handleFullPlannerVisibleChange}
             />
           </SettingsSection>
-          <SettingsSection display={{ base: "none", lg: "flex"}}>
+          <SettingsSection display={{ base: 'none', lg: 'flex' }}>
             <SettingsTitle title="Snake game" />
             <SettingsSectionRow
               name="Show snake button"
@@ -196,20 +197,23 @@ export const SettingsContent = ({
               isChecked={showSnakeButton}
               onSwitchChange={handleShowSnakeButtonChange}
             />
-            <Flex fontSize="1rem" color="rgb(255,255,255,0.9)" pl="0.5rem">
+            <Flex
+              fontSize={{ base: '0.9rem', '3xl': '1rem' }}
+              color="rgb(255,255,255,0.9)"
+              pl="0.5rem">
               Snake speed
             </Flex>
             <Flex maxW="92%" pl="0.6rem">
               <SettingsSlider />
             </Flex>
           </SettingsSection>
-          <SettingsSection >
+          <SettingsSection>
             <SettingsTitle title="Application data" />
             <Flex gap="1rem" mb="1rem">
               <Button
                 variant="settingsUserData"
                 w="100%"
-                h="3rem"
+                h="3rem"              
                 onClick={() => {
                   onEditUserData();
                   onCloseSettings();
