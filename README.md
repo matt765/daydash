@@ -7,6 +7,9 @@ React, NextJS, TypeScript, ChakraUI, Zustand, React Query
 ## Live link
 [https://daydash.app/](https://daydash.app/)
 
+## Image Preview
+![App Screenshot](https://github.com/user-attachments/assets/8fa727e6-12e3-430b-9d7e-805c0381dde1)
+
 ##  Project Structure
 ```
 ├── src

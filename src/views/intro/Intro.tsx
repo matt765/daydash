@@ -100,11 +100,11 @@ export const Intro = ({ onDataSaved }: IntroProps) => {
             <Button
               type="submit"
               variant="solid"
-              bg="mainColor"
+              bg="coloredButtonBg"
               height="3rem"
               borderRadius="10px"
               w="14rem"
-              _hover={{ bg: 'mainColorHover' }}>
+              _hover={{ bg: 'coloredButtonHoverBg' }}>
               {isLoading || isSubmitting ? <Loader isSmall /> : 'Get started'}
             </Button>
           </Flex>

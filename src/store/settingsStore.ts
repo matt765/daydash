@@ -53,7 +53,7 @@ export const useSettingsStore = create<SettingsState>((set) => {
       setAndStore('showSnakeButton', value),
     useFahrenheit: loadFromLocalStorage('useFahrenheit', false),
     setUseFahrenheit: (value: boolean) => setAndStore('useFahrenheit', value),
-    theme: loadFromLocalStorage('theme', 'basicTheme'),
+    theme: loadFromLocalStorage('theme', 'extendedTheme'),
     setTheme: (value: string) => setAndStore('theme', value),
     isImageVisible: loadFromLocalStorage('isImageVisible', true),
     setIsImageVisible: (value: boolean) => setAndStore('isImageVisible', value),
@@ -63,7 +63,7 @@ export const useSettingsStore = create<SettingsState>((set) => {
       setAndStore('sliderValue', 40);
       setAndStore('showSnakeButton', false);
       setAndStore('useFahrenheit', false);
-      setAndStore('theme', 'basicTheme');
+      setAndStore('theme', 'extendedTheme');
       setAndStore('isImageVisible', true);
     },
   };

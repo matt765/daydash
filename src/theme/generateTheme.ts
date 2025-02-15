@@ -5,7 +5,7 @@ import { Text } from './components/text';
 
 export const generateTheme = (colors: any) => {
   const config: ThemeConfig = {
-    initialColorMode: 'light',
+    initialColorMode: 'dark',
     useSystemColorMode: false,
   };
 

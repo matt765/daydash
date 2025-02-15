@@ -18,7 +18,7 @@ export const NotepadTextArea = ({
   return (
     <Textarea
       ref={textAreaRef}
-      w={{ base: '-0.3rem', '3xl': '0' }}
+      w="100%"
       h="100%"
       borderWidth="1px !important"
       borderStyle="solid"

@@ -14,12 +14,12 @@ export default async function handler(
   }
 
   const response = await fetch(
-    `https://api.api-ninjas.com/v1/quotes?category=${category}`,
+    `https://api.api-ninjas.com/v1/quotes`,
     {
       method: 'GET',
       headers: {
         'X-Api-Key': apiKey,
-      } as HeadersInit, // Add type assertion here
+      } as HeadersInit, 
     }
   );
   const data = await response.json();

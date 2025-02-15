@@ -4,18 +4,18 @@ export const Text: ComponentStyleConfig = {
   variants: {
     // Greeting
     welcomeTitle: {
-      fontSize: { base: '2.5rem', '3xl': '3rem' },
+      fontSize: { base: '3.4rem', 'xl': '2.5rem', '3xl': '3rem' },
       fontWeight: 400,
       color: 'primaryText',
-      lineHeight: { base: '2.8rem', '3xl': '3.5rem' },
+      lineHeight: { base: '3.4rem', 'xl': '2.7rem', '3xl': '3.5rem' },
     },
     welcomePrimary: {
-      fontSize: { base: '0.85rem', '3xl': '1rem' },
+      fontSize: { base: '1.3rem', 'xl': '0.85rem', '3xl': '1rem' },
       fontWeight: 400,
       color: 'welcomePrimaryText',
     },
     welcomeSecondary: {
-      fontSize: { base: '0.85rem', '3xl': '1rem' },
+      fontSize: { base: '1.3rem', 'xl': '0.85rem', '3xl': '1rem' },
       fontWeight: 400,
       color: 'welcomeSecondaryText',
     },

@@ -34,7 +34,7 @@ export const Welcome = () => {
         paddingLeft="1rem"
         pt={{ base: '3rem', md: '7rem', lg: '0.8rem', '3xl': '1.2rem' }}
         w="20rem"
-        height={{ base: 'unset', lg: '16rem', xl: '100%', '3xl': '100%' }}
+        height={{ base: '30rem', lg: '16rem', xl: '100%', '3xl': '100%' }}
         minHeight="16rem"
         position="relative"
         ml="-0.4rem"
