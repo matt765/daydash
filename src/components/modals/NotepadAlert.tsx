@@ -6,6 +6,7 @@ import { ContentBox } from '@/theme/components/contentBox';
 interface NotepadAlertProps {
   handleModalClose: (save: boolean) => void;
 }
+
 export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -71,9 +72,9 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
               fontWeight="400"
               fontFamily="Quicksand">
               Please remember that both your task list and notepad data are
-              stored in the browser's local storage. This means that the data is
-              not accessible outside of your browser and will disappear if the
-              local storage is cleared.
+              stored in the browser&apos;s local storage. This means that the
+              data is not accessible outside of your browser and will disappear
+              if the local storage is cleared.
             </Text>
           </Flex>
           <Flex w="100%" justify="flex-end" mt="-0.5rem" gap="1rem">
@@ -84,6 +85,7 @@ export const NotepadAlert = ({ handleModalClose }: NotepadAlertProps) => {
               height="3rem"
               borderRadius="10px"
               w="10rem"
+              color="white"
               _hover={{ bg: 'coloredButtonHoverBg' }}>
               I understand
             </Button>

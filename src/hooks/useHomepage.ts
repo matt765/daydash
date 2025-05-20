@@ -3,6 +3,7 @@ import { useColorMode, useDisclosure } from '@chakra-ui/react';
 
 import { useUserStoreWrapper } from '@/store/userStore';
 import useSettingsStore from '@/store/settingsStore';
+import { useMobileViewStore } from '@/store/mobileViewStore';
 
 export type ViewType =
   | 'intro'
@@ -13,28 +14,23 @@ export type ViewType =
   | 'mobileHome'
   | 'mobileWeather'
   | 'mobilePlanner'
-  | 'notepad'
   | 'settings';
 
 export const useHomepage = () => {
   const { name, city, isMounted } = useUserStoreWrapper();
   const [view, _setView] = useState<ViewType>('loading');
-  const [mobileView, setMobileView] = useState<ViewType>('loading');
-  const [desktopView, setDesktopView] = useState<ViewType>('loading');
+  const { mobileView, setMobileView } = useMobileViewStore();
 
   const setView = (view: string) => {
     _setView(view as ViewType);
   };
+
   const handleViewChange = (
     view: ViewType,
     deviceType: 'mobile' | 'desktop'
   ) => {
-    if (deviceType === 'desktop') {
-      setDesktopView(view);
-      localStorage.setItem('currentDesktopView', view);
-    } else {
+    if (deviceType === 'mobile') {
       setMobileView(view);
-      localStorage.setItem('currentMobileView', view);
     }
   };
 
@@ -99,22 +95,17 @@ export const useHomepage = () => {
       const savedMobileView = localStorage.getItem(
         'currentMobileView'
       ) as ViewType;
-      const savedDesktopView = localStorage.getItem(
-        'currentDesktopView'
-      ) as ViewType;
 
       if (name && city && name !== '' && city !== '') {
-        setDesktopView(savedDesktopView || 'dashboard');
         setMobileView(savedMobileView || 'mobileHome');
       } else {
-        setDesktopView('intro');
         setMobileView('intro');
       }
 
       preloadImage(getBackgroundImage());
       setThemeAndColorModeReady(true);
     }
-  }, [isMounted, name, city, theme, colorMode]);
+  }, [isMounted, name, city, theme, colorMode, setMobileView]);
 
   const getBackgroundImage = () => {
     if (themeAndColorModeReady && isImageVisible) {
@@ -128,7 +119,7 @@ export const useHomepage = () => {
         return 'url(postap.png)';
       }
     }
-    return 'url(default.jpg)';
+    return 'url(fairytale.png)';
   };
 
   return {
@@ -156,6 +147,5 @@ export const useHomepage = () => {
     isBgImageLoaded,
     handleViewChange,
     mobileView,
-    desktopView,
   };
 };

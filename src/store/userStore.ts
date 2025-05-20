@@ -1,6 +1,7 @@
-import create from 'zustand';
-import { useEffect, useState } from 'react';
+'use client';
 
+import { create } from 'zustand';
+import { useEffect, useState } from 'react';
 import {
   loadFromLocalStorage,
   saveToLocalStorage,
@@ -11,6 +12,7 @@ type UserState = {
   city: string;
   setName: (name: string) => void;
   setCity: (city: string) => void;
+  clearUserData: () => void;
   isMounted: boolean;
   firstMount: boolean;
   setFirstMount: (value: boolean) => void;
@@ -27,13 +29,21 @@ export const useUserStore = create<UserState>((set) => ({
     saveToLocalStorage('userStoreCity', city);
     set({ city });
   },
+  clearUserData: () => {
+    localStorage.removeItem('userStoreName');
+    localStorage.removeItem('userStoreCity');
+    localStorage.removeItem('currentView');
+    localStorage.removeItem('currentMobileView');
+    set({ name: '', city: '' });
+  },
   isMounted: false,
   firstMount: true,
   setFirstMount: (value) => set({ firstMount: value }),
 }));
 
 export const useUserStoreWrapper = () => {
-  const { name, city, setName, setCity, isMounted } = useUserStore();
+  const { name, city, setName, setCity, clearUserData, isMounted } =
+    useUserStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -46,5 +56,5 @@ export const useUserStoreWrapper = () => {
     }
   }, [mounted, setName, setCity]);
 
-  return { name, city, setName, setCity, isMounted: mounted };
+  return { name, city, setName, setCity, clearUserData, isMounted: mounted };
 };

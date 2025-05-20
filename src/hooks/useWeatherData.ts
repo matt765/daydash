@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { HandIcon } from '@/assets/icons/HandIcon';
 import { HumidityIcon } from '@/assets/icons/HumidityIcon';
 import { PressureIcon } from '@/assets/icons/PressureIcon';
@@ -33,13 +33,12 @@ export const useWeatherData = (cityValue: string) => {
   const useFahrenheit = useSettingsStore((state) => state.useFahrenheit);
   const { toCelsius, toFahrenheit } = useWeatherUtils();
 
-  const queryResult = useQuery<WeatherData | null, Error>(
-    ['weatherData', cityValue],
-    () => fetchWeatherData(cityValue),
-    {
-      staleTime: Infinity,
-    }
-  );
+  const queryResult = useQuery({
+    queryKey: ['weatherData', cityValue],
+    queryFn: () => fetchWeatherData(cityValue),
+    staleTime: Infinity,
+  });
+
   if (!queryResult.data) {
     return {
       data: null,

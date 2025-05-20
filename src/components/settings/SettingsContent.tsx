@@ -103,7 +103,7 @@ export const SettingsContent = ({
                 <option value="light_extendedTheme">Post-apo</option>
                 <option value="dark_extendedTheme">Fairytale</option>
               </Select>
-              <Tooltip
+              {/* <Tooltip
                 label="Remove background"
                 fontSize="md"
                 placement="top-start"
@@ -135,7 +135,7 @@ export const SettingsContent = ({
                   }}>
                   <Icon as={PictureIcon} boxSize={5} />
                 </Flex>
-              </Tooltip>
+              </Tooltip> */}
               <Flex
                 w="10%"
                 justify="center"
@@ -180,7 +180,7 @@ export const SettingsContent = ({
               onSwitchChange={handleUseFahrenheitChange}
             />
           </SettingsSection>
-          <SettingsSection display={{ base: 'none', lg: 'flex' }}>
+          <SettingsSection display={{ base: 'none', xl: 'flex' }}>
             <SettingsTitle title="Planner" />
             <SettingsSectionRow
               name="Show full height"
@@ -189,7 +189,7 @@ export const SettingsContent = ({
               onSwitchChange={handleFullPlannerVisibleChange}
             />
           </SettingsSection>
-          <SettingsSection display={{ base: 'none', lg: 'flex' }}>
+          <SettingsSection display={{ base: 'none', xl: 'flex' }}>
             <SettingsTitle title="Snake game" />
             <SettingsSectionRow
               name="Show snake button"

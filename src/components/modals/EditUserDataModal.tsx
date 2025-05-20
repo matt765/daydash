@@ -3,7 +3,7 @@ import { Button, Flex, Input, Text } from '@chakra-ui/react';
 import { useEditUserData } from '@/hooks/useEditUserData';
 import { ContentBox } from '@/theme/components/contentBox';
 import { useWeatherStore } from '@/store/weatherStore';
-import { Loader } from '../loader/Loader';
+import { Loader } from '../common/Loader';
 
 interface EditUserDataProps {
   onClose: () => void;
@@ -123,6 +123,7 @@ export const EditUserData = ({ onClose }: EditUserDataProps) => {
                 height="3rem"
                 borderRadius="10px"
                 type="submit"
+                color="white"
                 w="10rem"
                 _hover={{ bg: 'coloredButtonHoverBg' }}>
                 {isSubmitting ? <Loader isSmall /> : 'Accept'}
