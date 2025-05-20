@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 import {
   loadFromLocalStorage,
@@ -10,6 +10,8 @@ interface NotepadStore {
   setStoreNote: (newText: string) => void;
   isNotepadModalConfirmed: boolean;
   setIsNotepadModalConfirmed: (value: boolean) => void;
+  isModalVisible: boolean;
+  setIsModalVisible: (value: boolean) => void;
 }
 
 const LOCAL_STORAGE_KEY = 'notepadStoreNote';
@@ -21,9 +23,14 @@ export const useNotepadStore = create<NotepadStore>((set) => ({
     saveToLocalStorage(LOCAL_STORAGE_KEY, newText);
     set({ storeNote: newText });
   },
-  isNotepadModalConfirmed: loadFromLocalStorage(LOCAL_STORAGE_CONFIRMED_KEY, false),
+  isNotepadModalConfirmed: loadFromLocalStorage(
+    LOCAL_STORAGE_CONFIRMED_KEY,
+    false
+  ),
   setIsNotepadModalConfirmed: (value: boolean) => {
     saveToLocalStorage(LOCAL_STORAGE_CONFIRMED_KEY, value);
     set({ isNotepadModalConfirmed: value });
   },
+  isModalVisible: false,
+  setIsModalVisible: (value: boolean) => set({ isModalVisible: value }),
 }));

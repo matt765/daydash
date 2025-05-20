@@ -18,8 +18,9 @@
 
 ## 1.0.2 (20-05-2025)
 
-- Migrate to App router
-- Create separate layout folder
-- Extract views into subpages
-- Fix console errors
-- Adjust mobile resoltion
+- migrate to app router
+- create separate layout folder
+- extract views into subpages
+- fix console errors
+- adjust mobile resolution
+- migrate planner to @hello-pangea/dnd

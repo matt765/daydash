@@ -60,7 +60,7 @@ export const Settings = ({
             }}
             pb="1rem"
             backdropFilter="blur(24px)"
-            h={{ base: 'calc(100% - 5rem)', lg: '100%' }}
+            h={{ base: 'calc(100% - 5rem)', xl: '100%' }}
             maxW={{ base: '100vw', md: '19rem', '3xl': '20rem' }}>
             <DrawerCloseButton
               mt="0.8rem"

@@ -14,10 +14,15 @@ export const useNotepad = () => {
     setStoreNote,
     isNotepadModalConfirmed,
     setIsNotepadModalConfirmed,
+    isModalVisible,
+    setIsModalVisible,
   } = useNotepadStore();
-  const [isModalVisible, setIsModalVisible] = useState(
-    !isNotepadModalConfirmed
-  );
+
+  useEffect(() => {
+    if (!isNotepadModalConfirmed) {
+      setIsModalVisible(true);
+    }
+  }, [isNotepadModalConfirmed, setIsModalVisible]);
 
   useEffect(() => {
     if (textAreaRef.current) {
@@ -71,6 +76,6 @@ export const useNotepad = () => {
     colorMode,
     hovered,
     setHovered,
-    storeNote
+    storeNote,
   };
 };

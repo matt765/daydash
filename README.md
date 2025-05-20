@@ -1,7 +1,7 @@
 <div id="user-content-toc" align="center">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1>MistyLoop</h1>
+      <h1>- MistyLoop -</h1>
     </summary>
   </ul>
 </div>
@@ -10,15 +10,15 @@
   <a href="https://github.com/matt765/daydash/blob/master/CHANGELOG.md" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/%20-changelog-blue?logo=readme&logoColor=white&labelColor=grey" alt="Changelog" />
   </a>
-  <a href="https://github.com/matt765/daydash/blob/master/license" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
+   <a href="https://github.com/matt765/daydash/blob/master/license" style="text-decoration: none;">
+    <img src="https://img.shields.io/badge/license-CC--BY--NC--ND--4.0-blue" alt="License" />
   </a>
   <a href="https://github.com/matt765/daydash/releases" style="text-decoration: none;">
     <img src="https://img.shields.io/github/package-json/v/matt765/daydash?color=green" alt="Version" />
   </a>
 </div>
 
-<h2 align="center">Application designed to be an alternative to default starting page in the browser</h2>
+<h3 align="center">Application designed to be an alternative to default starting page in the browser</h3>
 <br />
 
 <div align="center">
@@ -27,7 +27,7 @@
 
 ## ⚙️ Tech stack
 
-React, NextJS, TypeScript, ChakraUI, Zustand, React Query
+React 19, NextJS 15, TypeScript, ChakraUI, Zustand, React Query
 
 ## 🔗 Live link
 
@@ -85,7 +85,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`   | Starts local dev server at `localhost:3000` |
 | `npm run build` | Build your production site                  |
 
-## 💡 Disclaimer
+## 💡 Rebranding note
 
 This project has been renamed in May 2025. It was formerly known as "Daydash" and accessible via the "daydash.app" domain.
 

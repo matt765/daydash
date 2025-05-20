@@ -7,8 +7,10 @@ import {
   ListItem,
   Text,
   UnorderedList,
+  useToast,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface ClearAllDataProps {
   onClose: () => void;
@@ -17,12 +19,21 @@ interface ClearAllDataProps {
 export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
   const [value, setValue] = useState<string>('');
   const [showError, setShowError] = useState<boolean>(false);
+  const router = useRouter();
+  const toast = useToast();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (value === 'yes' || value === 'Yes') {
       clearAllData();
       onClose();
+      toast({
+        title: 'Data cleared',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+      router.replace('/');
     } else {
       setShowError(true);
     }
@@ -40,7 +51,7 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
       pointerEvents="none"
       alignItems="center">
       <ContentBox
-        overflow={{ base: "auto", md: "hidden" }}
+        overflow={{ base: 'auto', md: 'hidden' }}
         display="flex"
         flexDirection="column"
         pointerEvents="auto"
@@ -94,7 +105,7 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
               <ListItem>Snake game record</ListItem>
             </UnorderedList>
             <Text mb="1rem" mt="0.5rem">
-              Please write "yes" to confirm
+              Please write &quot;yes&quot; to confirm
             </Text>
           </Flex>
 
@@ -136,7 +147,7 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
               fontSize="sm"
               mt="1rem"
               opacity={showError ? '1' : '0'}>
-              Please write 'yes' to confirm
+              Please write &quot;yes&quot; to confirm
             </Text>
             <Flex
               w="100%"
@@ -164,6 +175,7 @@ export const ClearAllData = ({ onClose }: ClearAllDataProps) => {
                 height="3rem"
                 borderRadius="10px"
                 w="10rem"
+                color="white"
                 isDisabled={showError}
                 bg="coloredButtonBg"
                 _hover={{ bg: 'coloredButtonHoverBg' }}>
