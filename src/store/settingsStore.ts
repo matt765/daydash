@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 import {
   loadFromLocalStorage,
@@ -61,7 +61,7 @@ export const useSettingsStore = create<SettingsState>((set) => {
       setAndStore('isFullPlannerVisible', false);
       setAndStore('welcomeSectionContent', 'did_you_know');
       setAndStore('sliderValue', 40);
-      setAndStore('showSnakeButton', false);
+      setAndStore('showSnakeButton', true);
       setAndStore('useFahrenheit', false);
       setAndStore('theme', 'extendedTheme');
       setAndStore('isImageVisible', true);

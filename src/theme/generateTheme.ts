@@ -63,10 +63,10 @@ export const generateTheme = (colors: any) => {
         },
         '::-webkit-input-placeholder': {
           color: 'rgb(255,255,255,0.4) !important',
-        },   
+        },
         'option, optgroup': {
-          '-webkit-appearance': 'none !important',
-        },    
+          WebkitAppearance: 'none !important',
+        },
       },
     },
     components: {
