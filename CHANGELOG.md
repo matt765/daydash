@@ -15,3 +15,11 @@
 - fix laptop resolution
 - refactor local storage utils
 - adjust quotes api url
+
+## 1.0.2 (20-05-2025)
+
+- Migrate to App router
+- Create separate layout folder
+- Extract views into subpages
+- Fix console errors
+- Adjust mobile resoltion
