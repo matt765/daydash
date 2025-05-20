@@ -1,13 +1,11 @@
 import { Flex } from '@chakra-ui/react';
 
-import { Notepad } from '@/views/notepad/Notepad';
-import { Planner } from '../planner/Planner';
-import { Weather } from '../weather/Weather';
-import { Welcome } from '../welcome/Welcome';
-
-interface MobileViewProps {
-  viewName: string;
-}
+import { Notepad } from '@/components/views/notepad/Notepad';
+import { Weather } from '../views/homepage/weather/Weather';
+import { Planner } from '../views/homepage/planner/Planner';
+import { Welcome } from '../views/homepage/welcome/Welcome';
+import { useMobileViewStore } from '@/store/mobileViewStore';
+import { ViewType } from '@/hooks/useHomepage';
 
 const WelcomeMobileView = () => (
   <Flex
@@ -76,19 +74,22 @@ const SettingsMobileView = () => (
   </Flex>
 );
 
-export const MobileView = ({ viewName }: MobileViewProps) => {
-  switch (viewName) {
-    case 'home':
+export const MobileView = () => {
+  const { mobileView } = useMobileViewStore();
+
+  switch (mobileView) {
+    case 'mobileHome':
       return <WelcomeMobileView />;
-    case 'weather':
+    case 'mobileWeather':
       return <WeatherMobileView />;
-    case 'planner':
+    case 'mobilePlanner':
       return <PlannerMobileView />;
     case 'notepad':
       return <NotepadMobileView />;
     case 'settings':
       return <SettingsMobileView />;
     default:
+      console.log('View not found, defaulting to WelcomeMobileView');
       return <WelcomeMobileView />;
   }
 };

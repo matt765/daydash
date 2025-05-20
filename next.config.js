@@ -6,7 +6,13 @@ const nextConfig = {
     ANOTHER_SECRET: process.env.ANOTHER_SECRET,
   },
   images: {
-    domains: ['cdn.weatherapi.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.weatherapi.com',
+        pathname: '**',
+      },
+    ],
   },
 };
 

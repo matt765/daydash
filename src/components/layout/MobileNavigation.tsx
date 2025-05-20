@@ -5,17 +5,18 @@ import { PlannerMobileIcon } from '@/assets/icons/PlannerMobileIcon';
 import { SettingsIcon } from '@/assets/icons/SettingsIcon';
 import { WeatherMobileIcon } from '@/assets/icons/WeatherMobileIcon';
 import { ViewType } from '@/hooks/useHomepage';
+import { useMobileViewStore } from '@/store/mobileViewStore';
 import { Flex, Icon, Text } from '@chakra-ui/react';
 
 interface NavigationItemProps {
   title: String;
   viewName: ViewType;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  onNavItemClick: (viewName: string) => void;
+  onNavItemClick: (viewName: ViewType) => void;
   isSettingsPanelOpen: boolean;
   onSettingsPanelClose: () => void;
-  onEditUserDataClose: () => void; 
-  onClearAllDataClose: () => void; 
+  onEditUserDataClose: () => void;
+  onClearAllDataClose: () => void;
 }
 
 const NavigationItem = ({
@@ -25,8 +26,8 @@ const NavigationItem = ({
   onNavItemClick,
   isSettingsPanelOpen,
   onSettingsPanelClose,
-  onEditUserDataClose, 
-  onClearAllDataClose, 
+  onEditUserDataClose,
+  onClearAllDataClose,
 }: NavigationItemProps) => (
   <Flex
     w="20%"
@@ -40,8 +41,8 @@ const NavigationItem = ({
       if (isSettingsPanelOpen && title !== 'Settings') {
         onSettingsPanelClose();
       }
-      onEditUserDataClose(); 
-      onClearAllDataClose(); 
+      onEditUserDataClose();
+      onClearAllDataClose();
       onNavItemClick(viewName);
     }}
     cursor="pointer"
@@ -86,13 +87,13 @@ const navigationItems = [
 ];
 
 interface MobileNavigationProps {
-  handleViewChange: (view: ViewType, deviceType: 'mobile' | 'desktop') => void;
+  handleViewChange?: (view: ViewType, deviceType: 'mobile' | 'desktop') => void;
   openDrawer: () => void;
   isSettingsPanelOpen: boolean;
   onSettingsPanelClose: () => void;
-  mobileView: string;
-  onEditUserDataClose: () => void; 
-  onClearAllDataClose: () => void; 
+  mobileView?: string;
+  onEditUserDataClose: () => void;
+  onClearAllDataClose: () => void;
 }
 
 export const MobileNavigation = ({
@@ -101,9 +102,23 @@ export const MobileNavigation = ({
   isSettingsPanelOpen,
   onSettingsPanelClose,
   mobileView,
-  onEditUserDataClose, 
-  onClearAllDataClose, 
+  onEditUserDataClose,
+  onClearAllDataClose,
 }: MobileNavigationProps) => {
+  const { setMobileView } = useMobileViewStore();
+
+  const handleNavItemClick = (viewName: ViewType) => {
+    if (viewName === 'settings') {
+      openDrawer();
+    } else {
+      setMobileView(viewName);
+
+      if (handleViewChange) {
+        handleViewChange(viewName, 'mobile');
+      }
+    }
+  };
+
   return (
     <Flex
       display={{ base: 'flex', xl: 'none' }}
@@ -130,13 +145,7 @@ export const MobileNavigation = ({
           viewName={item.viewName}
           key={`${index}-${item.title}`}
           icon={item.icon}
-          onNavItemClick={(viewName) =>
-            viewName === 'settings'
-              ? openDrawer()
-              : 
-              mobileView !== 'intro' &&
-              handleViewChange(viewName as ViewType, 'mobile') 
-          }
+          onNavItemClick={handleNavItemClick}
           isSettingsPanelOpen={isSettingsPanelOpen}
           onSettingsPanelClose={onSettingsPanelClose}
           onEditUserDataClose={onEditUserDataClose}

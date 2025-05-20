@@ -1,46 +1,70 @@
-# DayDash
-Dashboard application designed to be an alternative to default starting page in browser
- 
-## Tech stack
+<div id="user-content-toc" align="center">
+  <ul align="center" style="list-style: none;">
+    <summary>
+      <h1>MistyLoop</h1>
+    </summary>
+  </ul>
+</div>
+
+<div align="center">
+  <a href="https://github.com/matt765/daydash/blob/master/CHANGELOG.md" style="text-decoration: none;">
+    <img src="https://img.shields.io/badge/%20-changelog-blue?logo=readme&logoColor=white&labelColor=grey" alt="Changelog" />
+  </a>
+  <a href="https://github.com/matt765/daydash/blob/master/license" style="text-decoration: none;">
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
+  </a>
+  <a href="https://github.com/matt765/daydash/releases" style="text-decoration: none;">
+    <img src="https://img.shields.io/github/package-json/v/matt765/daydash?color=green" alt="Version" />
+  </a>
+</div>
+
+<h2 align="center">Application designed to be an alternative to default starting page in the browser</h2>
+<br />
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/8fa727e6-12e3-430b-9d7e-805c0381dde1" alt="MistyLoop" width="800" />
+</div>
+
+## ⚙️ Tech stack
+
 React, NextJS, TypeScript, ChakraUI, Zustand, React Query
 
-## Live link
-[https://daydash.app/](https://daydash.app/)
+## 🔗 Live link
 
-## Image Preview
-![App Screenshot](https://github.com/user-attachments/assets/8fa727e6-12e3-430b-9d7e-805c0381dde1)
+[https://mistyloop.com/](https://mistyloop.com/)
 
-##  Project Structure
+## 📁 Project Structure
+
 ```
 ├── src
+│   ├── app
+│   │   ├── api
+│   │   ├── notepad
+│   │   └── snake
 │   ├── assets
 │   │   ├── icons
 │   │   └── images
 │   ├── components
-│   │   ├── notepad
-│   │   ├── loader
-│   │   ├── planner
+│   │   ├── common
+│   │   ├── layout
+│   │   ├── modals
 │   │   ├── settings
-│   │   ├── sideButtons
-│   │   ├── weather
-│   │   └── welcome
+│   │   └── views
+│   │       ├── homepage
+│   │       ├── intro
+│   │       ├── notepad
+│   │       └── snake
 │   ├── hooks
-│   ├── pages
-│   │   └── api
 │   ├── services
 │   ├── store
 │   ├── theme
 │   │   └── components
-│   ├── utils
-│   ├── views
-│   │   ├── dashboard
-│   │   ├── intro
-│   │   ├── notepad
-│   │   └── snake
+│   └── utils
 └── package.json
 ```
 
-##  Features
+## ✨ Features
+
 - Current day and date
 - Weather forecast
 - "Did you know?" facts
@@ -51,14 +75,22 @@ React, NextJS, TypeScript, ChakraUI, Zustand, React Query
 - Themes
 - Customization through settings panel
 
-##  How to run
+## 🚀 How to run
+
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site           |
+| Command         | Action                                      |
+| :-------------- | :------------------------------------------ |
+| `npm install`   | Installs dependencies                       |
+| `npm run dev`   | Starts local dev server at `localhost:3000` |
+| `npm run build` | Build your production site                  |
 
-## Disclaimer
-The Firefox browser may occasionally exhibit a visual bug causing a flickering effect with the blur filter.  Issue seems to be browser-specific as it does not occur in Google Chrome. I am aware of this issue and am working towards a resolution. Blurred section background is visible in two out of the four themes.
+## 💡 Disclaimer
+
+This project has been renamed in May 2025. It was formerly known as "Daydash" and accessible via the "daydash.app" domain.
+
+## 📝 License
+
+This project is licensed under the CC-BY-NC-ND-4.0 license - see the [license file](https://github.com/matt765/daydash/blob/master/license) for more information.
+
+Made with ♥ by [matt765](https://matt765-portfolio.vercel.app/)

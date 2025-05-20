@@ -1,8 +1,9 @@
 {
-  "name": "daydash",
-  "version": "1.0.1",
+  "name": "mistyloop",
+  "version": "1.0.2",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
+  "description": "Application designed to be an alternative to default starting page in the browser",
   "author": {
     "name": "matt765",
     "email": "mateusz.wyrebek@gmail.com",
@@ -22,25 +23,23 @@
     "@fontsource/inter": "^4.5.15",
     "@fontsource/quicksand": "^4.5.12",
     "@fontsource/roboto": "^4.5.8",
+    "@hello-pangea/dnd": "^18.0.1",
+    "@tanstack/react-query": "^5.76.1",
     "@types/node": "^18.16.3",
     "@types/react": "^18.2.4",
     "@types/react-dom": "^18.2.3",
     "@vercel/analytics": "^1.0.1",
     "axios": "^1.4.0",
-    "next": "13.3.4",
+    "next": "^15.3.2",
     "query-string": "^8.1.0",
-    "react": "18.2.0",
-    "react-beautiful-dnd": "^13.1.1",
-    "react-dom": "18.2.0",
-    "react-query": "^3.39.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "@types/react-beautiful-dnd": "^13.1.4",
     "eslint": "^8.39.0",
-    "eslint-config-next": "13.3.4",
+    "eslint-config-next": "^15.3.2",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.8",
     "zustand": "^4.3.8"
   }
